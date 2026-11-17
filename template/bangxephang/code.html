@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Learning With Bee</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-container": "#004731", "background": "#f9f9ff", "tertiary-container": "#4bbc91", "on-secondary": "#ffffff", "level4-accent": "#9871C3", "outline-variant": "#ddc1b2", "surface-card": "#FFFFFF", "on-primary-container": "#662e00", "on-secondary-fixed": "#001b3c", "on-surface-variant": "#564337", "inverse-on-surface": "#ebf1ff", "surface-canvas": "#FFFCF5", "on-background": "#011c3a", "level2-accent": "#F19B33", "secondary-container": "#6ea7fd", "level3-light": "#EBFAE9", "surface-dim": "#c6dbff", "on-surface": "#011c3a", "tertiary": "#006c4d", "level5-accent": "#E46B78", "surface": "#f9f9ff", "outline": "#8a7265", "secondary": "#145eaf", "on-error-container": "#93000a", "surface-container": "#e6eeff", "level4-light": "#F4EAFF", "primary-fixed-dim": "#ffb68a", "text-muted": "#7C94A8", "error-container": "#ffdad6", "on-error": "#ffffff", "secondary-fixed-dim": "#a8c8ff", "level2-light": "#FFF4E2", "surface-cream": "#FFF4D8", "tertiary-fixed": "#89f8c8", "primary": "#984700", "inverse-primary": "#ffb68a", "surface-variant": "#d4e3ff", "surface-container-highest": "#d4e3ff", "surface-sky": "#E9F6FF", "surface-container-high": "#dde9ff", "tertiary-fixed-dim": "#6cdbad", "brand-ink-dark": "#244F97", "primary-container": "#ff8a35", "on-primary-fixed-variant": "#743500", "level1-accent": "#22A9C2", "cta-depth-shadow": "#E56D27", "on-tertiary-fixed": "#002115", "surface-bright": "#f9f9ff", "on-primary-fixed": "#321300", "error": "#ba1a1a", "surface-container-lowest": "#ffffff", "feedback-error-soft": "#FFF0EE", "on-primary": "#ffffff", "on-secondary-container": "#003b76", "level3-accent": "#6AAD63", "inverse-surface": "#193150", "primary-fixed": "#ffdbc8", "on-tertiary": "#ffffff", "on-tertiary-fixed-variant": "#005139", "surface-container-low": "#f0f3ff", "secondary-fixed": "#d6e3ff", "level1-light": "#E4FAFF", "level5-light": "#FFF0F0", "on-secondary-fixed-variant": "#00468a", "surface-tint": "#984700" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-desktop": "1.875rem", "margin-desktop": "4.5rem", "gutter": "1.25rem", "space-sm": "0.75rem", "space-2xl": "3rem", "margin": "1.5rem", "space-xs": "0.5rem", "space-md": "1rem", "space-xl": "2.25rem", "space-lg": "1.5rem" }, "fontFamily": { "caption-unit": ["Nunito Sans"], "display-hero": ["Nunito Sans"], "action-secondary": ["Nunito Sans"], "body-intro": ["Nunito Sans"], "headline-card": ["Nunito Sans"], "headline-section": ["Nunito Sans"], "word-showcase": ["Nunito Sans"], "action-primary": ["Nunito Sans"], "body-regular": ["Nunito Sans"], "display-hero-mobile": ["Nunito Sans"], "word-showcase-mobile": ["Nunito Sans"], "badge-label": ["Nunito Sans"] }, "fontSize": { "caption-unit": ["12px", { "lineHeight": "1.3", "fontWeight": "700" }], "display-hero": ["58px", { "lineHeight": "1.15", "letterSpacing": "-1.5px", "fontWeight": "900" }], "action-secondary": ["14px", { "lineHeight": "1.2", "fontWeight": "800" }], "body-intro": ["17px", { "lineHeight": "1.65", "fontWeight": "400" }], "headline-card": ["18px", { "lineHeight": "1.35", "fontWeight": "800" }], "headline-section": ["28px", { "lineHeight": "1.3", "letterSpacing": "-0.5px", "fontWeight": "900" }], "word-showcase": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.5px", "fontWeight": "900" }], "action-primary": ["16px", { "lineHeight": "1.2", "fontWeight": "800" }], "body-regular": ["15px", { "lineHeight": "1.5", "fontWeight": "600" }], "display-hero-mobile": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.8px", "fontWeight": "900" }], "word-showcase-mobile": ["34px", { "lineHeight": "1.15", "letterSpacing": "-0.3px", "fontWeight": "900" }], "badge-label": ["13px", { "lineHeight": "1.2", "fontWeight": "800" }] } } } }</script></head><body class="bg-surface-canvas font-body-regular text-body-regular text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1280px] mx-auto px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-12 h-12 rounded-full bg-level2-light flex items-center justify-center text-level2-accent shadow-[0_4px_0_#F19B33]"><span class="material-symbols-outlined text-[28px]">emoji_nature</span></div><div class="flex flex-col"><span class="font-headline-card text-headline-card text-brand-ink-dark tracking-tight leading-none">Learning With Bee</span><span class="font-caption-unit text-caption-unit text-primary uppercase tracking-wider mt-1">Bé học tiếng Anh cùng Ong Vàng</span></div></div><nav class="hidden xl:flex items-center gap-space-xs p-1 bg-surface-card rounded-2xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="bg-primary-container text-on-primary font-action-primary text-action-primary shadow-[0_3px_0_#E56D27] rounded-xl"><a class="px-space-md py-space-xs font-action-primary text-action-primary text-on-surface-variant hover:text-on-surface transition-all rounded-xl" data-path="trang-chu" href="#">Trang chủ</a><a class="px-space-md py-space-xs font-action-primary text-action-primary text-on-surface-variant hover:text-on-surface transition-all rounded-xl" data-path="oxford-phonics-world" href="#">Oxford Phonics World</a><a class="px-space-md py-space-xs font-action-primary text-action-primary text-on-surface-variant hover:text-on-surface transition-all rounded-xl" data-path="bang-chu-cai" href="#">Bảng chữ cái</a><a class="px-space-md py-space-xs font-action-primary text-action-primary text-on-surface-variant hover:text-on-surface transition-all rounded-xl" data-path="mini-game" href="#">Mini Game</a><a aria-current="page" class="px-space-md py-space-xs transition-all bg-primary-container text-on-primary font-action-primary text-action-primary shadow-[0_3px_0_#E56D27] rounded-xl" data-path="bang-xep-hang" href="#">Bảng xếp hạng</a></nav><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5 px-space-md py-space-xs bg-surface-cream rounded-full shadow-[0_2px_0_#F19B33]"><span class="material-symbols-outlined text-level2-accent text-[20px]">star</span><span class="font-badge-label text-badge-label text-primary">340</span></div><div class="flex items-center bg-surface-card rounded-full p-1 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><button class="px-space-xs py-0.5 rounded-full bg-secondary text-on-secondary font-badge-label text-caption-unit">VI</button><button class="px-space-xs py-0.5 rounded-full text-on-surface-variant hover:text-on-surface font-badge-label text-caption-unit transition-colors">EN</button></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface-canvas min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Background Ambient Glows -->
+<div class="relative w-full max-w-[1280px] mx-auto px-gutter py-space-md">
+<div class="absolute -top-10 left-1/4 w-96 h-96 bg-level1-light rounded-full blur-3xl -z-10 opacity-70 pointer-events-none"></div>
+<div class="absolute top-40 right-10 w-80 h-80 bg-level2-light rounded-full blur-3xl -z-10 opacity-60 pointer-events-none"></div>
+<!-- 1. Breadcrumbs & Time Filter -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-md">
+<!-- Breadcrumb Nav -->
+<nav class="flex items-center gap-2 text-action-secondary font-action-secondary">
+<a class="inline-flex items-center gap-1.5 px-space-sm py-1.5 rounded-full bg-surface-card shadow-[0_2px_0_#dde9ff] text-secondary hover:text-brand-ink-dark transition-all" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Quay lại Trang chủ</span>
+</a>
+<span class="text-text-muted font-bold">/</span>
+<span class="text-on-surface-variant font-bold">Oxford Phonics World</span>
+<span class="text-text-muted font-bold">/</span>
+<span class="text-level1-accent font-black">Bảng Xếp Hạng</span>
+</nav>
+<!-- Time Frame Toggle -->
+<div class="inline-flex items-center p-1 bg-surface-card rounded-2xl shadow-[0_2px_0_#dde9ff] self-start md:self-auto">
+<button class="px-space-md py-1.5 rounded-xl font-action-secondary text-action-secondary text-on-surface-variant hover:text-brand-ink-dark transition-all">
+          Hôm nay
+        </button>
+<button class="px-space-md py-1.5 rounded-xl bg-secondary-container text-on-secondary font-action-secondary text-action-secondary shadow-[0_3px_0_#145eaf] transition-all">
+          Tuần này (Đang chọn)
+        </button>
+<button class="px-space-md py-1.5 rounded-xl font-action-secondary text-action-secondary text-on-surface-variant hover:text-brand-ink-dark transition-all">
+          Tất cả
+        </button>
+</div>
+</div>
+<!-- Header Banner -->
+<div class="bg-surface-card rounded-3xl p-space-lg md:p-space-xl shadow-[0_4px_0_#dde9ff] relative overflow-hidden mb-space-xl">
+<div class="absolute -right-6 -bottom-6 w-44 h-44 bg-surface-cream rounded-full opacity-60 -z-0"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-level2-light flex items-center justify-center text-level2-accent shadow-[0_6px_0_#F19B33] flex-shrink-0 rotate-[-4deg]">
+<span class="material-symbols-outlined text-[40px] md:text-[48px]" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+<div>
+<div class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-level2-light text-level2-accent font-badge-label text-caption-unit mb-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span>Đường đua tinh anh Phonics</span>
+</div>
+<h1 class="font-headline-section text-headline-section text-brand-ink-dark leading-tight">
+              Bảng Xếp Hạng Siêu Nhí Phonics
+            </h1>
+<p class="font-body-regular text-body-regular text-on-surface-variant mt-1">
+              Cùng xem bạn nhỏ nào học chăm chỉ, phát âm chuẩn và đạt điểm số cao nhất tuần này nhé! 🐝✨
+            </p>
+</div>
+</div>
+<!-- Weekly Badge Stats Box -->
+<div class="flex items-center gap-space-sm bg-surface-sky rounded-2xl px-space-md py-space-sm self-stretch md:self-auto justify-center shadow-[0_3px_0_#c6dbff]">
+<div class="w-10 h-10 rounded-full bg-surface-card flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[24px]">timer</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption-unit text-caption-unit text-text-muted uppercase">Tổng kết tuần sau</span>
+<span class="font-headline-card text-headline-card text-secondary leading-tight">2 ngày 14 giờ</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Level Selector Tabs (Oxford Phonics World 5 Levels) -->
+<div class="mb-space-xl">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-caption-unit text-caption-unit uppercase tracking-wider text-text-muted flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-level1-accent">layers</span>
+          Chọn cấp độ muốn xem xếp hạng:
+        </span>
+<span class="font-caption-unit text-caption-unit text-secondary font-bold">5 Cấp độ chuẩn Oxford</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-space-sm" id="level-tabs">
+<!-- Level 1 (Active) -->
+<button class="level-tab-btn active flex flex-col items-center p-space-sm rounded-2xl bg-level1-light text-on-surface shadow-[0_5px_0_#22A9C2] transition-all transform scale-[1.02]">
+<div class="w-12 h-12 rounded-xl bg-surface-card flex items-center justify-center text-level1-accent mb-2 shadow-[0_2px_0_#d4e3ff]">
+<span class="material-symbols-outlined text-[26px]">spellcheck</span>
+</div>
+<span class="font-headline-card text-action-secondary text-brand-ink-dark text-center leading-tight">Level 1</span>
+<span class="font-body-regular text-caption-unit text-on-surface-variant text-center mt-0.5">The Alphabet</span>
+<span class="mt-2 inline-block px-2 py-0.5 rounded-full bg-surface-card text-level1-accent font-caption-unit text-[11px] shadow-sm">
+            428 bạn nhỏ
+          </span>
+</button>
+<!-- Level 2 -->
+<button class="level-tab-btn flex flex-col items-center p-space-sm rounded-2xl bg-surface-card text-on-surface shadow-[0_5px_0_#F19B33] hover:bg-level2-light/60 transition-all">
+<div class="w-12 h-12 rounded-xl bg-level2-light flex items-center justify-center text-level2-accent mb-2 shadow-[0_2px_0_#ffe5c2]">
+<span class="material-symbols-outlined text-[26px]">pets</span>
+</div>
+<span class="font-headline-card text-action-secondary text-brand-ink-dark text-center leading-tight">Level 2</span>
+<span class="font-body-regular text-caption-unit text-on-surface-variant text-center mt-0.5">Short Vowels</span>
+<span class="mt-2 inline-block px-2 py-0.5 rounded-full bg-level2-light text-level2-accent font-caption-unit text-[11px] shadow-sm">
+            315 bạn nhỏ
+          </span>
+</button>
+<!-- Level 3 -->
+<button class="level-tab-btn flex flex-col items-center p-space-sm rounded-2xl bg-surface-card text-on-surface shadow-[0_5px_0_#6AAD63] hover:bg-level3-light/60 transition-all">
+<div class="w-12 h-12 rounded-xl bg-level3-light flex items-center justify-center text-level3-accent mb-2 shadow-[0_2px_0_#d4f2cc]">
+<span class="material-symbols-outlined text-[26px]">cake</span>
+</div>
+<span class="font-headline-card text-action-secondary text-brand-ink-dark text-center leading-tight">Level 3</span>
+<span class="font-body-regular text-caption-unit text-on-surface-variant text-center mt-0.5">Long Vowels</span>
+<span class="mt-2 inline-block px-2 py-0.5 rounded-full bg-level3-light text-level3-accent font-caption-unit text-[11px] shadow-sm">
+            260 bạn nhỏ
+          </span>
+</button>
+<!-- Level 4 -->
+<button class="level-tab-btn flex flex-col items-center p-space-sm rounded-2xl bg-surface-card text-on-surface shadow-[0_5px_0_#9871C3] hover:bg-level4-light/60 transition-all">
+<div class="w-12 h-12 rounded-xl bg-level4-light flex items-center justify-center text-level4-accent mb-2 shadow-[0_2px_0_#eedbfa]">
+<span class="material-symbols-outlined text-[26px]">directions_subway</span>
+</div>
+<span class="font-headline-card text-action-secondary text-brand-ink-dark text-center leading-tight">Level 4</span>
+<span class="font-body-regular text-caption-unit text-on-surface-variant text-center mt-0.5">Consonant Blends</span>
+<span class="mt-2 inline-block px-2 py-0.5 rounded-full bg-level4-light text-level4-accent font-caption-unit text-[11px] shadow-sm">
+            184 bạn nhỏ
+          </span>
+</button>
+<!-- Level 5 -->
+<button class="level-tab-btn col-span-2 md:col-span-1 flex flex-col items-center p-space-sm rounded-2xl bg-surface-card text-on-surface shadow-[0_5px_0_#E46B78] hover:bg-level5-light/60 transition-all">
+<div class="w-12 h-12 rounded-xl bg-level5-light flex items-center justify-center text-level5-accent mb-2 shadow-[0_2px_0_#fbd7dc]">
+<span class="material-symbols-outlined text-[26px]">cruelty_free</span>
+</div>
+<span class="font-headline-card text-action-secondary text-brand-ink-dark text-center leading-tight">Level 5</span>
+<span class="font-body-regular text-caption-unit text-on-surface-variant text-center mt-0.5">Letter Combinations</span>
+<span class="mt-2 inline-block px-2 py-0.5 rounded-full bg-level5-light text-level5-accent font-caption-unit text-[11px] shadow-sm">
+            142 bạn nhỏ
+          </span>
+</button>
+</div>
+</div>
+<!-- 3. Top 3 Podium (Bục Vinh Danh Top 3) -->
+<div class="bg-gradient-to-b from-surface-sky/60 via-surface-card to-surface-card rounded-3xl p-space-md md:p-space-xl shadow-[0_4px_0_#dde9ff] mb-space-xl relative overflow-hidden">
+<!-- Decorative celebratory icons -->
+<div class="absolute top-4 left-6 text-level2-accent opacity-30 select-none pointer-events-none">✨</div>
+<div class="absolute top-12 right-12 text-level1-accent opacity-30 select-none pointer-events-none text-2xl">⭐</div>
+<div class="text-center max-w-md mx-auto mb-space-lg">
+<span class="font-badge-label text-badge-label px-space-md py-1 rounded-full bg-level2-light text-level2-accent shadow-sm inline-block">
+          👑 Vinh danh Tuần Này
+        </span>
+<h2 class="font-headline-section text-headline-section text-brand-ink-dark mt-2">
+          Top 3 Siêu Nhân Phonics
+        </h2>
+<p class="font-body-regular text-action-secondary text-text-muted mt-1">
+          Điểm số cao nhất &amp; hoàn thành trong thời gian thần tốc!
+        </p>
+</div>
+<!-- Podium Grid -->
+<div class="grid grid-cols-3 gap-2 md:gap-space-md items-end max-w-3xl mx-auto pt-6">
+<!-- Podium Rank 2 (Silver) -->
+<div class="flex flex-col items-center order-1">
+<!-- Avatar & Badge -->
+<div class="relative flex flex-col items-center mb-2">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-surface-container-high p-1 shadow-[0_4px_0_#c6dbff] relative">
+<div class="w-full h-full rounded-full bg-surface-card flex items-center justify-center text-brand-ink-dark font-headline-section text-headline-card overflow-hidden">
+<span class="material-symbols-outlined text-[36px] md:text-[44px] text-secondary">face_6</span>
+</div>
+<span class="absolute -top-2 -right-1 w-7 h-7 rounded-full bg-surface-dim text-on-surface flex items-center justify-center font-action-primary text-action-secondary shadow-sm">
+                🥈
+              </span>
+</div>
+<span class="font-headline-card text-action-primary text-brand-ink-dark mt-2 text-center truncate max-w-[90px] md:max-w-none">
+              manh
+            </span>
+<span class="font-caption-unit text-caption-unit text-text-muted">Bé Mạnh</span>
+</div>
+<!-- Podium Pillar 2 -->
+<div class="w-full bg-gradient-to-t from-surface-container-high to-surface-container rounded-t-3xl p-3 md:p-4 text-center shadow-[0_4px_0_#c6dbff] flex flex-col justify-between h-44 md:h-52">
+<div class="w-8 h-8 rounded-full bg-surface-card mx-auto flex items-center justify-center font-black text-secondary text-sm shadow-sm mb-2">
+              2
+            </div>
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center justify-center gap-1 text-level2-accent font-headline-card text-action-primary bg-surface-card/90 rounded-xl py-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>17 điểm</span>
+</div>
+<div class="flex items-center justify-center gap-1 text-on-surface-variant font-caption-unit text-[12px] bg-surface-card/60 rounded-lg py-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>03:29</span>
+</div>
+</div>
+<span class="font-caption-unit text-[11px] text-secondary font-extrabold uppercase tracking-wider mt-2">Á Quân</span>
+</div>
+</div>
+<!-- Podium Rank 1 (Gold - Elevated Champion) -->
+<div class="flex flex-col items-center order-2">
+<!-- Avatar & Champion Decor -->
+<div class="relative flex flex-col items-center mb-2">
+<div class="relative -mb-3 z-20">
+<span class="material-symbols-outlined text-level2-accent text-[32px] md:text-[40px] animate-bounce" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div class="w-20 h-20 md:w-26 md:h-26 rounded-full bg-level2-light p-1.5 shadow-[0_6px_0_#F19B33] relative">
+<div class="w-full h-full rounded-full bg-surface-cream flex items-center justify-center text-brand-ink-dark font-headline-section text-headline-card overflow-hidden">
+<span class="material-symbols-outlined text-[44px] md:text-[54px] text-primary">face_3</span>
+</div>
+<span class="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-surface-cream text-primary flex items-center justify-center font-action-primary text-action-primary shadow-[0_2px_0_#F19B33]">
+                🥇
+              </span>
+</div>
+<span class="font-headline-section text-headline-card text-brand-ink-dark mt-2 text-center font-black">
+              Khue
+            </span>
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-level2-light text-primary font-caption-unit text-[11px]">
+<span>Bé Khuê</span>
+<span class="font-black">· Vô địch tuần!</span>
+</div>
+</div>
+<!-- Podium Pillar 1 -->
+<div class="w-full bg-gradient-to-t from-level2-accent to-primary-container rounded-t-3xl p-3 md:p-5 text-center shadow-[0_6px_0_#E56D27] flex flex-col justify-between h-56 md:h-64 text-on-primary">
+<div class="w-9 h-9 rounded-full bg-surface-card mx-auto flex items-center justify-center font-black text-primary text-base shadow-sm mb-2">
+              1
+            </div>
+<div class="flex flex-col gap-1.5">
+<div class="inline-flex items-center justify-center gap-1 text-on-primary-container font-headline-card text-action-primary bg-surface-card rounded-xl py-1 shadow-sm">
+<span class="material-symbols-outlined text-level2-accent text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-black">17 / 17</span>
+</div>
+<div class="flex items-center justify-center gap-1 text-on-primary font-body-regular text-action-secondary bg-on-primary-container/20 rounded-lg py-1 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[16px]">timer</span>
+<span class="font-extrabold">02:15</span>
+</div>
+</div>
+<span class="font-action-secondary text-action-secondary text-surface-cream font-black uppercase tracking-wider mt-2">
+              🌟 Ngôi Sao Vàng
+            </span>
+</div>
+</div>
+<!-- Podium Rank 3 (Bronze) -->
+<div class="flex flex-col items-center order-3">
+<!-- Avatar & Badge -->
+<div class="relative flex flex-col items-center mb-2">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-level2-light/70 p-1 shadow-[0_4px_0_#ffdbc8] relative">
+<div class="w-full h-full rounded-full bg-surface-card flex items-center justify-center text-brand-ink-dark font-headline-section text-headline-card overflow-hidden">
+<span class="material-symbols-outlined text-[36px] md:text-[44px] text-primary">face_5</span>
+</div>
+<span class="absolute -top-2 -right-1 w-7 h-7 rounded-full bg-primary-fixed text-on-primary-container flex items-center justify-center font-action-primary text-action-secondary shadow-sm">
+                🥉
+              </span>
+</div>
+<span class="font-headline-card text-action-primary text-brand-ink-dark mt-2 text-center truncate max-w-[90px] md:max-w-none">
+              Minh An
+            </span>
+<span class="font-caption-unit text-caption-unit text-text-muted">Bé An</span>
+</div>
+<!-- Podium Pillar 3 -->
+<div class="w-full bg-gradient-to-t from-level3-light to-surface-card rounded-t-3xl p-3 md:p-4 text-center shadow-[0_4px_0_#d4f2cc] flex flex-col justify-between h-36 md:h-44">
+<div class="w-8 h-8 rounded-full bg-surface-card mx-auto flex items-center justify-center font-black text-level3-accent text-sm shadow-sm mb-2">
+              3
+            </div>
+<div class="flex flex-col gap-1">
+<div class="inline-flex items-center justify-center gap-1 text-level3-accent font-headline-card text-action-primary bg-surface-card/90 rounded-xl py-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>16 điểm</span>
+</div>
+<div class="flex items-center justify-center gap-1 text-on-surface-variant font-caption-unit text-[12px] bg-surface-card/60 rounded-lg py-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>02:45</span>
+</div>
+</div>
+<span class="font-caption-unit text-[11px] text-level3-accent font-extrabold uppercase tracking-wider mt-2">Hạng Ba</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. Detailed Leaderboard Table (Directly inspired by Reference Image DATA:IMAGE:IMAGE_2 with child-friendly upgrade) -->
+<div class="bg-surface-card rounded-3xl shadow-[0_5px_0_#dde9ff] overflow-hidden mb-space-xl">
+<!-- Table Header Bar (Faithful to Reference Blue Banner) -->
+<div class="bg-gradient-to-r from-secondary to-level1-accent p-space-md md:px-space-lg text-on-secondary flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-card/20 backdrop-blur-sm flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined text-[24px]">menu_book</span>
+</div>
+<div>
+<h3 class="font-headline-card text-headline-card text-on-secondary leading-tight">
+              Bảng xếp hạng Level 1: The Alphabet
+            </h3>
+<span class="font-caption-unit text-caption-unit text-level1-light">
+              Dựa trên kết quả bài kiểm tra tổng hợp 26 chữ cái Phonics
+            </span>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start sm:self-auto">
+<span class="px-space-sm py-1 rounded-full bg-surface-card/20 backdrop-blur-sm font-caption-unit text-caption-unit text-on-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">update</span>
+            Vừa cập nhật 5 phút trước
+          </span>
+</div>
+</div>
+<!-- Table Structure -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[620px]">
+<!-- Columns Head -->
+<thead>
+<tr class="bg-surface-sky text-brand-ink-dark font-action-secondary text-action-secondary">
+<th class="py-space-sm px-space-md text-center w-20">Hạng</th>
+<th class="py-space-sm px-space-md">Tên học viên</th>
+<th class="py-space-sm px-space-md text-center">Điểm số</th>
+<th class="py-space-sm px-space-md text-center">Thời gian</th>
+<th class="py-space-sm px-space-md text-center">Huy hiệu đạt được</th>
+</tr>
+</thead>
+<!-- Table Body -->
+<tbody class="divide-y-0 text-on-surface">
+<!-- Row 1: Khue (from Reference Image) -->
+<tr class="bg-surface-cream/40 hover:bg-surface-cream/70 transition-colors">
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-level2-light text-primary font-headline-card text-action-primary shadow-[0_2px_0_#F19B33]">
+                  1
+                </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-level2-light flex items-center justify-center text-primary font-black shadow-sm">
+                    👧
+                  </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-card text-headline-card text-brand-ink-dark">Khue</span>
+<span class="px-2 py-0.5 rounded-full bg-level2-light text-level2-accent font-caption-unit text-[11px] font-black">
+                        🥇 Hạng 1
+                      </span>
+</div>
+<span class="font-caption-unit text-caption-unit text-text-muted">Bé Khuê (Lớp Ong Chăm 01)</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center gap-1 font-headline-card text-headline-card text-primary bg-surface-card px-3 py-1 rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-level2-accent text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  17 / 17
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center font-headline-card text-action-primary text-secondary">
+<span class="inline-flex items-center gap-1 bg-surface-sky px-2.5 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]">timer</span>
+                  02:15
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-cream text-primary font-action-secondary text-action-secondary shadow-sm">
+<span>🌟</span>
+<span>Ngôi sao chăm chỉ</span>
+</span>
+</td>
+</tr>
+<!-- Row 2: manh (from Reference Image) -->
+<tr class="bg-surface-card hover:bg-surface-sky/40 transition-colors">
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-high text-secondary font-headline-card text-action-primary shadow-[0_2px_0_#c6dbff]">
+                  2
+                </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-sky flex items-center justify-center text-secondary font-black shadow-sm">
+                    👦
+                  </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-card text-headline-card text-brand-ink-dark">manh</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-secondary font-caption-unit text-[11px] font-bold">
+                        🥈 Hạng 2
+                      </span>
+</div>
+<span class="font-caption-unit text-caption-unit text-text-muted">Bé Mạnh (Lớp Ong Chăm 02)</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center gap-1 font-headline-card text-headline-card text-primary bg-surface-card px-3 py-1 rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-level2-accent text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  17 / 17
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center font-headline-card text-action-primary text-secondary">
+<span class="inline-flex items-center gap-1 bg-surface-container-low px-2.5 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]">timer</span>
+                  03:29
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-level1-light text-level1-accent font-action-secondary text-action-secondary shadow-sm">
+<span>⚡</span>
+<span>Siêu tốc độ</span>
+</span>
+</td>
+</tr>
+<!-- Row 3: Minh An (Replacing '-' from Reference Image) -->
+<tr class="bg-surface-card hover:bg-surface-sky/40 transition-colors">
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-level3-light text-level3-accent font-headline-card text-action-primary shadow-[0_2px_0_#d4f2cc]">
+                  3
+                </span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-level3-light flex items-center justify-center text-level3-accent font-black shadow-sm">
+                    🧒
+                  </div>
+<div class="flex flex-col">
+<span class="font-headline-card text-headline-card text-brand-ink-dark">Minh An</span>
+<span class="font-caption-unit text-caption-unit text-text-muted">Bé Minh An (Lớp Ong Con)</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center gap-1 font-headline-card text-headline-card text-primary bg-surface-card px-3 py-1 rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-level2-accent text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  16 / 17
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center font-headline-card text-action-primary text-secondary">
+<span class="inline-flex items-center gap-1 bg-surface-container-low px-2.5 py-1 rounded-lg">
+<span class="material-symbols-outlined text-[16px]">timer</span>
+                  02:45
+                </span>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-level3-light text-level3-accent font-action-secondary text-action-secondary shadow-sm">
+<span>👏</span>
+<span>Bé xuất sắc</span>
+</span>
+</td>
+</tr>
+<!-- Row 4: Bảo Nam (Replacing '-' from Reference Image) -->
+<tr class="bg-surface-card hover:bg-surface-sky/40 transition-colors">
+<td class="py-space-md px-space-md text-center font-headline-card text-action-secondary text-on-surface-variant">
+                4
+              </td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-level4-light flex items-center justify-center text-level4-accent font-black shadow-sm">
+                    👦
+                  </div>
+<div class="flex flex-col">
+<span class="font-headline-card text-action-primary text-brand-ink-dark">Bảo Nam</span>
+<span class="font-caption-unit text-caption-unit text-text-muted">Bé Nam (Hà Nội)</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-headline-card text-action-primary text-on-surface">15 / 17</span>
+</td>
+<td class="py-space-md px-space-md text-center font-body-regular text-action-secondary text-on-surface-variant">
+                03:10
+              </td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-action-secondary text-action-secondary">
+<span>🌱</span>
+<span>Cố gắng vượt bậc</span>
+</span>
+</td>
+</tr>
+<!-- Row 5: Thảo Chi (Replacing '-' from Reference Image) -->
+<tr class="bg-surface-card hover:bg-surface-sky/40 transition-colors">
+<td class="py-space-md px-space-md text-center font-headline-card text-action-secondary text-on-surface-variant">
+                5
+              </td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-level5-light flex items-center justify-center text-level5-accent font-black shadow-sm">
+                    👧
+                  </div>
+<div class="flex flex-col">
+<span class="font-headline-card text-action-primary text-brand-ink-dark">Thảo Chi</span>
+<span class="font-caption-unit text-caption-unit text-text-muted">Bé Chi (Đà Nẵng)</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-headline-card text-action-primary text-on-surface">14 / 17</span>
+</td>
+<td class="py-space-md px-space-md text-center font-body-regular text-action-secondary text-on-surface-variant">
+                03:35
+              </td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-action-secondary text-action-secondary">
+<span>🎯</span>
+<span>Chăm ngoan</span>
+</span>
+</td>
+</tr>
+<!-- Row 6: Đăng Khoa -->
+<tr class="bg-surface-card hover:bg-surface-sky/40 transition-colors">
+<td class="py-space-md px-space-md text-center font-headline-card text-action-secondary text-on-surface-variant">
+                6
+              </td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-level2-light flex items-center justify-center text-level2-accent font-black shadow-sm">
+                    👦
+                  </div>
+<div class="flex flex-col">
+<span class="font-headline-card text-action-primary text-brand-ink-dark">Đăng Khoa</span>
+<span class="font-caption-unit text-caption-unit text-text-muted">Bé Khoa (TP. Hồ Chí Minh)</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-center">
+<span class="font-headline-card text-action-primary text-on-surface">14 / 17</span>
+</td>
+<td class="py-space-md px-space-md text-center font-body-regular text-action-secondary text-on-surface-variant">
+                03:52
+              </td>
+<td class="py-space-md px-space-md text-center">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-action-secondary text-action-secondary">
+<span>🚀</span>
+<span>Tiến bộ nhanh</span>
+</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- User's Current Position Sticky Banner -->
+<div class="bg-gradient-to-r from-level2-light via-surface-cream to-level2-light p-space-md border-t-2 border-primary-container/20 flex flex-col md:flex-row items-center justify-between gap-space-md shadow-inner">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-2xl bg-primary-container text-on-primary flex items-center justify-center font-headline-card text-headline-card shadow-[0_3px_0_#E56D27] flex-shrink-0">
+            12
+          </div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-card text-headline-card text-brand-ink-dark">Vị trí của bạn: Bé Ong Vàng</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-card text-primary font-caption-unit text-[11px] font-bold">
+                Level 1 · The Alphabet
+              </span>
+</div>
+<p class="font-body-regular text-action-secondary text-on-surface-variant">
+              Điểm số: <strong class="text-primary font-black">12/17 điểm</strong> · Thời gian: <strong class="text-secondary font-black">04:12</strong> (Còn thiếu 5 điểm để vào Top 3!)
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full md:w-auto">
+<button class="w-full md:w-auto inline-flex items-center justify-center gap-2 px-space-lg py-space-sm rounded-2xl bg-primary-container text-on-primary font-action-primary text-action-primary shadow-[0_5px_0_#E56D27] hover:brightness-105 active:translate-y-1 active:shadow-[0_2px_0_#E56D27] transition-all">
+<span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+<span>Học tiếp để leo bảng!</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 5. Cheerful Gamification Box (Lời khuyên từ Bạn Ong Vàng) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mb-space-2xl">
+<!-- Speech bubble from Mascot -->
+<div class="md:col-span-2 bg-surface-sky rounded-3xl p-space-lg shadow-[0_4px_0_#c6dbff] flex flex-col sm:flex-row items-start sm:items-center gap-space-md relative overflow-hidden">
+<div class="w-16 h-16 rounded-2xl bg-surface-card flex items-center justify-center text-level2-accent shadow-[0_4px_0_#dde9ff] flex-shrink-0 rotate-3">
+<span class="material-symbols-outlined text-[38px]">emoji_nature</span>
+</div>
+<div class="flex flex-col">
+<span class="font-badge-label text-badge-label text-secondary uppercase tracking-wider mb-1">
+            💡 Ong Vàng mách nhỏ cho bé:
+          </span>
+<p class="font-body-regular text-body-regular text-brand-ink-dark leading-relaxed">
+            "Hoàn thành bài tập phát âm với thời gian <strong>nhanh hơn</strong> và không bấm nhầm câu nào sẽ được cộng thêm <strong>sao tốc độ</strong> đấy! Bé hãy chơi lại Mini Game chữ cái để vượt điểm bạn nhé!"
+          </p>
+</div>
+</div>
+<!-- Quick Action Cards -->
+<div class="bg-surface-card rounded-3xl p-space-md shadow-[0_4px_0_#dde9ff] flex flex-col justify-center gap-space-sm">
+<a class="flex items-center justify-between p-space-sm rounded-xl bg-surface-cream hover:bg-level2-light transition-colors text-primary font-action-secondary text-action-secondary shadow-sm" href="#">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">videogame_asset</span>
+            Chơi Mini Game Chữ Cái
+          </span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-space-sm rounded-xl bg-level1-light hover:bg-surface-sky transition-colors text-level1-accent font-action-secondary text-action-secondary shadow-sm" href="#">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">auto_stories</span>
+            Ôn tập Phonics A - Z
+          </span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Tab switching interaction for level tabs
+  const tabButtons = document.querySelectorAll('.level-tab-btn');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => {
+        b.classList.remove('scale-[1.02]');
+      });
+      btn.classList.add('scale-[1.02]');
+    });
+  });
+</script></main><footer class="w-full bg-surface-cream/60 shadow-[0_-1px_8px_rgba(0,0,0,0.02)] mt-space-2xl"><div class="max-w-[1280px] mx-auto px-gutter py-space-xl flex flex-col md:flex-row items-center justify-between gap-space-md text-center md:text-left"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-full bg-level2-light flex items-center justify-center text-level2-accent"><span class="material-symbols-outlined text-[24px]">emoji_nature</span></div><div><p class="font-headline-card text-action-primary text-brand-ink-dark">Learning With Bee</p><p class="font-body-regular text-action-secondary text-on-surface-variant mt-0.5">Đồng hành cùng bé khám phá tiếng Anh mỗi ngày ✨</p></div></div><p class="font-caption-unit text-caption-unit text-text-muted">© 2024 Learning With Bee. Tất cả quyền được bảo lưu.</p></div></footer></body></html>

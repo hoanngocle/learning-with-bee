@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { homeContent, type Locale } from "../home-content";
 import { useLocale } from "../site-shell";
-import { levelContent, levels } from "./level-content";
+import { alphabetPath, levelContent, levels } from "./level-content";
 import { SelectionIcon } from "./selection-icon";
 import styles from "./level-selection.module.css";
 
@@ -40,11 +40,15 @@ function LevelCard({
           {copy.lessons} • {level.cards} {copy.flashcards}
         </p>
       </div>
-      {/* The HTML template has no lesson destination or unlock behavior yet. */}
-      <button className={styles.cardAction} type="button" aria-disabled="true" tabIndex={-1}>
-        <SelectionIcon name={current ? "play_circle" : "lock_open"} />
-        {current ? copy.start : copy.unlock}
-      </button>
+      {current ? (
+        <Link className={styles.cardAction} href={alphabetPath}>
+          <SelectionIcon name="play_circle" />{copy.start}
+        </Link>
+      ) : (
+        <button className={styles.cardAction} type="button" aria-disabled="true" tabIndex={-1}>
+          <SelectionIcon name="lock_open" />{copy.unlock}
+        </button>
+      )}
     </article>
   );
 }

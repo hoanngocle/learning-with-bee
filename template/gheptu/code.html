@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Learning With Bee</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 0; }
+  15% { opacity: 1; transform: translateY(-30px) scale(1.15) rotate(15deg); }
+  85% { opacity: 0.95; }
+  100% { transform: translateY(-240px) scale(1.4) rotate(45deg); opacity: 0; }
+}
+.floating-emoji {
+  animation: floatUp 2.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes popZoom {
+  0% { transform: scale(0.5) translateY(20px); opacity: 0; }
+  60% { transform: scale(1.06) translateY(-4px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+.celebrate-popup-anim {
+  animation: popZoom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-container": "#004731", "background": "#f9f9ff", "tertiary-container": "#4bbc91", "on-secondary": "#ffffff", "level4-accent": "#9871C3", "outline-variant": "#ddc1b2", "surface-card": "#FFFFFF", "on-primary-container": "#662e00", "on-secondary-fixed": "#001b3c", "on-surface-variant": "#564337", "inverse-on-surface": "#ebf1ff", "surface-canvas": "#FFFCF5", "on-background": "#011c3a", "level2-accent": "#F19B33", "secondary-container": "#6ea7fd", "level3-light": "#EBFAE9", "surface-dim": "#c6dbff", "on-surface": "#011c3a", "tertiary": "#006c4d", "level5-accent": "#E46B78", "surface": "#f9f9ff", "outline": "#8a7265", "secondary": "#145eaf", "on-error-container": "#93000a", "surface-container": "#e6eeff", "level4-light": "#F4EAFF", "primary-fixed-dim": "#ffb68a", "text-muted": "#7C94A8", "error-container": "#ffdad6", "on-error": "#ffffff", "secondary-fixed-dim": "#a8c8ff", "level2-light": "#FFF4E2", "surface-cream": "#FFF4D8", "tertiary-fixed": "#89f8c8", "primary": "#984700", "inverse-primary": "#ffb68a", "surface-variant": "#d4e3ff", "surface-container-highest": "#d4e3ff", "surface-sky": "#E9F6FF", "surface-container-high": "#dde9ff", "tertiary-fixed-dim": "#6cdbad", "brand-ink-dark": "#244F97", "primary-container": "#ff8a35", "on-primary-fixed-variant": "#743500", "level1-accent": "#22A9C2", "cta-depth-shadow": "#E56D27", "on-tertiary-fixed": "#002115", "surface-bright": "#f9f9ff", "on-primary-fixed": "#321300", "error": "#ba1a1a", "surface-container-lowest": "#ffffff", "feedback-error-soft": "#FFF0EE", "on-primary": "#ffffff", "on-secondary-container": "#003b76", "level3-accent": "#6AAD63", "inverse-surface": "#193150", "primary-fixed": "#ffdbc8", "on-tertiary": "#ffffff", "on-tertiary-fixed-variant": "#005139", "surface-container-low": "#f0f3ff", "secondary-fixed": "#d6e3ff", "level1-light": "#E4FAFF", "level5-light": "#FFF0F0", "on-secondary-fixed-variant": "#00468a", "surface-tint": "#984700" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-desktop": "1.875rem", "margin-desktop": "4.5rem", "gutter": "1.25rem", "space-sm": "0.75rem", "space-2xl": "3rem", "margin": "1.5rem", "space-xs": "0.5rem", "space-md": "1rem", "space-xl": "2.25rem", "space-lg": "1.5rem" }, "fontFamily": { "caption-unit": ["Nunito Sans"], "display-hero": ["Nunito Sans"], "action-secondary": ["Nunito Sans"], "body-intro": ["Nunito Sans"], "headline-card": ["Nunito Sans"], "headline-section": ["Nunito Sans"], "word-showcase": ["Nunito Sans"], "action-primary": ["Nunito Sans"], "body-regular": ["Nunito Sans"], "display-hero-mobile": ["Nunito Sans"], "word-showcase-mobile": ["Nunito Sans"], "badge-label": ["Nunito Sans"] }, "fontSize": { "caption-unit": ["12px", { "lineHeight": "1.3", "fontWeight": "700" }], "display-hero": ["58px", { "lineHeight": "1.15", "letterSpacing": "-1.5px", "fontWeight": "900" }], "action-secondary": ["14px", { "lineHeight": "1.2", "fontWeight": "800" }], "body-intro": ["17px", { "lineHeight": "1.65", "fontWeight": "400" }], "headline-card": ["18px", { "lineHeight": "1.35", "fontWeight": "800" }], "headline-section": ["28px", { "lineHeight": "1.3", "letterSpacing": "-0.5px", "fontWeight": "900" }], "word-showcase": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.5px", "fontWeight": "900" }], "action-primary": ["16px", { "lineHeight": "1.2", "fontWeight": "800" }], "body-regular": ["15px", { "lineHeight": "1.5", "fontWeight": "600" }], "display-hero-mobile": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.8px", "fontWeight": "900" }], "word-showcase-mobile": ["34px", { "lineHeight": "1.15", "letterSpacing": "-0.3px", "fontWeight": "900" }], "badge-label": ["13px", { "lineHeight": "1.2", "fontWeight": "800" }] } } } }</script></head><body class="bg-surface-canvas font-body-regular text-body-regular text-on-surface antialiased relative overflow-x-hidden">
+<!-- Canvas for Fireworks & Multi-colored Particle Bursts -->
+<canvas class="fixed inset-0 pointer-events-none z-[100] w-full h-full" id="fireworks-canvas"></canvas>
+<!-- Container for Floating Celebration Emojis -->
+<div class="fixed inset-0 pointer-events-none z-[105] overflow-hidden" id="emoji-burst-container"></div>
+<!-- Celebration Modal / Banner Pop-up -->
+<div class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-on-surface/40 backdrop-blur-sm hidden transition-opacity duration-300" id="celebration-modal">
+<div class="relative max-w-md w-full bg-surface-card rounded-[32px] p-6 sm:p-8 text-center shadow-[0_20px_60px_rgba(36,79,151,0.25)] border-4 border-level2-light celebrate-popup-anim overflow-hidden">
+<div class="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-surface-cream/80 pointer-events-none"></div>
+<div class="absolute -bottom-8 -left-8 w-24 h-24 rounded-full bg-level1-light/70 pointer-events-none"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-20 h-20 rounded-full bg-gradient-to-tr from-level2-accent to-primary-container text-white flex items-center justify-center shadow-[0_8px_0_#c75e00] mb-4 animate-bounce">
+<span class="material-symbols-outlined text-[44px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<span class="inline-block px-3 py-1 rounded-full bg-level2-light text-primary font-badge-label text-caption-unit uppercase tracking-widest mb-2">🎉 Chiến Thắng Xuất Sắc!</span>
+<h2 class="font-headline-section text-[26px] sm:text-[30px] text-brand-ink-dark leading-tight mb-2">Bé đã ghép đúng từ:</h2>
+<div class="px-5 py-2 rounded-2xl bg-surface-sky text-secondary font-black tracking-widest text-2xl sm:text-3xl mb-3 shadow-inner">
+        B R E A K F A S T
+      </div>
+<p class="font-body-regular text-action-primary text-level3-accent font-bold mb-4 flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>Nhận thưởng: +50 Điểm &amp; 3 Ngôi Sao Vàng!</span>
+</p>
+<div class="p-3 bg-surface-canvas rounded-xl w-full text-action-secondary text-on-surface-variant mb-6 text-sm flex items-center justify-center gap-2">
+<span>🐝 Bé đã sẵn sàng cho thử thách tiếp theo chưa nào?</span>
+</div>
+<div class="flex items-center justify-center gap-3 w-full">
+<button class="flex-1 py-3 px-4 rounded-xl bg-surface-cream text-on-surface-variant font-action-primary text-action-secondary shadow-[0_3px_0_#d1be9a] hover:bg-level2-light active:translate-y-1 transition-all" id="modal-replay-btn">
+          Xếp lại từ này
+        </button>
+<button class="flex-1 py-3 px-4 rounded-xl bg-primary-container text-on-primary font-action-primary text-action-primary shadow-[0_5px_0_#E56D27] hover:brightness-105 active:translate-y-1 transition-all" id="modal-continue-btn">
+          Câu tiếp theo ➔
+        </button>
+</div>
+</div>
+</div>
+</div>
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1280px] mx-auto px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-12 h-12 rounded-full bg-level2-light flex items-center justify-center text-level2-accent shadow-[0_4px_0_#F19B33]"><span class="material-symbols-outlined text-[28px]">emoji_nature</span></div><div class="flex flex-col"><span class="font-headline-card text-headline-card text-brand-ink-dark tracking-tight leading-none">Learning With Bee</span><span class="font-caption-unit text-caption-unit text-primary uppercase tracking-wider mt-1">Bé học tiếng Anh cùng Ong Vàng</span></div></div><nav class="hidden xl:flex items-center gap-space-xs p-1 bg-surface-card rounded-2xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="bg-primary-container text-on-primary font-action-primary text-action-primary shadow-[0_3px_0_#E56D27] rounded-xl"><a class="px-space-md py-space-xs font-action-primary text-action-primary text-on-surface-variant hover:text-on-surface transition-all rounded-xl" data-path="trang-chu" href="#">Trang chủ</a><a class="px-space-md py-space-xs font-action-primary text-action-primary text-on-surface-variant hover:text-on-surface transition-all rounded-xl" data-path="oxford-phonics-world" href="#">Oxford Phonics World</a><a class="px-space-md py-space-xs font-action-primary text-action-primary text-on-surface-variant hover:text-on-surface transition-all rounded-xl" data-path="bang-chu-cai" href="#">Bảng chữ cái</a><a class="px-space-md py-space-xs font-action-primary text-action-primary text-on-surface-variant hover:text-on-surface transition-all rounded-xl" data-path="mini-game" href="#">Mini Game</a><a class="px-space-md py-space-xs font-action-primary text-action-primary text-on-surface-variant hover:text-on-surface transition-all rounded-xl" data-path="bang-xep-hang" href="#">Bảng xếp hạng</a></nav><div class="flex items-center gap-space-sm"><div class="flex items-center gap-1.5 px-space-md py-space-xs bg-surface-cream rounded-full shadow-[0_2px_0_#F19B33]"><span class="material-symbols-outlined text-level2-accent text-[20px]">star</span><span class="font-badge-label text-badge-label text-primary">340</span></div><div class="flex items-center bg-surface-card rounded-full p-1 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><button class="px-space-xs py-0.5 rounded-full bg-secondary text-on-secondary font-badge-label text-caption-unit">VI</button><button class="px-space-xs py-0.5 rounded-full text-on-surface-variant hover:text-on-surface font-badge-label text-caption-unit transition-colors">EN</button></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface-canvas min-h-screen"><div class="flex flex-col w-full">
+<div class="max-w-[1280px] w-full mx-auto px-gutter py-space-md sm:py-space-xl flex flex-col gap-space-lg">
+<!-- Top Game Navigation & Status Bar -->
+<div class="w-full bg-surface-card rounded-2xl p-space-md shadow-[0_8px_20px_rgba(36,79,151,0.06)] flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<a class="w-11 h-11 rounded-xl bg-surface-sky flex items-center justify-center text-brand-ink-dark hover:bg-secondary-fixed transition-colors shadow-[0_3px_0_#9ec5ea] active:translate-y-0.5" href="#" title="Quay lại">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</a>
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-level2-light text-level2-accent font-caption-unit text-caption-unit tracking-wide uppercase">Unit 3: Yummy Morning</span>
+<span class="w-2 h-2 rounded-full bg-level3-accent animate-ping"></span>
+</div>
+<h1 class="font-headline-card text-headline-card text-brand-ink-dark leading-tight mt-0.5">Trò Chơi Sắp Xếp Chữ Cái</h1>
+</div>
+</div>
+<!-- Live Game Badges -->
+<div class="flex flex-wrap items-center gap-space-xs sm:gap-space-sm ml-auto">
+<!-- Quick Auto-Fill Tester Helper Button -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-level2-light to-surface-cream text-primary rounded-full shadow-[0_2px_0_#F19B33] hover:scale-105 active:scale-95 transition-all cursor-pointer border border-primary/20 text-xs font-bold" id="auto-solve-btn" title="Thử ghép đúng ngay để kiểm tra hiệu ứng vỗ tay và pháo hoa">
+<span class="material-symbols-outlined text-[17px] text-level2-accent">auto_fix_high</span>
+<span>Thử ghép đúng ngay ✨</span>
+</button>
+<!-- Progress Counter -->
+<div class="flex items-center gap-1.5 px-space-sm py-1.5 bg-surface-sky rounded-full shadow-[0_2px_0_#b5daf2]">
+<span class="material-symbols-outlined text-secondary text-[18px]">flag</span>
+<span class="font-badge-label text-badge-label text-brand-ink-dark">Câu 3 / 10</span>
+</div>
+<!-- Star Points -->
+<div class="flex items-center gap-1.5 px-space-sm py-1.5 bg-surface-cream rounded-full shadow-[0_2px_0_#F19B33]">
+<span class="material-symbols-outlined text-level2-accent text-[20px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-badge-label text-badge-label text-primary" id="score-val">120 điểm</span>
+</div>
+<!-- Timer -->
+<div class="flex items-center gap-1.5 px-space-sm py-1.5 bg-level5-light rounded-full shadow-[0_2px_0_#f7c8c8]">
+<span class="material-symbols-outlined text-level5-accent text-[18px]">timer</span>
+<span class="font-badge-label text-badge-label text-level5-accent font-mono" id="timer-display">01:45</span>
+</div>
+<!-- Hint counter -->
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 bg-level3-light text-level3-accent rounded-full shadow-[0_2px_0_#c3e8be] hover:bg-tertiary-fixed transition-transform active:scale-95" id="hint-btn" title="Sử dụng gợi ý">
+<span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span class="font-badge-label text-badge-label" id="hint-count-text">Gợi ý: 2</span>
+</button>
+</div>
+</div>
+<!-- Main Game Play Mat / Interactive Canvas -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Center Main Interactive Area (Col 1-8 / 9) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Main Card Deck -->
+<div class="w-full bg-surface-card rounded-[28px] p-space-md sm:p-space-xl shadow-[0_12px_32px_rgba(36,79,151,0.08)] flex flex-col items-center relative overflow-hidden">
+<!-- Decorative Background Polka Sprinkles -->
+<div class="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-surface-cream/50 pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-level1-light/60 pointer-events-none"></div>
+<!-- Question Prompt Pill -->
+<div class="z-10 flex flex-wrap items-center justify-between w-full gap-2 mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-action-primary text-caption-unit shadow-[0_2px_0_#E56D27]">3</span>
+<span class="font-headline-card text-action-primary text-brand-ink-dark">Bé hãy sắp xếp lại các chữ cái cho đúng nhé:</span>
+</div>
+<!-- Quick Audio Pronunciation Button -->
+<button class="flex items-center gap-1.5 px-space-sm py-1.5 rounded-xl bg-secondary text-on-secondary shadow-[0_4px_0_#0c3b6d] hover:bg-opacity-95 active:translate-y-1 transition-all cursor-pointer" id="pronounce-word-btn" title="Nghe người bản xứ đọc">
+<span class="material-symbols-outlined text-[20px]">volume_up</span>
+<span class="font-action-secondary text-action-secondary">Nghe từ này</span>
+</button>
+</div>
+<!-- Central Photographic Visual Cue Grid (Directly mirroring reference photo) -->
+<div class="relative z-10 w-full max-w-[340px] sm:max-w-[420px] aspect-square rounded-2xl overflow-hidden p-2 bg-gradient-to-b from-surface-sky to-surface-card shadow-[0_6px_20px_rgba(36,79,151,0.12)] mb-space-md">
+<!-- 3x3 Photo Collage Representation -->
+<div class="w-full h-full grid grid-cols-3 grid-rows-3 gap-1.5 bg-surface-card p-1 rounded-xl">
+<!-- Cell 1: Omelet / Veggie crepe -->
+<div class="relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300" data-alt="Close up photo of folded golden breakfast crepe stuffed with sliced mushrooms and fresh garden veggies on a stylish dark plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_7UxuWLpdV3bVsi1bwtzmIh_ruk1ghKpzL8JpETmeK7oN69kAL2WPuCVAstpJeEqn6vd4VJjFXg2QkNWR8chHUUt8g8MWB7UKIUlrnQCtDMA5N6-94hg3pYIseVHp6VYVdVzexfo8ja7Zn3f_nwC1BeulTIugHM3XiQh4cEn1QYTGE5V9D9BukAeg68cvlwqoWsiCBlEl0XtKQlUVBLMIW-9FrrVAh0LeaEiSFii5"/>
+</div>
+<!-- Cell 2: Strawberry rolled crepes -->
+<div class="relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300" data-alt="Fresh folded breakfast crepes drizzled with yogurt cream and fresh cut strawberries and blueberries in natural morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo6pG7JvHtgfAo8Ic_N27OkNQYESfCMndDW3wTTmawUegiRccQhqHtqowlvHWrGLk1vNIYPejs0laGlbLekW4RkOfyaxfXnppN2ygVhoE8Icqp_E6ibLxJ3P_JtzwrJRxEN7kBPJuQ12KrkERxdruiOAT-zA__H6vkRSQMiaU34naR9cRXojb4bLE9Dk1qDnAoPEFQu1C1m0TUMsLar0k3yENJTzDJUDwps_YKxt0W"/>
+</div>
+<!-- Cell 3: Morning berry smoothie -->
+<div class="relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300" data-alt="Two tall glasses of chilled mixed blueberry blackberry breakfast smoothies with paper straws on kitchen table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4i63iUlalcCE-OVtItgOvRRYAO_-T6PU50t7XU7UE9pWYX7NQuiUBoFeqLsT_gCBd-Wq_LWqa51EnDmfHoyLyxcw_EGgKbuXMcC3lLi6vEBSle7Heg30F89pSLMkBLM2b_y5ax6Xi1amisKCNfhVOjZhkp4Lm-sM6JGBquFcPNhPHzHjVC_GvySFpYRXmh-yXOVvkTGlPSVJ0rztIkb-mAUh2tSdtgByXIvkTgmaC"/>
+</div>
+<!-- Cell 4: Avocado toast sandwich -->
+<div class="relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300" data-alt="Stacked avocado breakfast toast with seasoned seeds and fresh radish slices ready for morning meal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM3xvDl96g_zH80tmYGZ8RkfwcgJCwbZDe8qxUoUbmwZzAaMzC92GJQlwJkemcI_-AfgqdV5mri3sbPGm_EQ7NrC4rUn3viIzrTObVp_pR0DBIQvygo0CNyCqyoquhTSVlDsZwhaRUQzFT1_peeus4jjBzU8i32qtcn2uGzJV2kCen3q5cJHnWyxlwQWTLUO31tUzMu0kQjw7588aIF7kDh4qDOoGb-she3zE9zNzI"/>
+</div>
+<!-- Cell 5: Center Fluffy Pancake Stack -->
+<div class="relative overflow-hidden rounded-lg group ring-2 ring-primary-container ring-offset-1">
+<img class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300" data-alt="Golden fluffy breakfast pancakes stacked high with melting butter and dripping organic maple syrup warm sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB02m9-heX4G46E6-fF1QBATCDXOxhCk-iDTXJLu7vzj-t3XmrL3tbfqlGahy2IKuLcZffIum5GxlXW8oUMSc7uWhQQ9FAmfBerRbPQZw00gfaHKgnkfZMPSSMjGxAWC15W3Y-eq_XB00bMA87Yqvxwsmi1xIfV-ij32JMeMfszhj01FLCA9J7-jnko8YNjbgty5jY8sgFZ4F5niG8YI5cQnPzlTJ01XPNLSbw3FX7c"/>
+<div class="absolute bottom-1 right-1 bg-surface-cream text-primary px-1.5 py-0.5 rounded text-[10px] font-caption-unit font-bold">Yum!</div>
+</div>
+<!-- Cell 6: Banana chocolate pancakes -->
+<div class="relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300" data-alt="Mini oat pancakes topped with white cream and dark chocolate chips for healthy breakfast brunch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCZDowqhpIXzQVpbAF92IdFwpGnK__AX45uVbHhrS3gAXg52pEvhctZlkgz7ejsEKDvvnfmxPnPmYI7lFZhzVWKsQ6mofVPjsjK7e7dAgNASPAACyhzhTTJoagEA4wHkSH27zc8owHJlNsGCS-z87pXvCKYpZBegZYvQCpmlYUsgakGlHoP_AD0TLCe7t4HQC_Wpyt9k8wHNno-wSCcHtnq48io71ENydtrgsF51IH"/>
+</div>
+<!-- Cell 7: Yogurt granola parfait cup -->
+<div class="relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300" data-alt="Glass parfait cup layered with crunchy honey granola Greek yogurt and wild berries mint sprig garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5SO0G2SMVQPjQ0ibbknXASPj26KoS2bc10h6jvIlfGjXE9wPFONchngR-vB_p-5YWWC_ARClzX7MIEDw43i5XWsRU7aJuGTAzZZ6ehby_Z5QBw9-FVjw7OV1GheDPuAvp66dqEUjcrCtsoKB0T8aE5Bxu4hkq_h_Ag3sAUNNYh4CU2cAnpSyQwkrUDVTEOa5yHOYgXEfqImxvKyuGhpEA_Zb_tWyok5sdNDQda_FG"/>
+</div>
+<!-- Cell 8: Warm blueberry muffin -->
+<div class="relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300" data-alt="Oven fresh crumble topped blueberry breakfast muffin sitting on rustic bakery paper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzQCZl9Ayb1udbTFQWTIOdetuupFHfx_te_5a4K6d-wf-u0k3d56frbC9GecL3MHex-7BajxRPDOnj3gMlh-5Erw5VxhcoQYR0mI6c9kx8clP690G0jZ3HLGFv9b2SEwkaQ1Bnc_35ktTVJWmNn4p6LEHrD0N-f5UePOBJtjGtajxSTMXbfkzo74F9GiDClbumcmCp5a9IKGwLXKvceFdg5TFVkfi6U9JR-rKOkGS5"/>
+</div>
+<!-- Cell 9: Golden potato hash browns -->
+<div class="relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300" data-alt="Stack of golden crispy fried breakfast potato hash browns on wire cooling rack" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzEcDqvv7NEkywGUcX_9RvS-gCREsLohoJ09sjZfFAOQevom0lx31PIW__WGbr7oZuFwLlHGbXpwBH-Z3px0wTKRbwO9dBZlj60asr1_nmwYit8T3LY0uSJ5IkdsSTDAJKQP-Q4ylx7KrRGwOHOKt4WkUuM2ZE662sfmmixkrIinK_BKk_7HHqLa-ZSlJq5zOOiKiLmq9Ah54QDPPzsQ6b3gA7C-JdMd-l_NfOrXTa"/>
+</div>
+</div>
+</div>
+<!-- Meaning hint badge -->
+<div class="z-10 flex items-center gap-2 mb-space-lg">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-level2-light text-on-surface-variant font-action-secondary text-action-secondary">
+<span class="material-symbols-outlined text-[18px] text-level2-accent">restaurant</span>
+              Ý nghĩa: <strong class="text-primary">"Bữa ăn sáng đầy năng lượng"</strong> (9 chữ cái)
+            </span>
+</div>
+<!-- SCRAMBLED LETTERS TILE ROW (Exactly: t, e, r, s, k, a, b, f, a) -->
+<div class="z-10 w-full mb-space-xl">
+<p class="text-center font-caption-unit text-caption-unit uppercase tracking-widest text-text-muted mb-space-xs">Chạm vào chữ cái để đưa vào ô:</p>
+<div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 p-3 bg-surface-canvas rounded-2xl shadow-inner min-h-[76px]" id="source-letters-container">
+<!-- 9 Initial Scrambled Tiles reflecting the user image layout -->
+<button class="game-letter-tile w-11 h-12 sm:w-14 sm:h-16 rounded-xl bg-gradient-to-b from-[#5c6168] to-[#3a3e44] text-white font-headline-card text-[22px] sm:text-[28px] font-black uppercase flex items-center justify-center shadow-[0_5px_0_#23262a] active:translate-y-1 active:shadow-[0_1px_0_#23262a] hover:-translate-y-0.5 transition-all select-none cursor-pointer" data-letter="t" data-original-id="tile-0">t</button>
+<button class="game-letter-tile w-11 h-12 sm:w-14 sm:h-16 rounded-xl bg-gradient-to-b from-[#5c6168] to-[#3a3e44] text-white font-headline-card text-[22px] sm:text-[28px] font-black uppercase flex items-center justify-center shadow-[0_5px_0_#23262a] active:translate-y-1 active:shadow-[0_1px_0_#23262a] hover:-translate-y-0.5 transition-all select-none cursor-pointer" data-letter="e" data-original-id="tile-1">e</button>
+<button class="game-letter-tile w-11 h-12 sm:w-14 sm:h-16 rounded-xl bg-gradient-to-b from-[#5c6168] to-[#3a3e44] text-white font-headline-card text-[22px] sm:text-[28px] font-black uppercase flex items-center justify-center shadow-[0_5px_0_#23262a] active:translate-y-1 active:shadow-[0_1px_0_#23262a] hover:-translate-y-0.5 transition-all select-none cursor-pointer" data-letter="r" data-original-id="tile-2">r</button>
+<button class="game-letter-tile w-11 h-12 sm:w-14 sm:h-16 rounded-xl bg-gradient-to-b from-[#5c6168] to-[#3a3e44] text-white font-headline-card text-[22px] sm:text-[28px] font-black uppercase flex items-center justify-center shadow-[0_5px_0_#23262a] active:translate-y-1 active:shadow-[0_1px_0_#23262a] hover:-translate-y-0.5 transition-all select-none cursor-pointer" data-letter="s" data-original-id="tile-3">s</button>
+<button class="game-letter-tile w-11 h-12 sm:w-14 sm:h-16 rounded-xl bg-gradient-to-b from-[#5c6168] to-[#3a3e44] text-white font-headline-card text-[22px] sm:text-[28px] font-black uppercase flex items-center justify-center shadow-[0_5px_0_#23262a] active:translate-y-1 active:shadow-[0_1px_0_#23262a] hover:-translate-y-0.5 transition-all select-none cursor-pointer" data-letter="k" data-original-id="tile-4">k</button>
+<button class="game-letter-tile w-11 h-12 sm:w-14 sm:h-16 rounded-xl bg-gradient-to-b from-[#5c6168] to-[#3a3e44] text-white font-headline-card text-[22px] sm:text-[28px] font-black uppercase flex items-center justify-center shadow-[0_5px_0_#23262a] active:translate-y-1 active:shadow-[0_1px_0_#23262a] hover:-translate-y-0.5 transition-all select-none cursor-pointer" data-letter="a" data-original-id="tile-5">a</button>
+<button class="game-letter-tile w-11 h-12 sm:w-14 sm:h-16 rounded-xl bg-gradient-to-b from-[#5c6168] to-[#3a3e44] text-white font-headline-card text-[22px] sm:text-[28px] font-black uppercase flex items-center justify-center shadow-[0_5px_0_#23262a] active:translate-y-1 active:shadow-[0_1px_0_#23262a] hover:-translate-y-0.5 transition-all select-none cursor-pointer" data-letter="b" data-original-id="tile-6">b</button>
+<button class="game-letter-tile w-11 h-12 sm:w-14 sm:h-16 rounded-xl bg-gradient-to-b from-[#5c6168] to-[#3a3e44] text-white font-headline-card text-[22px] sm:text-[28px] font-black uppercase flex items-center justify-center shadow-[0_5px_0_#23262a] active:translate-y-1 active:shadow-[0_1px_0_#23262a] hover:-translate-y-0.5 transition-all select-none cursor-pointer" data-letter="f" data-original-id="tile-7">f</button>
+<button class="game-letter-tile w-11 h-12 sm:w-14 sm:h-16 rounded-xl bg-gradient-to-b from-[#5c6168] to-[#3a3e44] text-white font-headline-card text-[22px] sm:text-[28px] font-black uppercase flex items-center justify-center shadow-[0_5px_0_#23262a] active:translate-y-1 active:shadow-[0_1px_0_#23262a] hover:-translate-y-0.5 transition-all select-none cursor-pointer" data-letter="a" data-original-id="tile-8">a</button>
+</div>
+</div>
+<!-- DROP TARGET TRAY / ANSWER SLOTS (Matches lower white tray with underlined slots) -->
+<div class="z-10 w-full bg-surface-canvas rounded-2xl p-space-md sm:p-space-lg shadow-[0_4px_16px_rgba(0,0,0,0.04)] mb-space-md">
+<div class="flex items-center justify-between mb-2 px-1">
+<span class="font-caption-unit text-caption-unit text-text-muted uppercase tracking-wider">Từ hoàn chỉnh cần ghép:</span>
+<span class="font-action-secondary text-caption-unit text-secondary font-bold" id="answer-feedback">Chạm vào chữ đã đặt để thu hồi</span>
+</div>
+<!-- 9 Target Slots with underline styled bases -->
+<div class="grid grid-cols-9 gap-1.5 sm:gap-2.5 w-full items-center justify-items-center" id="target-slots-container">
+<div class="slot-box w-full aspect-square max-w-[56px] min-h-[50px] sm:min-h-[64px] bg-white rounded-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center relative cursor-pointer group" data-slot-index="0">
+<span class="slot-letter font-headline-card text-[20px] sm:text-[26px] font-black text-brand-ink-dark"></span>
+<span class="w-8/12 h-1 bg-surface-dim rounded-full absolute bottom-2 group-hover:bg-primary-container transition-colors"></span>
+</div>
+<div class="slot-box w-full aspect-square max-w-[56px] min-h-[50px] sm:min-h-[64px] bg-white rounded-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center relative cursor-pointer group" data-slot-index="1">
+<span class="slot-letter font-headline-card text-[20px] sm:text-[26px] font-black text-brand-ink-dark"></span>
+<span class="w-8/12 h-1 bg-surface-dim rounded-full absolute bottom-2 group-hover:bg-primary-container transition-colors"></span>
+</div>
+<div class="slot-box w-full aspect-square max-w-[56px] min-h-[50px] sm:min-h-[64px] bg-white rounded-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center relative cursor-pointer group" data-slot-index="2">
+<span class="slot-letter font-headline-card text-[20px] sm:text-[26px] font-black text-brand-ink-dark"></span>
+<span class="w-8/12 h-1 bg-surface-dim rounded-full absolute bottom-2 group-hover:bg-primary-container transition-colors"></span>
+</div>
+<div class="slot-box w-full aspect-square max-w-[56px] min-h-[50px] sm:min-h-[64px] bg-white rounded-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center relative cursor-pointer group" data-slot-index="3">
+<span class="slot-letter font-headline-card text-[20px] sm:text-[26px] font-black text-brand-ink-dark"></span>
+<span class="w-8/12 h-1 bg-surface-dim rounded-full absolute bottom-2 group-hover:bg-primary-container transition-colors"></span>
+</div>
+<div class="slot-box w-full aspect-square max-w-[56px] min-h-[50px] sm:min-h-[64px] bg-white rounded-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center relative cursor-pointer group" data-slot-index="4">
+<span class="slot-letter font-headline-card text-[20px] sm:text-[26px] font-black text-brand-ink-dark"></span>
+<span class="w-8/12 h-1 bg-surface-dim rounded-full absolute bottom-2 group-hover:bg-primary-container transition-colors"></span>
+</div>
+<div class="slot-box w-full aspect-square max-w-[56px] min-h-[50px] sm:min-h-[64px] bg-white rounded-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center relative cursor-pointer group" data-slot-index="5">
+<span class="slot-letter font-headline-card text-[20px] sm:text-[26px] font-black text-brand-ink-dark"></span>
+<span class="w-8/12 h-1 bg-surface-dim rounded-full absolute bottom-2 group-hover:bg-primary-container transition-colors"></span>
+</div>
+<div class="slot-box w-full aspect-square max-w-[56px] min-h-[50px] sm:min-h-[64px] bg-white rounded-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center relative cursor-pointer group" data-slot-index="6">
+<span class="slot-letter font-headline-card text-[20px] sm:text-[26px] font-black text-brand-ink-dark"></span>
+<span class="w-8/12 h-1 bg-surface-dim rounded-full absolute bottom-2 group-hover:bg-primary-container transition-colors"></span>
+</div>
+<div class="slot-box w-full aspect-square max-w-[56px] min-h-[50px] sm:min-h-[64px] bg-white rounded-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center relative cursor-pointer group" data-slot-index="7">
+<span class="slot-letter font-headline-card text-[20px] sm:text-[26px] font-black text-brand-ink-dark"></span>
+<span class="w-8/12 h-1 bg-surface-dim rounded-full absolute bottom-2 group-hover:bg-primary-container transition-colors"></span>
+</div>
+<div class="slot-box w-full aspect-square max-w-[56px] min-h-[50px] sm:min-h-[64px] bg-white rounded-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center relative cursor-pointer group" data-slot-index="8">
+<span class="slot-letter font-headline-card text-[20px] sm:text-[26px] font-black text-brand-ink-dark"></span>
+<span class="w-8/12 h-1 bg-surface-dim rounded-full absolute bottom-2 group-hover:bg-primary-container transition-colors"></span>
+</div>
+</div>
+</div>
+<!-- Bottom Action Buttons Toolbar -->
+<div class="z-10 w-full flex flex-wrap items-center justify-between gap-space-sm pt-2">
+<button class="flex items-center gap-1 px-4 py-2.5 rounded-xl bg-surface-cream text-on-surface-variant font-action-secondary text-action-secondary shadow-[0_3px_0_#e0d2b6] hover:bg-level2-light active:translate-y-1 transition-all" id="reset-word-btn">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+<span>Xếp lại từ đầu</span>
+</button>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-primary-container text-on-primary font-action-primary text-action-primary shadow-[0_6px_0_#E56D27] hover:brightness-105 active:translate-y-1 active:shadow-[0_2px_0_#E56D27] transition-all cursor-pointer" id="check-answer-btn">
+<span class="material-symbols-outlined text-[20px]">task_alt</span>
+<span>Kiểm tra kết quả</span>
+</button>
+<button class="hidden flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-tertiary-container text-on-tertiary-container font-action-primary text-action-primary shadow-[0_6px_0_#006c4d] hover:brightness-105 active:translate-y-1 transition-all" id="next-question-btn">
+<span>Câu tiếp theo</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Learning Assistant & Phonics Sidebar (Col 9-12) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Mascot Encouragement Speech Card -->
+<div class="w-full bg-gradient-to-br from-level2-light to-surface-card rounded-[24px] p-space-md sm:p-space-lg shadow-[0_8px_24px_rgba(241,155,51,0.12)] relative overflow-hidden">
+<div class="flex items-start gap-space-sm mb-3">
+<div class="w-14 h-14 rounded-2xl bg-surface-cream flex items-center justify-center text-level2-accent shadow-[0_4px_0_#F19B33] flex-shrink-0">
+<span class="material-symbols-outlined text-[34px]" style="font-variation-settings: 'FILL' 1;">emoji_nature</span>
+</div>
+<div>
+<span class="font-headline-card text-headline-card text-brand-ink-dark block">Bạn Ong Vàng mách nhỏ:</span>
+<span class="text-caption-unit font-caption-unit text-primary uppercase">Trợ lý đồng hành 🐝</span>
+</div>
+</div>
+<div class="p-3 bg-white/90 rounded-2xl shadow-sm text-body-regular text-on-surface mb-3 relative">
+<p class="text-[15px] leading-relaxed" id="mascot-speech">
+              "Bữa ăn sáng thật ngon miệng bé nhé! Từ này bắt đầu bằng chữ cái <strong class="text-primary-container text-lg">B</strong> và kết thúc bằng chữ <strong class="text-primary-container text-lg">T</strong>. Bé thử ghép chữ <strong>B</strong> đầu tiên xem nào!"
+            </p>
+</div>
+<!-- Quick Tip Pill List -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-action-secondary text-[13px] text-on-surface-variant">
+<span class="material-symbols-outlined text-level3-accent text-[18px]">check_circle</span>
+<span>Gồm 2 âm tiết: <strong>BREAK</strong> + <strong>FAST</strong></span>
+</div>
+<div class="flex items-center gap-2 text-action-secondary text-[13px] text-on-surface-variant">
+<span class="material-symbols-outlined text-level3-accent text-[18px]">check_circle</span>
+<span>Phiên âm quốc tế: <span class="font-mono text-brand-ink-dark">/ˈbrek.fəst/</span></span>
+</div>
+</div>
+</div>
+<!-- Phonics Word Family Mini Card -->
+<div class="w-full bg-surface-card rounded-[24px] p-space-md shadow-[0_6px_20px_rgba(0,0,0,0.04)]">
+<div class="flex items-center justify-between mb-3">
+<span class="font-headline-card text-action-primary text-brand-ink-dark">Từ vựng cùng chủ đề Bữa Sáng</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-sky text-secondary font-caption-unit text-caption-unit">3 từ</span>
+</div>
+<div class="space-y-2.5">
+<!-- Item 1: Pancake -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-canvas hover:bg-surface-cream/50 transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="text-xl">🥞</span>
+<div>
+<div class="font-headline-card text-[15px] text-brand-ink-dark">Pancake</div>
+<div class="font-caption-unit text-caption-unit text-text-muted">Bánh xèo ngọt</div>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-colors shadow-sm" onclick="playSimpleSound('pancake')" title="Nghe âm">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+</div>
+<!-- Item 2: Milk -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-canvas hover:bg-surface-cream/50 transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="text-xl">🥛</span>
+<div>
+<div class="font-headline-card text-[15px] text-brand-ink-dark">Milk</div>
+<div class="font-caption-unit text-caption-unit text-text-muted">Sữa tươi ngon</div>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-colors shadow-sm" onclick="playSimpleSound('milk')" title="Nghe âm">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+</div>
+<!-- Item 3: Egg -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-canvas hover:bg-surface-cream/50 transition-colors">
+<div class="flex items-center gap-2.5">
+<span class="text-xl">🍳</span>
+<div>
+<div class="font-headline-card text-[15px] text-brand-ink-dark">Egg</div>
+<div class="font-caption-unit text-caption-unit text-text-muted">Trứng ốp la</div>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-card flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-colors shadow-sm" onclick="playSimpleSound('egg')" title="Nghe âm">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Weekly Badge Progress Module -->
+<div class="w-full bg-level1-light rounded-[24px] p-space-md shadow-[0_6px_20px_rgba(34,169,194,0.08)] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-level1-accent shadow-sm">
+<span class="material-symbols-outlined text-[28px]">military_tech</span>
+</div>
+<div>
+<div class="font-headline-card text-action-primary text-brand-ink-dark">Huy Hiệu "Nhà Thám Hiểm Từ"</div>
+<div class="font-caption-unit text-caption-unit text-on-surface-variant">Đã ghép đúng 7/10 từ hôm nay</div>
+</div>
+</div>
+<span class="font-headline-card text-headline-card text-level1-accent">70%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Engine: Placement, Web Audio Applause & Chime Fanfare, Fireworks & Confetti Canvas -->
+<script>
+  (function () {
+    const targetWord = "BREAKFAST";
+    const slotCount = targetWord.length;
+    let placedLetters = new Array(slotCount).fill(null);
+    let hintsUsed = 0;
+    const maxHints = 2;
+
+    const sourceContainer = document.getElementById('source-letters-container');
+    const slotBoxes = document.querySelectorAll('.slot-box');
+    const checkBtn = document.getElementById('check-answer-btn');
+    const resetBtn = document.getElementById('reset-word-btn');
+    const nextBtn = document.getElementById('next-question-btn');
+    const pronounceBtn = document.getElementById('pronounce-word-btn');
+    const hintBtn = document.getElementById('hint-btn');
+    const hintCountText = document.getElementById('hint-count-text');
+    const mascotSpeech = document.getElementById('mascot-speech');
+    const feedbackText = document.getElementById('answer-feedback');
+    const scoreVal = document.getElementById('score-val');
+    const autoSolveBtn = document.getElementById('auto-solve-btn');
+    const celebrationModal = document.getElementById('celebration-modal');
+    const modalReplayBtn = document.getElementById('modal-replay-btn');
+    const modalContinueBtn = document.getElementById('modal-continue-btn');
+    const emojiContainer = document.getElementById('emoji-burst-container');
+
+    // -------------------------------------------------------------
+    // WEB AUDIO API: SYNTHESIZED APPLAUSE & TRIUMPH FANFARE CHIMES
+    // -------------------------------------------------------------
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // Synthesize realistic clapping crowd noise bursts
+    function playSynthesizedApplause() {
+      try {
+        const ctx = getAudioContext();
+        const duration = 2.8; // seconds of cheering applause
+        const bufferSize = ctx.sampleRate * 0.08;
+        
+        // Generate pre-calculated pink-white noise buffer
+        const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        let b0 = 0, b1 = 0, b2 = 0;
+        for (let i = 0; i < bufferSize; i++) {
+          const white = Math.random() * 2 - 1;
+          b0 = 0.99 * b0 + white * 0.05;
+          b1 = 0.95 * b1 + white * 0.1;
+          b2 = 0.85 * b2 + white * 0.25;
+          output[i] = (b0 + b1 + b2 + white * 0.15) * 1.5;
+        }
+
+        const masterApplauseGain = ctx.createGain();
+        masterApplauseGain.gain.setValueAtTime(0.7, ctx.currentTime);
+        masterApplauseGain.gain.linearRampToValueAtTime(0.85, ctx.currentTime + 0.8);
+        masterApplauseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+        masterApplauseGain.connect(ctx.destination);
+
+        // Schedule rapid individual claps simulating multiple pairs of hands
+        const clapCount = 65;
+        for (let i = 0; i < clapCount; i++) {
+          const clapTime = ctx.currentTime + Math.random() * (duration - 0.2);
+          const clapSource = ctx.createBufferSource();
+          clapSource.buffer = noiseBuffer;
+
+          // Bandpass filter to make noise sound like cupped/flat palms clapping
+          const filter = ctx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.frequency.setValueAtTime(700 + Math.random() * 1100, clapTime);
+          filter.Q.setValueAtTime(2.2 + Math.random() * 2.0, clapTime);
+
+          const clapGain = ctx.createGain();
+          const amp = 0.25 + Math.random() * 0.45;
+          clapGain.gain.setValueAtTime(0.0001, clapTime);
+          clapGain.gain.linearRampToValueAtTime(amp, clapTime + 0.005);
+          clapGain.gain.exponentialRampToValueAtTime(0.0001, clapTime + 0.05 + Math.random() * 0.04);
+
+          clapSource.connect(filter);
+          filter.connect(clapGain);
+          clapGain.connect(masterApplauseGain);
+
+          clapSource.start(clapTime);
+        }
+      } catch (err) {
+        console.warn('Web Audio applause fallback:', err);
+      }
+    }
+
+    // Cheerful celebratory chime arpeggio: C5 - E5 - G5 - C6 - E6
+    function playVictoryChimes() {
+      try {
+        const ctx = getAudioContext();
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C5, E5, G5, C6, E6
+        const startTime = ctx.currentTime + 0.05;
+
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, startTime + idx * 0.12);
+
+          // Subtle bell overtone
+          const osc2 = ctx.createOscillator();
+          const gain2 = ctx.createGain();
+          osc2.type = 'sine';
+          osc2.frequency.setValueAtTime(freq * 2, startTime + idx * 0.12);
+
+          const noteStart = startTime + idx * 0.12;
+          const noteDuration = idx === notes.length - 1 ? 1.4 : 0.4;
+
+          gain.gain.setValueAtTime(0.0001, noteStart);
+          gain.gain.linearRampToValueAtTime(0.28, noteStart + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + noteDuration);
+
+          gain2.gain.setValueAtTime(0.0001, noteStart);
+          gain2.gain.linearRampToValueAtTime(0.12, noteStart + 0.02);
+          gain2.gain.exponentialRampToValueAtTime(0.0001, noteStart + noteDuration * 0.8);
+
+          osc.connect(gain);
+          osc2.connect(gain2);
+          gain.connect(ctx.destination);
+          gain2.connect(ctx.destination);
+
+          osc.start(noteStart);
+          osc.stop(noteStart + noteDuration);
+          osc2.start(noteStart);
+          osc2.stop(noteStart + noteDuration);
+        });
+      } catch (err) {
+        console.warn('Web Audio chime fallback:', err);
+      }
+    }
+
+    // -------------------------------------------------------------
+    // CANVAS FIREWORKS & VIBRANT CONFETTI ENGINE
+    // -------------------------------------------------------------
+    const canvas = document.getElementById('fireworks-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationFrameId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const confettiPalette = [
+      '#FF8A35', '#F19B33', '#22A9C2', '#6AAD63', '#9871C3', 
+      '#E46B78', '#FFD13B', '#00D2B4', '#FF5376', '#3B82F6'
+    ];
+
+    class Particle {
+      constructor(x, y, isFirework) {
+        this.x = x;
+        this.y = y;
+        this.isFirework = isFirework;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = isFirework ? (Math.random() * 8 + 4) : (Math.random() * 6 + 2);
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed - (isFirework ? 2 : 4);
+        this.gravity = 0.16;
+        this.friction = 0.96;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.015 + 0.008;
+        this.color = confettiPalette[Math.floor(Math.random() * confettiPalette.length)];
+        this.size = Math.random() * 8 + 4;
+        this.rotation = Math.random() * 360;
+        this.rotSpeed = (Math.random() - 0.5) * 12;
+        this.shape = Math.random() > 0.4 ? 'rect' : 'circle';
+      }
+      update() {
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.rotation += this.rotSpeed;
+        this.alpha -= this.decay;
+      }
+      draw(c) {
+        c.save();
+        c.globalAlpha = Math.max(0, this.alpha);
+        c.translate(this.x, this.y);
+        c.rotate((this.rotation * Math.PI) / 180);
+        c.fillStyle = this.color;
+        
+        if (this.shape === 'rect') {
+          c.fillRect(-this.size / 2, -this.size / 2, this.size, this.size * 0.7);
+        } else {
+          c.beginPath();
+          c.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+          c.fill();
+        }
+        c.restore();
+      }
+    }
+
+    function createFireworkBurst(originX, originY) {
+      const count = 75;
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle(originX, originY, true));
+      }
+    }
+
+    function launchConfettiShower() {
+      const count = 120;
+      for (let i = 0; i < count; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * (canvas.height * 0.4);
+        particles.push(new Particle(x, y, false));
+      }
+    }
+
+    function spawnFloatingEmojis() {
+      emojiContainer.innerHTML = '';
+      const emojis = ['🐝', '⭐', '🎈', '🎉', '✨', '🥞', '🌟', '🥳'];
+      const total = 18;
+      for (let i = 0; i < total; i++) {
+        const el = document.createElement('div');
+        el.className = 'absolute text-3xl sm:text-4xl select-none floating-emoji pointer-events-none';
+        el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        el.style.left = `${Math.random() * 88 + 6}%`;
+        el.style.bottom = `${Math.random() * 20 + 5}%`;
+        el.style.animationDelay = `${Math.random() * 1.4}s`;
+        emojiContainer.appendChild(el);
+      }
+    }
+
+    function animateFireworks() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.update();
+        p.draw(ctx);
+        if (p.alpha <= 0) {
+          particles.splice(i, 1);
+        }
+      }
+      if (particles.length > 0) {
+        animationFrameId = requestAnimationFrame(animateFireworks);
+      } else {
+        animationFrameId = null;
+      }
+    }
+
+    function startFullCelebration() {
+      // 1. Audio: Applause + Chimes
+      playSynthesizedApplause();
+      playVictoryChimes();
+
+      // 2. Fireworks & Confetti
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      createFireworkBurst(centerX - 180, centerY - 60);
+      createFireworkBurst(centerX + 180, centerY - 60);
+      createFireworkBurst(centerX, centerY - 140);
+      launchConfettiShower();
+      spawnFloatingEmojis();
+
+      // Second burst wave after 400ms
+      setTimeout(() => {
+        createFireworkBurst(centerX - 240, centerY - 100);
+        createFireworkBurst(centerX + 240, centerY - 100);
+      }, 400);
+
+      if (!animationFrameId) {
+        animateFireworks();
+      }
+
+      // 3. Show Celebration Modal
+      setTimeout(() => {
+        celebrationModal.classList.remove('hidden');
+      }, 350);
+    }
+
+    // Web Speech API for native audio pronunciation
+    function speakWord(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'en-US';
+        utterance.rate = 0.85;
+        utterance.pitch = 1.1;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    window.playSimpleSound = function(txt) {
+      speakWord(txt);
+    };
+
+    pronounceBtn.addEventListener('click', () => {
+      speakWord('Breakfast');
+    });
+
+    // Handle clicking scrambled letter tiles to push to first available slot
+    sourceContainer.addEventListener('click', (e) => {
+      const tile = e.target.closest('.game-letter-tile');
+      if (!tile || tile.classList.contains('opacity-0') || tile.classList.contains('pointer-events-none')) return;
+
+      const emptySlotIndex = placedLetters.findIndex(item => item === null);
+      if (emptySlotIndex === -1) {
+        feedbackText.textContent = "Các ô đã đầy, bé hãy bấm 'Kiểm tra kết quả' nhé!";
+        feedbackText.className = "font-action-secondary text-caption-unit text-primary-container font-bold";
+        return;
+      }
+
+      const letter = tile.getAttribute('data-letter').toUpperCase();
+      const tileId = tile.getAttribute('data-original-id');
+
+      placedLetters[emptySlotIndex] = { letter, tileId };
+
+      const slotBox = slotBoxes[emptySlotIndex];
+      const slotLetterSpan = slotBox.querySelector('.slot-letter');
+      slotLetterSpan.textContent = letter;
+      slotBox.classList.add('bg-surface-cream', 'shadow-[0_4px_0_#F19B33]');
+      slotBox.classList.remove('bg-white');
+
+      tile.classList.add('opacity-0', 'pointer-events-none', 'scale-75');
+
+      feedbackText.textContent = "Chạm vào ô chữ bên dưới nếu muốn gỡ bỏ nhé!";
+      feedbackText.className = "font-action-secondary text-caption-unit text-secondary font-bold";
+
+      if (!placedLetters.includes(null)) {
+        checkBtn.classList.add('animate-bounce');
+        // Auto-check if matches target directly
+        const formed = placedLetters.map(it => it.letter).join('');
+        if (formed === targetWord) {
+          triggerSuccessState();
+        }
+      }
+    });
+
+    // Handle clicking a slot to return the letter to tray
+    slotBoxes.forEach(slotBox => {
+      slotBox.addEventListener('click', () => {
+        const slotIdx = parseInt(slotBox.getAttribute('data-slot-index'), 10);
+        const placedData = placedLetters[slotIdx];
+        if (!placedData) return;
+
+        const originalTile = document.querySelector(`[data-original-id="${placedData.tileId}"]`);
+        if (originalTile) {
+          originalTile.classList.remove('opacity-0', 'pointer-events-none', 'scale-75');
+        }
+
+        placedLetters[slotIdx] = null;
+        const slotLetterSpan = slotBox.querySelector('.slot-letter');
+        slotLetterSpan.textContent = '';
+        slotBox.classList.remove('bg-surface-cream', 'shadow-[0_4px_0_#F19B33]', 'bg-level3-light', 'bg-level5-light');
+        slotBox.classList.add('bg-white');
+        checkBtn.classList.remove('animate-bounce');
+
+        feedbackText.textContent = "Đã gỡ chữ cái về hàng chọn!";
+        feedbackText.className = "font-action-secondary text-caption-unit text-on-surface-variant font-bold";
+      });
+    });
+
+    function triggerSuccessState() {
+      slotBoxes.forEach(box => {
+        box.classList.remove('bg-surface-cream', 'bg-white', 'bg-feedback-error-soft');
+        box.classList.add('bg-level3-light', 'shadow-[0_4px_0_#6AAD63]');
+      });
+      feedbackText.textContent = "🎉 TUYỆT VỜI! Bé đã ghép đúng từ BREAKFAST! (+50 điểm)";
+      feedbackText.className = "font-action-secondary text-caption-unit text-level3-accent font-black text-sm";
+      mascotSpeech.innerHTML = "Bé giỏi quá đi thôi! Bữa sáng đầy năng lượng chính là <strong>BREAKFAST</strong>! Ong Vàng tặng bé thêm 50 ngôi sao lấp lánh nhé! 🌟";
+      scoreVal.textContent = "170 điểm";
+      checkBtn.classList.add('hidden');
+      nextBtn.classList.remove('hidden');
+
+      startFullCelebration();
+      speakWord('Breakfast! Excellent job!');
+    }
+
+    // Check Answer
+    checkBtn.addEventListener('click', () => {
+      checkBtn.classList.remove('animate-bounce');
+      const currentWord = placedLetters.map(item => item ? item.letter : '').join('');
+
+      if (currentWord.length < slotCount) {
+        feedbackText.textContent = "Bé ơi, bé hãy điền đủ cả 9 chữ cái nhé!";
+        feedbackText.className = "font-action-secondary text-caption-unit text-error font-bold";
+        mascotSpeech.innerHTML = "Bé yêu hãy chọn đủ cả 9 chữ cái vào các ô gạch chân bên dưới để tạo thành từ nhé! Cố lên bé ơi!";
+        return;
+      }
+
+      if (currentWord === targetWord) {
+        triggerSuccessState();
+      } else {
+        slotBoxes.forEach(box => {
+          box.classList.add('bg-feedback-error-soft');
+        });
+        feedbackText.textContent = "Gần đúng rồi! Bé thử đổi lại vị trí các chữ cái xem sao nhé!";
+        feedbackText.className = "font-action-secondary text-caption-unit text-level5-accent font-bold";
+        mascotSpeech.innerHTML = "Ôi, chưa chính xác một xíu thôi! Bé nhớ là: <strong class='text-primary'>B - R - E - A - K</strong> (phần 1) rồi đến <strong class='text-primary'>F - A - S - T</strong> (phần 2) nhé!";
+      }
+    });
+
+    // Reset button logic
+    function handleReset() {
+      placedLetters = new Array(slotCount).fill(null);
+      slotBoxes.forEach(box => {
+        const slotLetterSpan = box.querySelector('.slot-letter');
+        slotLetterSpan.textContent = '';
+        box.classList.remove('bg-surface-cream', 'shadow-[0_4px_0_#F19B33]', 'bg-level3-light', 'bg-level5-light', 'bg-feedback-error-soft');
+        box.classList.add('bg-white');
+      });
+      document.querySelectorAll('.game-letter-tile').forEach(tile => {
+        tile.classList.remove('opacity-0', 'pointer-events-none', 'scale-75');
+      });
+      feedbackText.textContent = "Đã xếp lại các chữ về vị trí ban đầu.";
+      feedbackText.className = "font-action-secondary text-caption-unit text-on-surface-variant font-bold";
+      checkBtn.classList.remove('hidden', 'animate-bounce');
+      nextBtn.classList.add('hidden');
+      celebrationModal.classList.add('hidden');
+    }
+    resetBtn.addEventListener('click', handleReset);
+    modalReplayBtn.addEventListener('click', handleReset);
+
+    // Auto-solve button for instant user testing
+    autoSolveBtn.addEventListener('click', () => {
+      handleReset();
+      // Sequentially map B, R, E, A, K, F, A, S, T from source tiles
+      const desired = ['b', 'r', 'e', 'a', 'k', 'f', 'a', 's', 't'];
+      const tiles = Array.from(document.querySelectorAll('.game-letter-tile'));
+      const usedTiles = new Set();
+
+      desired.forEach((char, idx) => {
+        const availableTile = tiles.find(t => t.getAttribute('data-letter').toLowerCase() === char && !usedTiles.has(t));
+        if (availableTile) {
+          usedTiles.add(availableTile);
+          const letter = char.toUpperCase();
+          const tileId = availableTile.getAttribute('data-original-id');
+          placedLetters[idx] = { letter, tileId };
+          const slotBox = slotBoxes[idx];
+          slotBox.querySelector('.slot-letter').textContent = letter;
+          availableTile.classList.add('opacity-0', 'pointer-events-none', 'scale-75');
+        }
+      });
+      triggerSuccessState();
+    });
+
+    // Hint feature
+    hintBtn.addEventListener('click', () => {
+      if (hintsUsed >= maxHints) {
+        mascotSpeech.innerHTML = "Bé đã dùng hết quyền trợ giúp trong câu này rồi. Hãy thử nhờ ba mẹ hoặc tự tin sắp xếp nhé!";
+        return;
+      }
+
+      hintsUsed++;
+      hintCountText.textContent = `Gợi ý: ${maxHints - hintsUsed}`;
+
+      if (hintsUsed === 1) {
+        const bTile = document.querySelector('[data-letter="b"]');
+        if (bTile && !bTile.classList.contains('pointer-events-none')) {
+          bTile.click();
+        }
+        mascotSpeech.innerHTML = "💡 Gợi ý số 1: Bạn Ong Vàng đã giúp bé đặt chữ đầu tiên là chữ <strong class='text-primary'>B</strong> rồi nhé!";
+      } else if (hintsUsed === 2) {
+        mascotSpeech.innerHTML = "💡 Gợi ý số 2: Chữ cuối cùng của từ này là chữ cái <strong class='text-primary'>T</strong> (trong từ 'fast'). Hãy tìm khối chữ T bé nhé!";
+      }
+    });
+
+    // Simple countdown timer simulation
+    let secondsLeft = 105;
+    const timerElem = document.getElementById('timer-display');
+    const timerInterval = setInterval(() => {
+      if (secondsLeft <= 0) {
+        clearInterval(timerInterval);
+        return;
+      }
+      secondsLeft--;
+      const m = Math.floor(secondsLeft / 60).toString().padStart(2, '0');
+      const s = (secondsLeft % 60).toString().padStart(2, '0');
+      timerElem.textContent = `${m}:${s}`;
+    }, 1000);
+
+    // Next question trigger
+    function handleNext() {
+      celebrationModal.classList.add('hidden');
+      alert("Tuyệt vời! Chuyển sang Câu 4: Ghép từ 'PANCAKE' nhé!");
+      handleReset();
+    }
+    nextBtn.addEventListener('click', handleNext);
+    modalContinueBtn.addEventListener('click', handleNext);
+
+  })();
+</script></main><footer class="w-full bg-surface-cream/60 shadow-[0_-1px_8px_rgba(0,0,0,0.02)] mt-space-2xl"><div class="max-w-[1280px] mx-auto px-gutter py-space-xl flex flex-col md:flex-row items-center justify-between gap-space-md text-center md:text-left"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-full bg-level2-light flex items-center justify-center text-level2-accent"><span class="material-symbols-outlined text-[24px]">emoji_nature</span></div><div><p class="font-headline-card text-action-primary text-brand-ink-dark">Learning With Bee</p><p class="font-body-regular text-action-secondary text-on-surface-variant mt-0.5">Đồng hành cùng bé khám phá tiếng Anh mỗi ngày ✨</p></div></div><p class="font-caption-unit text-caption-unit text-text-muted">© 2024 Learning With Bee. Tất cả quyền được bảo lưu.</p></div></footer></body></html>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import motion from "./game-motion.module.css";
 import { courses, homeContent, phonicsPath, type Locale } from "./home-content";
 import { Icon } from "./material-icon";
 import { useLocale } from "./site-shell";
@@ -13,12 +14,6 @@ const highlights = [
   { icon: "⭐" },
   { icon: "🎧", color: "text-sound" },
   { icon: "🎮", color: "text-play" },
-];
-
-const benefits = [
-  { icon: "🍯", color: "amber" },
-  { icon: "⏰", color: "cyan" },
-  { icon: "💜", color: "purple" },
 ];
 
 function Hero({ content }: { content: Content }) {
@@ -35,7 +30,7 @@ function Hero({ content }: { content: Content }) {
           <h1 id="welcome-title" className="hero-title">
             {content.welcome}<br />
             <span className="hero-title-brand">Learning With Bee!</span>{" "}
-            <span className="hero-star" aria-hidden="true">🌟</span>
+            <span className={`hero-star ${motion.bounce}`} aria-hidden="true">🌟</span>
           </h1>
           <ul className="hero-highlights">
             {highlights.map(({ icon, color }, index) => (
@@ -65,7 +60,7 @@ function Hero({ content }: { content: Content }) {
             <span className="text-2xl" aria-hidden="true">🎀</span>
             <div><small>Kuromi Magic</small>{content.kuromiText}</div>
           </div>
-          <span className="levels-sticker">✨ Level 1-5 Ready!</span>
+          <span className={`levels-sticker ${motion.pulse}`}>✨ Level 1-5 Ready!</span>
         </div>
       </div>
     </section>
@@ -151,17 +146,6 @@ export default function Home() {
           {courses.map((course) => <CourseCard key={course.id} course={course} content={content} />)}
         </div>
       </section>
-
-      <div className="page-width">
-        <ul className="benefits">
-          {benefits.map(({ icon, color }, index) => (
-            <li key={icon}>
-              <span className="benefit-icon" data-color={color} aria-hidden="true">{icon}</span>
-              {content.benefits[index]}
-            </li>
-          ))}
-        </ul>
-      </div>
     </main>
   );
 }

@@ -28,10 +28,9 @@ function Header({
   const menuNav = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const navLinks = [
-    { label: content.home, href: "/", active: pathname === "/" },
-    { label: "Oxford Phonics World", href: phonicsPath, active: pathname === phonicsPath },
+    { label: "Oxford Phonics World", href: phonicsPath, active: pathname.startsWith(`${phonicsPath}/`) },
     { label: "Let's Go", href: "/#lets-go" },
-    { label: content.lessons, href: "/#lessons" },
+    { label: content.accountLabel, href: "/login", className: "mobile-account-link" },
   ];
 
   useEffect(() => {
@@ -66,11 +65,12 @@ function Header({
             }
           }}
         >
-          {navLinks.map(({ href, label, active }) => (
+          {navLinks.map(({ href, label, active, className }) => (
             <Link
               key={href}
               href={href}
-              aria-current={active ? "page" : undefined}
+              className={className}
+              aria-current={pathname === href ? "page" : active ? "location" : undefined}
               onClick={() => setMenuOpen(false)}
             >
               {label}
@@ -88,7 +88,14 @@ function Header({
               EN
             </button>
           </div>
-          <span className="profile-icon" aria-hidden="true"><Icon name="person" /></span>
+          <Link
+            className="profile-icon"
+            href="/login"
+            aria-label={content.accountLabel}
+            aria-current={pathname === "/login" ? "page" : undefined}
+          >
+            <Icon name="person" />
+          </Link>
           <button
             ref={menuButton}
             type="button"

@@ -1,3 +1,7 @@
+import { phonicsPath } from "../home-content";
+
+export const alphabetPath = `${phonicsPath}/level-1`;
+
 export const levels = [
   {
     number: 1,

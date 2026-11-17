@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  outputFileTracingIncludes: { "/api/tts": ["./scripts/tts.py"] },
+  outputFileTracingExcludes: { "/api/tts": ["./.venv/**/*"] },
   experimental: {
     agentFeedback: true,
   },
