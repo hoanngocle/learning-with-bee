@@ -10,37 +10,24 @@ import { alphabetPath } from "../oxford-phonics-world/level-content";
 import { speakEnglish } from "../speak-english";
 import styles from "./mystery-box.module.css";
 
-const pictures = [
-  { id: "milk", label: "Milk", caption: "Một cốc sữa tươi", hint: "Tìm chiếc cốc có thức uống màu trắng nhé!" },
-  { id: "water", label: "Water", caption: "Một ly nước lọc", hint: "Thức uống trong suốt này giúp bé hết khát." },
-  { id: "egg", label: "Egg", caption: "Một quả trứng chiên", hint: 'Từ "egg" bắt đầu bằng âm /e/. Bé tìm món có lòng đỏ tròn xoe nhé!' },
-  { id: "juice", label: "Juice", caption: "Một ly nước cam", hint: "Tìm thức uống màu cam được ép từ trái cây nhé!" },
-] as const;
+import { boxPictures as pictures, mysteryBoxes as boxes } from "../learning/game-content";
+import { useGame, type GameInitial } from "../learning/use-game";
+import { SaveStatus } from "../learning/save-status";
 
-const boxes = [
-  { answer: "milk", sentence: "It's milk.", translation: "Đó là sữa.", color: "blue" },
-  { answer: "water", sentence: "It's water.", translation: "Đó là nước lọc.", color: "pink" },
-  { answer: "juice", sentence: "It's juice.", translation: "Đó là nước ép.", color: "gold" },
-  { answer: "egg", sentence: "I see an egg.", translation: "Bé nhìn thấy một quả trứng.", color: "green" },
-  { answer: "milk", sentence: "I drink milk.", translation: "Bé uống sữa.", color: "purple" },
-  { answer: "water", sentence: "I drink water.", translation: "Bé uống nước lọc.", color: "navy" },
-  { answer: "egg", sentence: "It's an egg.", translation: "Đó là một quả trứng.", color: "mint" },
-  { answer: "juice", sentence: "It's orange juice.", translation: "Đó là nước cam.", color: "orange" },
-  { answer: "water", sentence: "A glass of water.", translation: "Một ly nước lọc.", color: "purple" },
-  { answer: "milk", sentence: "A glass of milk.", translation: "Một ly sữa.", color: "cyan" },
-  { answer: "egg", sentence: "A fried egg.", translation: "Một quả trứng chiên.", color: "pink" },
-  { answer: "juice", sentence: "I like orange juice.", translation: "Bé thích nước cam.", color: "gold" },
-] as const;
+
 
 const choiceColors = ["green", "purple", "blue", "mint"];
 type Picture = (typeof pictures)[number]["id"];
 
-export function MysteryBox() {
-  const [selected, setSelected] = useState(6);
-  const [opened, setOpened] = useState<number[]>([2]);
+export function MysteryBox(initial: GameInitial) {
+  const game = useGame("opw.l1.box.breakfast", initial);
+  const [selected, setSelected] = useState(() => Math.max(0, initial.initialAttempt?.questions.findIndex(q => !q.solved) ?? 0));
+  const [localOpened, setOpened] = useState<number[]>([]);
   const [mistakes, setMistakes] = useState(0);
   const [choice, setChoice] = useState<Picture>();
   const [showHint, setShowHint] = useState(false);
+  const opened = game.signedIn ? game.attempt?.questions.flatMap((q, index) => q.solved ? [index] : []) ?? [] : localOpened;
+  const pending = game.status === "saving" || !game.ready;
   const box = boxes[selected];
   const picture = pictures.find(({ id }) => id === box.answer);
   const solved = opened.includes(selected);
@@ -51,7 +38,8 @@ export function MysteryBox() {
     .find((index) => !opened.includes(index));
   const offset = (selected + 2) % pictures.length;
   const options = [...pictures.slice(offset), ...pictures.slice(0, offset)];
-  const accuracy = Math.round(opened.length / (opened.length + mistakes) * 100);
+  const answered = game.attempt?.questions.filter(q => q.answered).length ?? 0;
+  const accuracy = game.signedIn ? answered ? Math.round((game.attempt?.correctFirst ?? 0) / answered * 100) : 0 : opened.length + mistakes ? Math.round(opened.length / (opened.length + mistakes) * 100) : 0;
 
   function selectBox(index: number) {
     setSelected(index);
@@ -59,8 +47,9 @@ export function MysteryBox() {
     setShowHint(false);
   }
 
-  function choosePicture(id: Picture) {
-    if (solved) return;
+  async function choosePicture(id: Picture) {
+    if (solved || pending) return;
+    if (game.signedIn && !await game.answer(game.attempt!.questions[selected].id, id)) return;
     setChoice(id);
     if (id === box.answer) {
       setOpened((current) => [...current, selected]);
@@ -69,14 +58,17 @@ export function MysteryBox() {
     }
   }
 
-  function resetGame() {
-    setOpened([2]);
+  async function resetGame() {
+    if (game.signedIn && !await game.restart()) return;
+    setOpened([]);
     setMistakes(0);
-    selectBox(6);
+    selectBox(0);
   }
 
   return (
     <main className={styles.page} lang="vi">
+      <div className="page-width"><SaveStatus signedIn={game.signedIn} status={game.status} message={game.message} retry={game.retry} /></div>
+      {game.attempt?.status === "completed" && <div className="learning-summary">🎉 Đã giải đủ {boxes.length} hộp! Điểm lượt này: {game.attempt.gameScore}/120. ⭐ Tài khoản: {game.snapshot?.profile.stars}.</div>}
       <div className={styles.strip}>
         <div className={`page-width ${styles.stripInner}`}>
           <nav className={styles.breadcrumb} aria-label="Đường dẫn">
@@ -87,7 +79,7 @@ export function MysteryBox() {
             <span aria-current="page">Mở Hộp Bí Mật</span>
           </nav>
           <div className={styles.stats}>
-            <span><Icon name="stars" /> Điểm <strong>{opened.length * 10}</strong></span>
+            <span><Icon name="stars" /> Điểm <strong>{game.signedIn ? game.attempt?.gameScore ?? 0 : opened.length * 10}</strong></span>
             <span><Icon name="inventory_2" /> Đã mở <strong>{opened.length}/{boxes.length}</strong></span>
             <span><Icon name="verified" /> Tỉ lệ đúng <strong>{accuracy}%</strong></span>
           </div>
@@ -116,7 +108,7 @@ export function MysteryBox() {
               return (
                 <button key={index} className={styles.box} data-color={color} type="button"
                   aria-label={`Hộp số ${index + 1}${isOpen ? ", đã giải" : ""}`} aria-pressed={isSelected}
-                  onClick={() => selectBox(index)}>
+                  disabled={pending} onClick={() => selectBox(index)}>
                   {(isOpen || isSelected) && (
                     <span className={`${styles.boxTag} ${isSelected ? motion.bounce : ""}`}>{isOpen ? "Đúng" : "Đang mở"}</span>
                   )}
@@ -158,7 +150,7 @@ export function MysteryBox() {
                 return (
                   <button key={id} type="button" className={`${styles.option} ${animation}`} data-color={choiceColors[index]}
                     data-result={result}
-                    aria-label={`Đáp án ${letter}: ${caption}`} disabled={solved} onClick={() => choosePicture(id)}>
+                    aria-label={`Đáp án ${letter}: ${caption}`} disabled={pending || solved} onClick={() => choosePicture(id)}>
                     <span className={styles.optionTitle}><strong>{letter}</strong><small lang="en">{label}</small></span>
                     <span className={styles.optionImage}>
                       <Image src={`/games/${id}.webp`} alt="" width={293} height={190} unoptimized />
@@ -179,7 +171,10 @@ export function MysteryBox() {
           <p id="bee-hint" className={`${styles.hint} ${motion.pop}`} role="status" hidden={!showHint}>🐝 {picture?.hint}</p>
           <div className={styles.actions}>
             <button className={styles.listen} type="button" onClick={() => speakEnglish(box.sentence)}><Icon name="volume_up" /> Nghe lại câu hỏi</button>
-            <button className={styles.hintButton} type="button" aria-controls="bee-hint" aria-expanded={showHint} onClick={() => setShowHint(!showHint)}>
+            <button className={styles.hintButton} type="button" disabled={pending || solved} aria-controls="bee-hint" aria-expanded={showHint} onClick={async () => {
+              if (!showHint && game.signedIn) { await game.assist(game.attempt!.questions[selected].id, "hint", () => setShowHint(true)); return; }
+              setShowHint(!showHint);
+            }}>
               <span aria-hidden="true">🐝</span> Bạn Ong Vàng gợi ý
             </button>
             {next !== undefined ? (

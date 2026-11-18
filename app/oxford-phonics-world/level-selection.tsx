@@ -41,7 +41,7 @@ function LevelCard({
           <SelectionIcon name="play_circle" />{copy.start}
         </Link>
       ) : (
-        <button className={styles.cardAction} type="button" aria-disabled="true" tabIndex={-1}>
+        <button className={styles.cardAction} type="button" disabled aria-disabled="true" tabIndex={-1}>
           <SelectionIcon name="lock_open" />{copy.unlock}
         </button>
       )}

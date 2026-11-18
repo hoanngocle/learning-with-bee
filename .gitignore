@@ -45,3 +45,8 @@ next-env.d.ts
 
 # Original images retained locally before WebP conversion
 /.image-backups/
+/.superpowers/
+/.data/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm

@@ -60,7 +60,7 @@ function Hero({ content }: { content: Content }) {
             <span className="text-2xl" aria-hidden="true">🎀</span>
             <div><small>Kuromi Magic</small>{content.kuromiText}</div>
           </div>
-          <span className={`levels-sticker ${motion.pulse}`}>✨ Level 1-5 Ready!</span>
+          <span className={`levels-sticker ${motion.pulse}`}>✨ Level 1: A–Z Ready!</span>
         </div>
       </div>
     </section>

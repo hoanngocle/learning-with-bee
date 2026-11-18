@@ -11,16 +11,23 @@ import { SelectionIcon } from "../selection-icon";
 import { GameChooser } from "./game-chooser";
 import { alphabet, lessonContent } from "./lesson-content";
 import styles from "./level-detail.module.css";
+import { learningLetters } from "../../learning/catalog";
+import { useLearner } from "../../learning/use-learner";
+import { SaveStatus } from "../../learning/save-status";
+import type { LearnerSnapshot } from "../../learning/types";
 
 const levelTitle = "Level 1: The Alphabet";
 type PronunciationControl = "art" | "listen" | "slow";
 
-export function LevelDetail() {
+export function LevelDetail({ initialSnapshot = null }: { initialSnapshot?: LearnerSnapshot | null }) {
+  const learner = useLearner(initialSnapshot);
+  const resumeLetter = Math.max(0, learningLetters.findIndex(l => l.id === initialSnapshot?.resume?.letterId));
+  const resumeWord = Math.max(0, learningLetters[resumeLetter].words.findIndex(w => w.id === initialSnapshot?.resume?.wordId));
   const locale = useLocale();
   const copy = lessonContent[locale];
-  const [letterIndex, setLetterIndex] = useState(0);
-  const [wordIndex, setWordIndex] = useState(0);
-  const [explored, setExplored] = useState(() => new Set([0]));
+  const [letterIndex, setLetterIndex] = useState(resumeLetter);
+  const [wordIndex, setWordIndex] = useState(resumeWord);
+  const [explored, setExplored] = useState(() => new Set<number>());
   const [audioCue, setAudioCue] = useState<{ control: PronunciationControl; sequence: number }>();
   const { speak, stop, audioError } = useEnglishSpeech();
   const { letter, words } = alphabet[letterIndex];
@@ -30,6 +37,10 @@ export function LevelDetail() {
   const focusIndex = word.toLowerCase().indexOf(letter.toLowerCase());
   const listenCue = audioCue?.control === "listen" ? audioCue.sequence : 0;
   const slowCue = audioCue?.control === "slow" ? audioCue.sequence : 0;
+  const activeWord = learningLetters[letterIndex].words[wordIndex];
+  const saving = learner.status === "saving";
+  const learned = learner.snapshot?.learnedWordIds.includes(activeWord.id);
+  const reviewed = learner.snapshot?.reviewedTodayWordIds.includes(activeWord.id);
 
   function selectLetter(index: number) {
     setLetterIndex(index);
@@ -37,12 +48,14 @@ export function LevelDetail() {
     setExplored((previous) => previous.has(index) ? previous : new Set(previous).add(index));
     setAudioCue(undefined);
     stop();
+    if (learner.snapshot) void learner.send("markWord", { wordId: learningLetters[index].words[0].id, state: "seen" });
   }
 
   function selectWord(index: number) {
     setWordIndex(index);
     setAudioCue(undefined);
     speak(words[index].word);
+    if (learner.snapshot) void learner.send("markWord", { wordId: learningLetters[letterIndex].words[index].id, state: "seen" });
   }
 
   function pronounce(control: PronunciationControl, rate?: number) {
@@ -62,9 +75,11 @@ export function LevelDetail() {
         </nav>
         <p className={styles.progress}>
           <span className={styles.progressDot} aria-hidden="true"><span className={motion.ping} key={explored.size} /></span>
-          {copy.progress(explored.size)} <span aria-hidden="true">⭐</span>
+          {copy.progress(learner.snapshot?.seenLetterIds.length ?? explored.size)} <span aria-hidden="true">⭐</span>
         </p>
       </div>
+      <SaveStatus signedIn={!!learner.snapshot} status={learner.status} message={learner.message} retry={learner.retry} />
+      {learner.snapshot && <p>{learner.snapshot.learnedWordIds.length}/101 từ đã học · {learner.snapshot.completedLetterIds.length}/26 chữ hoàn thành · ⭐ {learner.snapshot.profile.stars}</p>}
 
       <section className={styles.vocabulary} aria-labelledby="vocabulary-title" id="vocabulary-card">
         <div className={styles.vocabHeader}>
@@ -99,6 +114,10 @@ export function LevelDetail() {
               </div>
             </div>
             <div className={styles.audioActions}>
+              <button className={`${styles.control} ${styles.listen}`} type="button" disabled={!learner.snapshot || saving || reviewed}
+                onClick={() => void learner.send("markWord", { wordId: activeWord.id, state: "learned" })}>
+                {reviewed ? "✓ Đã ôn hôm nay" : learned ? "Ôn lại từ này" : "Đã học từ này"}
+              </button>
               <button className={`${styles.control} ${styles.listen}`} type="button" onClick={() => pronounce("listen")}>
                 <span className={listenCue ? styles.audioCue : undefined} key={listenCue} aria-hidden="true">🔊</span> {copy.listen}
               </button>
@@ -118,7 +137,7 @@ export function LevelDetail() {
               <p className={styles.wordProgress} aria-live="polite">{copy.wordProgress(wordIndex + 1, words.length)}</p>
               <div className={styles.wordGrid} role="group" aria-label={copy.wordsForLetter(letter)}>
                 {words.map((item, index) => (
-                  <button className={styles.wordTile} key={item.word} type="button" aria-pressed={index === wordIndex} onClick={() => selectWord(index)}>
+                  <button className={styles.wordTile} key={item.word} type="button" disabled={saving} aria-pressed={index === wordIndex} onClick={() => selectWord(index)}>
                     {item.image ? (
                       <Image className={styles.wordThumbnail} src={item.image} alt="" width={80} height={80} sizes="80px" />
                     ) : <span className={styles.wordEmoji} aria-hidden="true">{item.emoji}</span>}
@@ -129,10 +148,10 @@ export function LevelDetail() {
               </div>
             </div>
             <div className={styles.vocabNavigation}>
-              <button className={styles.control} type="button" disabled={letterIndex === 0} onClick={() => selectLetter(letterIndex - 1)}>
+              <button className={styles.control} type="button" disabled={saving || letterIndex === 0} onClick={() => selectLetter(letterIndex - 1)}>
                 <span aria-hidden="true">‹</span> {copy.previous}
               </button>
-              <button className={styles.control} type="button" disabled={letterIndex === alphabet.length - 1} onClick={() => selectLetter(letterIndex + 1)}>
+              <button className={styles.control} type="button" disabled={saving || letterIndex === alphabet.length - 1} onClick={() => selectLetter(letterIndex + 1)}>
                 {copy.next} <span aria-hidden="true">›</span>
               </button>
             </div>
@@ -146,6 +165,7 @@ export function LevelDetail() {
                 className={styles.letterTile}
                 key={item.letter}
                 type="button"
+                disabled={saving}
                 lang="en"
                 aria-pressed={index === letterIndex}
                 onClick={() => {

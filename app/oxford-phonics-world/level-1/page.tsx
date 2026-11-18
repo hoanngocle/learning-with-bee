@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { LevelDetail } from "./level-detail";
+import { Suspense } from "react";
+import { LearningScreen } from "../../learning/learning-screen";
 
 export const metadata: Metadata = {
   title: "Level 1: The Alphabet · Learning With Bee",
@@ -7,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function AlphabetPage() {
-  return <LevelDetail />;
+  return <Suspense fallback={<p>Đang tải bài học…</p>}><LearningScreen screen={LevelDetail} /></Suspense>;
 }

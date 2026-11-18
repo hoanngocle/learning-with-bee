@@ -55,6 +55,7 @@ function Header({
     { label: "Oxford Phonics World", href: phonicsPath, active: pathname.startsWith(`${phonicsPath}/`) },
     { label: "Let's Go", href: "/#lets-go" },
     { label: locale === "vi" ? "Thành tích" : "Achievements", href: "/achivement" },
+    { label: locale === "vi" ? "Xếp hạng" : "Leaderboard", href: "/bangxephang" },
   ];
 
   useEffect(() => {

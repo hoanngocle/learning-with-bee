@@ -1,0 +1,40 @@
+import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
+import { test } from 'node:test';
+import { createLoader } from './helpers/load-learning.mjs';
+test('client retries the same request and rejects stale or changed-account responses',async()=>{
+ const c=existsSync('app/learning/client.ts')?createLoader()('app/learning/client.ts'):{};
+ assert.equal(typeof c.createLearnerClient,'function');
+ const initial={learner:{id:'usr_bee'},revision:5};
+ const requests=[];let fail=true;
+ const client=c.createLearnerClient(initial,async(_url,options)=>{
+  requests.push(JSON.parse(options.body));
+  if(fail){fail=false;throw new Error('offline');}
+  return Response.json({snapshot:{...initial,revision:4},attempt:null});
+ });
+ assert.equal(await client.send('markWord',{wordId:'test',state:'learned'}),null);
+ assert.equal(client.getState().status,'error');
+ await client.retry();assert.equal(requests[0].requestId,requests[1].requestId);
+ assert.equal(client.getState().snapshot.revision,5);
+ const other=c.createLearnerClient(initial,async()=>Response.json({error:'ACCOUNT_CHANGED'},{status:409}));
+ await other.send('markWord',{wordId:'test',state:'learned'});
+ assert.equal(other.getState().snapshot,null);
+ let resolve;const delayed=c.createLearnerClient(initial,()=>new Promise(r=>resolve=r));
+ const inflight=delayed.send('markWord',{wordId:'test',state:'learned'});
+ delayed.dispose();resolve(Response.json({snapshot:{...initial,revision:8},attempt:null}));await inflight;
+ assert.equal(delayed.getState().snapshot,null);
+ delayed.activate();
+ assert.equal(delayed.getState().snapshot.learner.id,'usr_bee');
+ const refreshed=c.createLearnerClient(initial,async()=>Response.json({...initial,revision:9}));
+ assert.equal(typeof refreshed.refresh,'function');
+ await refreshed.refresh();assert.equal(refreshed.getState().snapshot.revision,9);
+ const callbacks=[];const racing=c.createLearnerClient(initial,()=>new Promise(resolve=>callbacks.push(resolve)));
+ const oldRefresh=racing.refresh(),changedRefresh=racing.refresh();
+ callbacks[1](Response.json({error:'ACCOUNT_CHANGED'},{status:409}));await changedRefresh;
+ callbacks[0](Response.json({...initial,revision:20}));await oldRefresh;
+ assert.equal(racing.getState().snapshot,null,'late response cannot restore a signed-out learner');
+ let offline=true,applied=0;
+ const assisted=c.createLearnerClient(initial,async()=>{if(offline){offline=false;throw new Error('offline');}return Response.json({snapshot:initial,attempt:null,assistance:{kind:'hint',text:'B'}});});
+ await assisted.send('useAssistance',{attemptId:'a',questionId:'q',kind:'hint'},()=>applied++);
+ await assisted.retry();assert.equal(applied,1,'retry applies the saved hint result');
+});

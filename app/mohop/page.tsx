@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { MysteryBox } from "./mystery-box";
+import { Suspense } from "react";
+import { LearningScreen } from "../learning/learning-screen";
 
 export const metadata: Metadata = {
   title: "Mở hộp bí mật · Learning With Bee",
@@ -7,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function MysteryBoxPage() {
-  return <MysteryBox />;
+  return <Suspense fallback={<p>Đang tải trò chơi…</p>}><LearningScreen screen={MysteryBox} activityId="opw.l1.box.breakfast" /></Suspense>;
 }

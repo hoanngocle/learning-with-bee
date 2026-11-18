@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Achievements } from "./achievements";
+import { Suspense } from "react";
+import { LearningScreen } from "../learning/learning-screen";
 
 export const metadata: Metadata = {
   title: "Thành tích của bé · Learning With Bee",
@@ -7,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function AchievementPage() {
-  return <Achievements />;
+  return <Suspense fallback={<p>Đang tải thành tích…</p>}><LearningScreen screen={Achievements} /></Suspense>;
 }

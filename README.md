@@ -46,6 +46,14 @@ console.log(JSON.stringify({ username: "ten-moi", displayName: "Tên hiển th�
 
 Đặt `BEE_SESSION_SECRET` thành một giá trị ngẫu nhiên bí mật khi triển khai để phiên đăng nhập vẫn hợp lệ sau khi máy chủ khởi động lại. Nếu bỏ trống, máy chủ tạo khóa tạm cho lần chạy hiện tại.
 
+## Lưu tiến trình, điểm và phần thưởng
+
+Tiến trình được lưu theo tài khoản trên SQLite: từ đã học, lượt ôn, bài game đang làm, sao/EXP, huy hiệu, lịch học và kết quả kiểm tra 26 chữ cái. Trang `/achivement` hiển thị dữ liệu thật; `/bangxephang` dùng kết quả bài kiểm tra tổng hợp.
+
+Local dùng Node 26.8.2 và `npm run dev`; DB mặc định `.data/learning.sqlite`. Production cần đặt `BEE_DATABASE_PATH` trên ổ bền vững và `BEE_SESSION_SECRET` trước `npm start`. Xem [hướng dẫn vận hành, backup và đối soát](docs/learning-data-operations.md).
+
+Chạy kiểm tra bằng `npm run lint`, `npm run build`, rồi `npm test`. Chi tiết quy tắc và lộ trình ở [tài liệu logic](docs/superpowers/specs/2026-11-18-bee-learning-logic-design.md) và [plan](docs/superpowers/plans/2026-11-18-bee-learning-progress.md).
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -55,8 +63,6 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Triển khai
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Bản lưu trữ SQLite này chạy trên một server Node có ổ đĩa bền vững. Nếu dùng serverless, nhiều replica hoặc môi trường không giữ file qua restart, cần thay adapter database dùng chung trước khi triển khai. Làm theo [hướng dẫn vận hành](docs/learning-data-operations.md) để đặt biến môi trường, migrate, backup và đối soát.

@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { alphabet } from "../oxford-phonics-world/level-1/lesson-content";
 import { AlphabetMiniGame, MiniGameLoading } from "./mini-game";
 import styles from "./mini-game.module.css";
+import { loadLearner } from "../learning/queries";
 
 export const metadata: Metadata = {
   title: "Mini game chữ cái · Learning With Bee",
@@ -16,7 +17,8 @@ async function GameForLetter({ searchParams }: { searchParams: SearchParams }) {
   const selected = typeof letter === "string" ? letter.toUpperCase() : "A";
   const letterIndex = Math.max(0, alphabet.findIndex((item) => item.letter === selected));
 
-  return <AlphabetMiniGame key={letterIndex} letterIndex={letterIndex} />;
+  const data = await loadLearner(`opw.l1.quiz.${alphabet[letterIndex].letter.toLowerCase()}`);
+  return <AlphabetMiniGame key={`${data.initialSnapshot?.learner.id ?? 'guest'}-${letterIndex}`} letterIndex={letterIndex} {...data} />;
 }
 
 export default function MiniGamePage({ searchParams }: { searchParams: SearchParams }) {

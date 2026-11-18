@@ -854,3 +854,8 @@ body {
   .course-action:hover .material-icon { translate: 3px 0; }
 }
 
+/* Shared persistence feedback stays readable on every learning screen. */
+.learning-save-status { margin: 12px 0; padding: 10px 14px; border-radius: 12px; background: #fff7df; color: #664719; font-size: 14px; }
+.learning-save-status button { margin-left: 8px; padding: 5px 10px; border: 1px solid #c4913d; border-radius: 8px; background: white; cursor: pointer; }
+.learning-summary { margin: 18px 0; padding: 20px; border-radius: 18px; background: #f3ebff; text-align: center; }
+.learning-summary button, .learning-summary a { display: inline-block; margin: 8px; padding: 10px 16px; border-radius: 12px; background: #794ba6; color: white; }

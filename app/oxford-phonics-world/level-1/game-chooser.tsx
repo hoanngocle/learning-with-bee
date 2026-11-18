@@ -10,6 +10,13 @@ import styles from "./game-chooser.module.css";
 
 const choices = [
   {
+    href: "/oxford-phonics-world/level-1/assessment",
+    icon: "📝",
+    theme: "blue",
+    vi: ["Kiểm tra 26 chữ cái", "Làm bài tổng hợp và xem bảng xếp hạng."],
+    en: ["Alphabet assessment", "Take the 26-question test and join the leaderboard."],
+  },
+  {
     href: miniGamePath,
     icon: "🎧",
     theme: "blue",

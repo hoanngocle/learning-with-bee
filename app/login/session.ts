@@ -41,7 +41,7 @@ export async function startSession(username: string) {
   });
 }
 
-export async function getDisplayName() {
+export async function getSessionAccount() {
   const token = (await cookies()).get(COOKIE_NAME)?.value;
   if (!token) return null;
 
@@ -49,12 +49,17 @@ export async function getDisplayName() {
   if (!encodedName || !expires || !signature || extra !== undefined) return null;
 
   const expected = sign(`${encodedName}.${expires}`);
-  if (!equalBytes(Buffer.from(expected), Buffer.from(signature)) || Number(expires) <= Date.now()) {
+  if (!Number.isFinite(Number(expires)) || !equalBytes(Buffer.from(expected), Buffer.from(signature)) || Number(expires) <= Date.now()) {
     return null;
   }
 
   const username = Buffer.from(encodedName, "base64url").toString();
-  return accounts.find((account) => account.username === username)?.displayName ?? null;
+  const account = accounts.find((account) => account.username === username);
+  return account ? { username: account.username, displayName: account.displayName } : null;
+}
+
+export async function getDisplayName() {
+  return (await getSessionAccount())?.displayName ?? null;
 }
 
 export async function endSession() {
