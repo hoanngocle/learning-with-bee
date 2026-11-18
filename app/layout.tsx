@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import "@fontsource-variable/nunito-sans/wght.css";
 import "./globals.css";
 import { SiteShell } from "./site-shell";
+import { AccountControls } from "./account-controls";
 
 export const metadata: Metadata = {
   title: "Learning With Bee · Bé học tiếng Anh",
@@ -12,7 +14,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="vi">
-      <body><SiteShell>{children}</SiteShell></body>
+      <body>
+        <SiteShell accountControls={<Suspense><AccountControls /></Suspense>}>
+          {children}
+        </SiteShell>
+      </body>
     </html>
   );
 }

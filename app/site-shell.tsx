@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { homeContent, phonicsPath, type Locale } from "./home-content";
 import { Icon } from "./material-icon";
+import { logOut } from "./login/actions";
 
 type Content = (typeof homeContent)[Locale];
 
@@ -14,14 +15,37 @@ export function useLocale() {
   return useContext(LocaleContext);
 }
 
+export function AccountButton({ signedIn }: { signedIn: boolean }) {
+  const locale = useLocale();
+  if (signedIn) {
+    const label = locale === "vi" ? "Đăng xuất" : "Log out";
+    return (
+      <form action={logOut}>
+        <button className="profile-icon account-logout" type="submit" aria-label={label}>
+          <Icon name="logout" /><span>{label}</span>
+        </button>
+      </form>
+    );
+  }
+
+  const label = locale === "vi" ? "Đăng nhập" : "Log in";
+  return (
+    <Link className="profile-icon" href="/login" aria-label={label}>
+      <Icon name="person" /><span className="account-label">{label}</span>
+    </Link>
+  );
+}
+
 function Header({
   content,
   locale,
   onLocaleChange,
+  accountControls,
 }: {
   content: Content;
   locale: Locale;
   onLocaleChange: (locale: Locale) => void;
+  accountControls: ReactNode;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
@@ -30,7 +54,7 @@ function Header({
   const navLinks = [
     { label: "Oxford Phonics World", href: phonicsPath, active: pathname.startsWith(`${phonicsPath}/`) },
     { label: "Let's Go", href: "/#lets-go" },
-    { label: content.accountLabel, href: "/login", className: "mobile-account-link" },
+    { label: locale === "vi" ? "Thành tích" : "Achievements", href: "/achivement" },
   ];
 
   useEffect(() => {
@@ -65,17 +89,17 @@ function Header({
             }
           }}
         >
-          {navLinks.map(({ href, label, active, className }) => (
+          {navLinks.map(({ href, label, active }) => (
             <Link
               key={href}
               href={href}
-              className={className}
               aria-current={pathname === href ? "page" : active ? "location" : undefined}
               onClick={() => setMenuOpen(false)}
             >
               {label}
             </Link>
           ))}
+          <div className="mobile-account-link" onClick={() => setMenuOpen(false)}>{accountControls}</div>
         </nav>
 
         <div className="header-actions">
@@ -88,14 +112,7 @@ function Header({
               EN
             </button>
           </div>
-          <Link
-            className="profile-icon"
-            href="/login"
-            aria-label={content.accountLabel}
-            aria-current={pathname === "/login" ? "page" : undefined}
-          >
-            <Icon name="person" />
-          </Link>
+          <div className="desktop-account">{accountControls}</div>
           <button
             ref={menuButton}
             type="button"
@@ -113,8 +130,9 @@ function Header({
   );
 }
 
-export function SiteShell({ children }: { children: ReactNode }) {
+export function SiteShell({ children, accountControls }: { children: ReactNode; accountControls: ReactNode }) {
   const [locale, setLocale] = useState<Locale>("vi");
+  const pathname = usePathname();
   const content = homeContent[locale];
 
   function changeLocale(nextLocale: Locale) {
@@ -124,7 +142,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
 
   return (
     <LocaleContext.Provider value={locale}>
-      <Header content={content} locale={locale} onLocaleChange={changeLocale} />
+      {pathname !== "/login" && <Header content={content} locale={locale} onLocaleChange={changeLocale} accountControls={accountControls} />}
       {children}
       <footer className="site-footer">
         <div className="page-width">

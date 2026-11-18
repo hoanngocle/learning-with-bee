@@ -9,11 +9,13 @@ const pending = new Map<string, Promise<Uint8Array>>();
 const voice = "en-US-JennyNeural";
 
 // The lesson is public, so only synthesize phrases its controls can play.
-const lessonPhrases = new Set(alphabet.flatMap(({ letter, word }) => [
-  word,
-  `${letter}, ${word}`,
-  `Which one is ${word}?`,
-]));
+const lessonPhrases = new Set(alphabet.flatMap(({ letter, words }) =>
+  words.flatMap(({ word }) => [
+    word,
+    `${letter}, ${word}`,
+    `Which one is ${word}?`,
+  ]),
+));
 
 async function synthesize(text: string): Promise<Uint8Array> {
   const python = process.env.TTS_PYTHON || (process.platform === "win32" ? ".venv\\Scripts\\python.exe" : ".venv/bin/python");

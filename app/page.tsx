@@ -44,7 +44,7 @@ function Hero({ content }: { content: Content }) {
         <div className="hero-art">
           <div className="hero-image">
             <Image
-              src="/home/bee-and-kuromi.jpg"
+              src="/home/bee-and-kuromi.webp"
               alt={content.heroAlt}
               fill
               preload
@@ -82,7 +82,6 @@ function CourseCard({ course, content }: { course: Course; content: Content }) {
           <span className="accent-dot" aria-hidden="true" />
           {course.category}
         </span>
-        <span className="course-age">{copy.age}</span>
       </div>
       <h3 className="course-title">
         {course.title}
@@ -92,18 +91,7 @@ function CourseCard({ course, content }: { course: Course; content: Content }) {
       <div id={levelsId} tabIndex={-1} className="course-showcase">
         <div className="showcase-heading">
           <h4><span className="accent-dot" aria-hidden="true" />{copy.heading}</h4>
-          <span>{copy.format}</span>
         </div>
-
-        <ul className="level-grid">
-          {course.levels.map((level) => (
-            <li key={level.number} className="level-tile" data-color={"color" in level ? level.color : undefined}>
-              <span className="level-number" aria-hidden="true">{level.number}</span>
-              <span className="level-title">{level.title}</span>
-              {"sample" in level && <span className="level-sample">{level.sample}</span>}
-            </li>
-          ))}
-        </ul>
 
         <figure className="course-image">
           <Image

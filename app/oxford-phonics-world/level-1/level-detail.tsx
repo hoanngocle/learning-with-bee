@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import motion from "../../game-motion.module.css";
 import { phonicsPath } from "../../home-content";
@@ -18,22 +19,30 @@ export function LevelDetail() {
   const locale = useLocale();
   const copy = lessonContent[locale];
   const [letterIndex, setLetterIndex] = useState(0);
+  const [wordIndex, setWordIndex] = useState(0);
   const [explored, setExplored] = useState(() => new Set([0]));
   const [audioCue, setAudioCue] = useState<{ control: PronunciationControl; sequence: number }>();
-  const { speak, stop, audioLoading, audioError } = useEnglishSpeech();
-  const { letter, word, emoji, meaning, phonetic } = alphabet[letterIndex];
+  const { speak, stop, audioError } = useEnglishSpeech();
+  const { letter, words } = alphabet[letterIndex];
+  const { word, emoji, meaning, phonetic, image } = words[wordIndex];
   const letterPair = `${letter} ${letter.toLowerCase()}`;
   // X is practiced at the end of “fox”.
   const focusIndex = word.toLowerCase().indexOf(letter.toLowerCase());
-  const artCue = audioCue?.control === "art" ? audioCue.sequence : 0;
   const listenCue = audioCue?.control === "listen" ? audioCue.sequence : 0;
   const slowCue = audioCue?.control === "slow" ? audioCue.sequence : 0;
 
   function selectLetter(index: number) {
     setLetterIndex(index);
+    setWordIndex(0);
     setExplored((previous) => previous.has(index) ? previous : new Set(previous).add(index));
     setAudioCue(undefined);
     stop();
+  }
+
+  function selectWord(index: number) {
+    setWordIndex(index);
+    setAudioCue(undefined);
+    speak(words[index].word);
   }
 
   function pronounce(control: PronunciationControl, rate?: number) {
@@ -72,20 +81,21 @@ export function LevelDetail() {
         </div>
 
         <div className={styles.flashcard}>
-          <button className={styles.art} type="button" onClick={() => pronounce("art")}>
+          <button className={styles.art} type="button" aria-label={`${copy.listen}: ${word}`} onClick={() => pronounce("art")}>
             <span className={styles.artTop} aria-hidden="true"><strong>{letterPair}</strong><span className={motion.spin}>✨</span></span>
-            <span className={`${styles.artFrame} ${motion.pop}`} aria-hidden="true" key={letter}>{emoji}</span>
-            <span className={`${styles.artHint} ${artCue ? styles.audioCue : ""}`} key={artCue}>{copy.tap}</span>
+            <span className={`${styles.artFrame} ${motion.pop}`} aria-hidden="true" key={word}>
+              {image ? <Image className={styles.wordImage} src={image} alt="" width={240} height={240} sizes="240px" /> : emoji}
+            </span>
           </button>
 
           <div className={styles.flashcardCopy}>
             <div aria-live="polite" aria-atomic="true">
-              <div className={motion.pop} key={letter}>
+              <div className={motion.pop} key={word}>
                 <p className={styles.wordLine} lang="en">
                   <strong>{word.slice(0, focusIndex)}<span>{word[focusIndex]}</span>{word.slice(focusIndex + 1)}</strong>
                   <span>{phonetic}</span>
                 </p>
-                <p className={styles.meaning}>{copy.meaning}: <strong lang="vi">{meaning}</strong> <span aria-hidden="true">{emoji}</span></p>
+                <p className={styles.meaning}>{copy.meaning}: <strong lang="vi">{meaning}</strong></p>
               </div>
             </div>
             <div className={styles.audioActions}>
@@ -99,11 +109,25 @@ export function LevelDetail() {
                 {copy.slow}
               </button>
             </div>
-            {(audioLoading || audioError) && (
-              <p className={audioError ? styles.audioError : undefined} role="status">
-                {audioLoading ? copy.audioLoading : copy.audioUnavailable}
+            {audioError && (
+              <p className={styles.audioError} role="status">
+                {copy.audioUnavailable}
               </p>
             )}
+            <div className={styles.wordPicker}>
+              <p className={styles.wordProgress} aria-live="polite">{copy.wordProgress(wordIndex + 1, words.length)}</p>
+              <div className={styles.wordGrid} role="group" aria-label={copy.wordsForLetter(letter)}>
+                {words.map((item, index) => (
+                  <button className={styles.wordTile} key={item.word} type="button" aria-pressed={index === wordIndex} onClick={() => selectWord(index)}>
+                    {item.image ? (
+                      <Image className={styles.wordThumbnail} src={item.image} alt="" width={80} height={80} sizes="80px" />
+                    ) : <span className={styles.wordEmoji} aria-hidden="true">{item.emoji}</span>}
+                    <strong lang="en">{item.word}</strong>
+                    <span lang="vi">{item.meaning}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
             <div className={styles.vocabNavigation}>
               <button className={styles.control} type="button" disabled={letterIndex === 0} onClick={() => selectLetter(letterIndex - 1)}>
                 <span aria-hidden="true">‹</span> {copy.previous}
@@ -131,7 +155,9 @@ export function LevelDetail() {
               >
                 {index === letterIndex && <span className={`${styles.selectedMark} ${motion.bounce}`} aria-hidden="true">✓</span>}
                 <span className={styles.uppercase}>{item.letter}</span>
-                <span className={styles.tileEmoji} aria-hidden="true">{item.emoji}</span>
+                <span className={styles.tileEmoji} aria-hidden="true">
+                  {item.image ? <Image className={styles.letterImage} src={item.image} alt="" width={48} height={48} sizes="48px" /> : item.emoji}
+                </span>
                 <span className={styles.tileWord}>{item.word}</span>
               </button>
             ))}

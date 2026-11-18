@@ -24,7 +24,7 @@ export async function logIn(_state: LoginState, formData: FormData): Promise<Log
   if (!account) return { username, error: "invalid" };
 
   await startSession(account);
-  redirect("/login");
+  redirect("/");
 }
 
 export async function logOut() {

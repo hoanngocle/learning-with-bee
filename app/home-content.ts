@@ -7,7 +7,7 @@ export const courses = [
     emoji: "🐝",
     actionEmoji: "🚀",
     category: "Phonics & Pronunciation • 5 Levels",
-    image: "/home/oxford-phonics-world.jpg",
+    image: "/home/oxford-phonics-world.webp",
     levels: [
       { number: "1", title: "Alphabet", sample: "Aa - Zz", color: "cyan" },
       { number: "2", title: "Short Vowels", sample: "a, e, i, o, u", color: "amber" },
@@ -22,7 +22,7 @@ export const courses = [
     emoji: "🎀",
     actionEmoji: "🌟",
     category: "Communication & Songs • 7 Levels (Starter - L6)",
-    image: "/home/lets-go-english.jpg",
+    image: "/home/lets-go-english.webp",
     levels: [
       { number: "St", title: "Starter", color: "purple" },
       { number: "1", title: "Level 1" },

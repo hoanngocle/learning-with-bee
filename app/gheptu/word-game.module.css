@@ -132,7 +132,7 @@
   aspect-ratio: 1;
   border-radius: .5rem;
 }
-.photo > span { background: url("/games/breakfast.jpg") no-repeat; background-size: 307.6923%; }
+.photo > span { background: url("/games/breakfast.webp") no-repeat; background-size: 307.6923%; }
 .photo:nth-child(5) { outline: 2px solid var(--color-orange); outline-offset: 1px; }
 .clueIcon {
   display: grid;

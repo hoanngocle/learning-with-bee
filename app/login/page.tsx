@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { LoginPanel } from "./login-panel";
 import { getDisplayName } from "./session";
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
 
 async function AccountPanel() {
   const displayName = await getDisplayName();
-  return <LoginPanel displayName={displayName} />;
+  if (displayName !== null) redirect("/");
+  return <LoginPanel />;
 }
 
 export default function LoginPage() {

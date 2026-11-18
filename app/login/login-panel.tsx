@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { useActionState, useState } from "react";
 import { Icon } from "../material-icon";
 import { useLocale } from "../site-shell";
-import { logIn, logOut } from "./actions";
+import { logIn } from "./actions";
 import styles from "./login.module.css";
 
 const translations = {
@@ -20,10 +19,6 @@ const translations = {
     pending: "Đang đăng nhập…",
     required: "Bạn hãy nhập tên đăng nhập và mật khẩu.",
     invalid: "Tên đăng nhập hoặc mật khẩu chưa đúng.",
-    greeting: (name: string) => `Chào ${name}!`,
-    signedIn: "Bạn đã đăng nhập vào Learning With Bee.",
-    home: "Về trang chủ",
-    logOut: "Đăng xuất",
   },
   en: {
     title: "Log in",
@@ -37,30 +32,19 @@ const translations = {
     pending: "Logging in…",
     required: "Enter your username and password.",
     invalid: "The username or password is incorrect.",
-    greeting: (name: string) => `Hi, ${name}!`,
-    signedIn: "You’re logged in to Learning With Bee.",
-    home: "Back to home",
-    logOut: "Log out",
   },
 };
 
-export function LoginPanel({ displayName }: { displayName: string | null }) {
+export function LoginPanel() {
   const copy = translations[useLocale()];
 
   return (
     <>
       <div className={styles.intro}>
-        <h1>{displayName === null ? copy.title : copy.greeting(displayName)}</h1>
-        <p>{displayName === null ? copy.welcome : copy.signedIn}</p>
+        <h1>{copy.title}</h1>
+        <p>{copy.welcome}</p>
       </div>
-      {displayName === null ? (
-        <LoginForm copy={copy} />
-      ) : (
-        <form action={logOut} className={styles.form}>
-          <Link href="/" className={styles.primary}>{copy.home}</Link>
-          <button type="submit" className={styles.logout}>{copy.logOut}</button>
-        </form>
-      )}
+      <LoginForm copy={copy} />
     </>
   );
 }

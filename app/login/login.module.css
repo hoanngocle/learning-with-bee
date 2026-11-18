@@ -2,7 +2,7 @@
   display: grid;
   justify-items: center;
   align-content: start;
-  min-block-size: calc(100svh - 5rem);
+  min-block-size: 100svh;
   padding: clamp(5rem, 12vh, 7.5rem) 1.25rem 4rem;
 }
 
@@ -64,8 +64,10 @@
   font-weight: 800;
 }
 
-.field label > span { font-size: 1.125rem; color: var(--color-sound); }
-.field:first-child label > span { color: var(--color-honey); }
+.field label > svg { flex: none; font-size: 1.125rem; color: var(--color-sound); }
+.field:first-child label > svg { color: var(--color-honey); }
+
+.inputWrap > svg, .toggle { flex-shrink: 0; }
 
 .inputWrap {
   display: flex;
@@ -138,13 +140,3 @@
   background: #fff0ee;
   color: #93000a;
 }
-
-.logout {
-  min-block-size: 2.75rem;
-  border-radius: 0.75rem;
-  color: var(--color-brand);
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.logout:hover { background: #e9f6ff; }

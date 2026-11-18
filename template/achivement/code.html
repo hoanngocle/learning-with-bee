@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* Custom keyframe animations for Level Up & Sunburst effects */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes badgePopBounce {
+  0% { transform: scale(0.2) rotate(-15deg); opacity: 0; }
+  60% { transform: scale(1.15) rotate(4deg); opacity: 1; }
+  80% { transform: scale(0.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+@keyframes sparkleFloat {
+  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.9; }
+  50% { transform: translateY(-10px) scale(1.15); opacity: 1; }
+}
+@keyframes ribbonGlow {
+  0%, 100% { filter: drop-shadow(0 4px 10px rgba(241,155,51,0.6)); }
+  50% { filter: drop-shadow(0 6px 20px rgba(255,138,53,0.9)); }
+}
+.animate-spin-slow {
+  animation: spinSlow 22s linear infinite;
+}
+.animate-badge-pop {
+  animation: badgePopBounce 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.animate-sparkle {
+  animation: sparkleFloat 2.5s ease-in-out infinite;
+}
+.animate-ribbon {
+  animation: ribbonGlow 2s ease-in-out infinite;
+}
+</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "primary-container": "#ff8a35",
+          "level2-light": "#FFF4E2",
+          "on-primary-fixed": "#321300",
+          "on-secondary-fixed-variant": "#00468a",
+          "on-error-container": "#93000a",
+          "surface-container": "#e6eeff",
+          "on-primary-container": "#662e00",
+          "level1-accent": "#22A9C2",
+          "primary": "#984700",
+          "surface-container-lowest": "#ffffff",
+          "level2-accent": "#F19B33",
+          "surface-container-low": "#f0f3ff",
+          "inverse-surface": "#193150",
+          "on-secondary-fixed": "#001b3c",
+          "error": "#ba1a1a",
+          "primary-fixed": "#ffdbc8",
+          "primary-fixed-dim": "#ffb68a",
+          "outline-variant": "#ddc1b2",
+          "level4-light": "#F4EAFF",
+          "level5-light": "#FFF0F0",
+          "on-secondary": "#ffffff",
+          "tertiary": "#006c4d",
+          "level1-light": "#E4FAFF",
+          "cta-depth-shadow": "#E56D27",
+          "on-tertiary-fixed-variant": "#005139",
+          "secondary-fixed-dim": "#a8c8ff",
+          "on-primary": "#ffffff",
+          "surface-variant": "#d4e3ff",
+          "tertiary-container": "#4bbc91",
+          "background": "#f9f9ff",
+          "surface": "#f9f9ff",
+          "on-tertiary-fixed": "#002115",
+          "on-error": "#ffffff",
+          "outline": "#8a7265",
+          "secondary-fixed": "#d6e3ff",
+          "surface-canvas": "#FFFCF5",
+          "on-surface-variant": "#564337",
+          "secondary-container": "#6ea7fd",
+          "inverse-on-surface": "#ebf1ff",
+          "on-background": "#011c3a",
+          "surface-sky": "#E9F6FF",
+          "text-muted": "#7C94A8",
+          "brand-ink-dark": "#244F97",
+          "inverse-primary": "#ffb68a",
+          "surface-bright": "#f9f9ff",
+          "on-surface": "#011c3a",
+          "surface-cream": "#FFF4D8",
+          "surface-tint": "#984700",
+          "level3-accent": "#6AAD63",
+          "error-container": "#ffdad6",
+          "surface-card": "#FFFFFF",
+          "surface-container-high": "#dde9ff",
+          "surface-dim": "#c6dbff",
+          "level3-light": "#EBFAE9",
+          "surface-container-highest": "#d4e3ff",
+          "secondary": "#145eaf",
+          "level5-accent": "#E46B78",
+          "on-tertiary": "#ffffff",
+          "tertiary-fixed-dim": "#6cdbad",
+          "feedback-error-soft": "#FFF0EE",
+          "tertiary-fixed": "#89f8c8",
+          "on-tertiary-container": "#004731",
+          "level4-accent": "#9871C3",
+          "on-primary-fixed-variant": "#743500",
+          "on-secondary-container": "#003b76"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-lg": "1.5rem",
+          "space-xl": "2.25rem",
+          "margin-desktop": "4.5rem",
+          "gutter": "1.25rem",
+          "space-sm": "0.75rem",
+          "space-xs": "0.5rem",
+          "space-md": "1rem",
+          "gutter-desktop": "1.875rem",
+          "space-2xl": "3rem",
+          "margin": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-section": ["Nunito Sans"],
+          "action-primary": ["Nunito Sans"],
+          "display-hero": ["Nunito Sans"],
+          "caption-unit": ["Nunito Sans"],
+          "body-intro": ["Nunito Sans"],
+          "body-regular": ["Nunito Sans"],
+          "display-hero-mobile": ["Nunito Sans"],
+          "word-showcase": ["Nunito Sans"],
+          "word-showcase-mobile": ["Nunito Sans"],
+          "action-secondary": ["Nunito Sans"],
+          "headline-card": ["Nunito Sans"],
+          "badge-label": ["Nunito Sans"]
+        },
+        "fontSize": {
+          "headline-section": ["28px", {"lineHeight": "1.3", "letterSpacing": "-0.5px", "fontWeight": "900"}],
+          "action-primary": ["16px", {"lineHeight": "1.2", "fontWeight": "800"}],
+          "display-hero": ["58px", {"lineHeight": "1.15", "letterSpacing": "-1.5px", "fontWeight": "900"}],
+          "caption-unit": ["12px", {"lineHeight": "1.3", "fontWeight": "700"}],
+          "body-intro": ["17px", {"lineHeight": "1.65", "fontWeight": "400"}],
+          "body-regular": ["15px", {"lineHeight": "1.5", "fontWeight": "600"}],
+          "display-hero-mobile": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.8px", "fontWeight": "900"}],
+          "word-showcase": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.5px", "fontWeight": "900"}],
+          "word-showcase-mobile": ["34px", {"lineHeight": "1.15", "letterSpacing": "-0.3px", "fontWeight": "900"}],
+          "action-secondary": ["14px", {"lineHeight": "1.2", "fontWeight": "800"}],
+          "headline-card": ["18px", {"lineHeight": "1.35", "fontWeight": "800"}],
+          "badge-label": ["13px", {"lineHeight": "1.2", "fontWeight": "800"}]
+        }
+      }
+    }
+  }</script></head><body class="bg-surface-canvas font-body-regular text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface-card/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-xs group" href="#"><div class="w-11 h-11 rounded-full bg-level2-light flex items-center justify-center text-2xl shadow-[0_3px_0_#F19B33] transform group-hover:scale-105 transition-transform">🐝</div><div class="flex flex-col"><span class="font-headline-card text-headline-card text-brand-ink-dark tracking-tight leading-none">Learning With Bee</span><span class="font-caption-unit text-caption-unit text-primary-container uppercase tracking-wide">Bé vui học tiếng Anh</span></div></a></div><nav class="hidden lg:flex items-center gap-space-xs p-space-xs bg-surface-container-low rounded-full" data-active-classes="bg-primary-container text-on-primary font-bold shadow-[0_4px_0_#E56D27]"><a class="px-space-md py-space-xs rounded-full font-action-secondary text-action-secondary text-on-surface-variant hover:text-on-surface transition-all" data-path="trang-chu" href="#">Trang chủ</a><a class="px-space-md py-space-xs rounded-full font-action-secondary text-action-secondary text-on-surface-variant hover:text-on-surface transition-all" data-path="bang-chu-cai" href="#">Bảng chữ cái</a><a class="px-space-md py-space-xs rounded-full font-action-secondary text-action-secondary text-on-surface-variant hover:text-on-surface transition-all" data-path="to-mau-sang-tao" href="#">Tô màu sáng tạo</a><a class="px-space-md py-space-xs rounded-full font-action-secondary text-action-secondary text-on-surface-variant hover:text-on-surface transition-all" data-path="mini-game" href="#">Mini Game</a><a class="px-space-md py-space-xs rounded-full font-action-secondary text-action-secondary text-on-surface-variant hover:text-on-surface transition-all" data-path="bang-xep-hang" href="#">Bảng xếp hạng</a></nav><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-cream rounded-full border border-level2-accent/30 shadow-[0_3px_0_#F19B33]"><span class="text-base">⭐</span><span class="font-badge-label text-badge-label text-primary font-black">380 sao</span></div><button class="w-10 h-10 rounded-full bg-level1-light text-level1-accent flex items-center justify-center hover:bg-level1-accent hover:text-on-secondary transition-colors" title="Âm thanh vui nhộn" type="button"><span class="material-symbols-outlined text-[20px]">volume_up</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface-canvas min-h-screen"><div class="flex flex-col w-full">
+<!-- Container with modular 8px rhythm, maximum 1280px -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-space-lg w-full flex flex-col gap-space-xl">
+<!-- Top Progress & Rank Banner (Referencing Inspiration 1) -->
+<section class="flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col">
+<div class="inline-flex items-center gap-2 mb-1">
+<span class="text-xs uppercase tracking-wider font-extrabold text-level2-accent bg-level2-light px-3 py-1 rounded-full shadow-[0_2px_0_#F19B33]">Mỗi ngày một chút tiến bộ ✨</span>
+<span class="text-xs font-bold text-level4-accent bg-level4-light px-2.5 py-0.5 rounded-full flex items-center gap-1">
+<span>🖤</span> Kuromi &amp; Bee
+            </span>
+</div>
+<h1 class="font-display-hero text-headline-section lg:text-display-hero text-brand-ink-dark flex items-center gap-3">
+            Thành tích của bé <span class="inline-block transform hover:rotate-12 transition-transform">🏆</span>
+</h1>
+<p class="font-body-intro text-body-intro text-on-surface-variant max-w-2xl mt-1">
+            Những nỗ lực nhỏ, những cột mốc đáng nhớ cùng Bạn Ong Vàng chăm chỉ &amp; người bạn Kuromi tinh nghịch!
+          </p>
+</div>
+<div class="flex flex-wrap items-center gap-3 self-start md:self-auto">
+<button class="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-gradient-to-r from-level4-accent to-level2-accent text-white font-action-primary text-action-primary rounded-xl shadow-[0_5px_0_#743500] hover:shadow-[0_2px_0_#743500] hover:translate-y-1 active:translate-y-1 transition-all group cursor-pointer animate-pulse" id="btn-trigger-levelup" title="Mô phỏng hiệu ứng Lên Cấp &amp; Mở Khóa Huy Hiệu">
+<span class="text-xl">🎉</span>
+<span>Mô phỏng Thăng Cấp!</span>
+</button>
+<button class="inline-flex items-center justify-center gap-space-xs px-6 py-3.5 bg-primary-container text-on-primary font-action-primary text-action-primary rounded-xl shadow-[0_5px_0_#E56D27] hover:shadow-[0_2px_0_#E56D27] hover:translate-y-1 active:translate-y-1 transition-all group cursor-pointer">
+<span>Tiếp tục học vui</span>
+<span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5">arrow_outward</span>
+</button>
+</div>
+</div>
+<!-- Level Status Card with Bee & Kuromi aesthetic -->
+<div class="bg-surface-card rounded-[24px] p-6 lg:p-7 shadow-[0_8px_20px_rgba(36,79,151,0.06)] relative overflow-hidden flex flex-col md:flex-row items-center gap-6">
+<!-- Cute decorative accents in background -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-level4-light rounded-full opacity-60 pointer-events-none"></div>
+<div class="absolute right-20 -top-6 w-20 h-20 bg-surface-cream rounded-full opacity-60 pointer-events-none"></div>
+<!-- Mascot & Level Seal -->
+<div class="relative flex-shrink-0">
+<div class="w-24 h-24 rounded-full bg-gradient-to-b from-level2-light to-surface-cream flex flex-col items-center justify-center shadow-[0_6px_0_#F19B33] relative">
+<!-- Small Kuromi ribbon ears decoration -->
+<div class="absolute -top-3 -left-1 text-lg transform -rotate-12 select-none" title="Kuromi Ear Decor">🐰</div>
+<div class="absolute -top-3 -right-1 text-lg transform rotate-12 select-none" title="Kuromi Star">✨</div>
+<span class="text-[11px] font-extrabold tracking-widest text-primary uppercase leading-tight font-caption-unit">LEVEL</span>
+<span class="text-3xl font-black text-brand-ink-dark leading-none">5</span>
+<div class="absolute -bottom-2 px-2 py-0.5 bg-brand-ink-dark text-on-secondary rounded-full text-[10px] font-bold shadow-sm">
+              PRO 🐝
+            </div>
+</div>
+</div>
+<!-- Level Info & Progress Bar -->
+<div class="flex-1 w-full flex flex-col gap-2.5 z-10">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div>
+<span class="font-caption-unit text-caption-unit uppercase tracking-wider text-level4-accent font-extrabold flex items-center gap-1.5">
+<span>⭐</span> HÀNH TRÌNH HỌC TẬP THẦN KỲ
+              </span>
+<h2 class="font-headline-card text-headline-card text-brand-ink-dark font-black tracking-tight mt-0.5">
+                Nhà Thám Hiểm Từ Vựng Siêu Đẳng
+              </h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="bg-level4-light hover:bg-level4-accent hover:text-white text-level4-accent text-xs font-black px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm transition-all border border-level4-accent/30 cursor-pointer" id="quick-levelup-badge-btn" title="Xem hoạt họa lên cấp ngay">
+<span>🎊 Xem Hoạt Họa Lên Cấp</span>
+</button>
+<div class="bg-surface-container-low px-3.5 py-1.5 rounded-full flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="text-xs font-bold text-brand-ink-dark">Cấp độ 5: Vườn Hoa Tri Thức</span>
+</div>
+</div>
+</div>
+<!-- Progress Bar Slider -->
+<div class="w-full bg-surface-container-low h-4 rounded-full overflow-hidden p-0.5 shadow-inner transition-transform duration-500" id="target-progress-bar">
+<div class="h-full bg-gradient-to-r from-level2-accent via-primary-container to-level4-accent rounded-full transition-all duration-1000 relative" style="width: 72.5%;">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
+</div>
+</div>
+<!-- Bottom EXP Stats -->
+<div class="flex items-center justify-between text-xs font-bold text-on-surface-variant">
+<span class="flex items-center gap-1 text-brand-ink-dark">
+<span class="material-symbols-outlined text-sm text-primary-container">bolt</span>
+<strong>1.450</strong> / 2.000 EXP để lên Level 6
+            </span>
+<span class="flex items-center gap-1.5 text-primary font-black bg-surface-cream px-2.5 py-0.5 rounded-md">
+<span>🌟</span> Tổng 12.850 EXP
+            </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity & Calendar & Streak (Referencing Inspiration 1) -->
+<section class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-card text-headline-card text-brand-ink-dark font-black flex items-center gap-2">
+<span>Hoạt động gần đây</span>
+<span class="text-xl">📅</span>
+</h3>
+<span class="text-xs text-text-muted font-bold hidden sm:inline">Chỉ cần 1 bài học nhỏ để thắp sáng chuỗi mỗi ngày!</span>
+</div>
+<div class="bg-surface-card rounded-[24px] p-6 lg:p-8 shadow-[0_8px_20px_rgba(36,79,151,0.06)] grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<!-- Col 1: Next Milestone Preview (approx 3.5 cols) -->
+<div class="md:col-span-4 flex flex-col items-center text-center p-5 bg-surface-container-low rounded-2xl relative">
+<div class="absolute top-3 right-3 text-xs bg-surface-cream text-primary font-bold px-2 py-0.5 rounded-full">Sắp tới</div>
+<span class="text-xs uppercase font-extrabold text-on-surface-variant tracking-wider mb-1 font-caption-unit">CỘT MỐC TIẾP THEO</span>
+<p class="font-headline-card text-sm text-brand-ink-dark mb-4">Hoàn thành 100 bài học 100%</p>
+<!-- Big Shield Icon -->
+<div class="w-24 h-28 relative flex items-center justify-center mb-3">
+<svg class="w-full h-full drop-shadow-md" viewbox="0 0 100 120">
+<path d="M50 5 L85 20 L85 65 C85 90 50 115 50 115 C50 115 15 90 15 65 L15 20 Z" fill="#F4EAFF" stroke="#9871C3" stroke-width="4"></path>
+<circle cx="50" cy="52" fill="#FFFFFF" r="22"></circle>
+<!-- Trophy / Star Icon -->
+<path d="M42 45 L58 45 L54 62 L46 62 Z" fill="#9871C3"></path>
+<circle cx="50" cy="42" fill="#F19B33" r="7"></circle>
+<path d="M38 42 L42 48 L44 43 Z" fill="#9871C3"></path>
+<path d="M62 42 L58 48 L56 43 Z" fill="#9871C3"></path>
+<rect fill="#9871C3" height="4" rx="1" width="12" x="44" y="62"></rect>
+<rect fill="#244F97" height="5" rx="2" width="20" x="40" y="66"></rect>
+</svg>
+<span class="absolute bottom-6 font-black text-xs text-white bg-level4-accent px-2 py-0.5 rounded-full">100</span>
+</div>
+<p class="text-xs font-semibold text-text-muted">Huy hiệu siêu cấp &amp; +2% EXP đang chờ đón bé mở khóa!</p>
+<div class="w-full bg-white rounded-full h-2.5 mt-3 overflow-hidden">
+<div class="bg-level4-accent h-full rounded-full" style="width: 78%;"></div>
+</div>
+<span class="text-[11px] font-bold text-level4-accent mt-1">Đã hoàn thành 78 / 100</span>
+</div>
+<!-- Col 2: Calendar Attendance (approx 5 cols) -->
+<div class="md:col-span-5 flex flex-col">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-black text-brand-ink-dark">Tháng 11 năm 2026</span>
+<span class="text-xs bg-level1-light text-level1-accent font-extrabold px-2 py-0.5 rounded-md">8 ngày học</span>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Tháng trước" class="w-7 h-7 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button aria-label="Tháng sau" class="w-7 h-7 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="grid grid-cols-7 gap-1.5 text-center text-xs">
+<!-- Headers -->
+<span class="font-bold text-text-muted py-1">CN</span>
+<span class="font-bold text-text-muted py-1">T2</span>
+<span class="font-bold text-text-muted py-1">T3</span>
+<span class="font-bold text-text-muted py-1">T4</span>
+<span class="font-bold text-text-muted py-1">T5</span>
+<span class="font-bold text-text-muted py-1">T6</span>
+<span class="font-bold text-text-muted py-1">T7</span>
+<!-- Days -->
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center">1</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center">2</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center bg-level3-light text-level3-accent relative">
+              3<span class="text-[9px]">🌻</span>
+</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center bg-level3-light text-level3-accent relative">
+              4<span class="text-[9px]">🐝</span>
+</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center">5</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center bg-level3-light text-level3-accent">
+              6<span class="text-[9px]">🌻</span>
+</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center">7</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center">8</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center bg-level3-light text-level3-accent">
+              9<span class="text-[9px]">🐝</span>
+</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center bg-level3-light text-level3-accent">
+              10<span class="text-[9px]">🌻</span>
+</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center">11</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center bg-level3-light text-level3-accent">
+              12<span class="text-[9px]">🐝</span>
+</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center">13</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold flex flex-col items-center justify-center bg-level3-light text-level3-accent">
+              14<span class="text-[9px]">🌻</span>
+</div>
+<!-- Current Active Day (18) -->
+<div class="py-2 rounded-xl text-on-surface-variant font-bold">15</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold">16</div>
+<div class="py-2 rounded-xl text-on-surface-variant font-bold">17</div>
+<div class="py-2 rounded-xl font-black bg-primary-container text-on-primary shadow-[0_3px_0_#E56D27] flex flex-col items-center justify-center scale-105">
+              18<span class="text-[8px] leading-tight">Hôm nay</span>
+</div>
+<div class="py-2 rounded-xl text-text-muted font-medium">19</div>
+<div class="py-2 rounded-xl text-text-muted font-medium">20</div>
+<div class="py-2 rounded-xl text-text-muted font-medium">21</div>
+<div class="py-2 rounded-xl text-text-muted font-medium">22</div>
+<div class="py-2 rounded-xl text-text-muted font-medium">23</div>
+<div class="py-2 rounded-xl text-text-muted font-medium">24</div>
+<div class="py-2 rounded-xl text-text-muted font-medium">25</div>
+<div class="py-2 rounded-xl text-text-muted font-medium">26</div>
+<div class="py-2 rounded-xl text-text-muted font-medium">27</div>
+<div class="py-2 rounded-xl text-text-muted font-medium">28</div>
+</div>
+</div>
+<!-- Col 3: Streak Flame (approx 3 cols) -->
+<div class="md:col-span-3 flex flex-col items-center text-center justify-center border-t md:border-t-0 md:border-l border-surface-container-low pt-4 md:pt-0 md:pl-6">
+<span class="text-xs uppercase font-extrabold text-on-surface-variant tracking-wider font-caption-unit mb-2">CHUỖI HIỆN TẠI</span>
+<!-- Animated Flame Bubble -->
+<div class="relative w-24 h-24 rounded-full bg-gradient-to-tr from-level5-light via-surface-cream to-level2-light flex items-center justify-center shadow-[0_6px_0_#E56D27] mb-3">
+<div class="text-4xl animate-bounce">🔥</div>
+<span class="absolute -bottom-1 bg-brand-ink-dark text-on-secondary text-xs font-black px-2.5 py-0.5 rounded-full">
+              15 ngày
+            </span>
+</div>
+<p class="font-headline-card text-xs text-primary font-bold">Học hôm nay để tiếp lửa 🔥</p>
+<p class="text-[12px] text-text-muted mt-1 font-semibold">
+            Kỷ lục của bé: <strong class="text-brand-ink-dark">28 ngày</strong>
+</p>
+</div>
+</div>
+</section>
+<!-- Achievement Collection Section (Referencing Inspiration 2 & 3) -->
+<section class="flex flex-col gap-space-lg">
+<!-- Stats 3 Cards Row (as shown in image 2) -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="bg-surface-card p-5 rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex flex-col justify-center">
+<span class="text-xs text-text-muted font-bold uppercase tracking-wider font-caption-unit">TỔNG LƯỢT HỌC</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-3xl font-black text-brand-ink-dark">128</span>
+<span class="text-xs font-bold text-on-surface-variant">lượt vui học</span>
+</div>
+</div>
+<div class="bg-surface-card p-5 rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex flex-col justify-center">
+<span class="text-xs text-text-muted font-bold uppercase tracking-wider font-caption-unit">SỐ NGÀY ĐÃ HỌC</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-3xl font-black text-brand-ink-dark">45</span>
+<span class="text-xs font-bold text-on-surface-variant">ngày khám phá</span>
+</div>
+</div>
+<div class="bg-surface-card p-5 rounded-2xl shadow-[0_4px_12px_rgba(0,0,0,0.03)] flex flex-col justify-center">
+<span class="text-xs text-text-muted font-bold uppercase tracking-wider font-caption-unit">CHUỖI DÀI NHẤT</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="text-3xl font-black text-tertiary">28</span>
+<span class="text-xs font-bold text-on-surface-variant">ngày liên tiếp ⭐</span>
+</div>
+</div>
+</div>
+<!-- Collection Header & Filter Pills -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="text-2xl">🏆</span>
+<h3 class="font-headline-card text-headline-card text-brand-ink-dark font-black">Bộ sưu tập thành tựu</h3>
+</div>
+<div class="text-sm font-extrabold text-on-surface-variant bg-surface-card px-4 py-1.5 rounded-full shadow-sm self-start sm:self-auto">
+<span class="text-tertiary">18</span> / 43 huy hiệu đã mở khóa
+          </div>
+</div>
+<!-- Buff Note Bar -->
+<div class="bg-level3-light text-on-tertiary-container px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 shadow-sm">
+<span class="text-base">✨</span>
+<span><strong>Buff huy hiệu hiện tại: <span class="text-tertiary underline decoration-2">+12.5% EXP</span>.</strong> Tất cả huy hiệu đã mở cộng dồn, không giới hạn tổng. Huy hiệu mới có hiệu lực từ bài học tiếp theo!</span>
+</div>
+<!-- Filter Buttons (Tất cả / Đã đạt được / Chưa mở khóa) -->
+<div class="flex items-center gap-2 mt-1" id="filter-container">
+<button class="filter-btn active-filter px-5 py-2 rounded-full font-action-secondary text-xs sm:text-sm font-extrabold bg-tertiary text-on-tertiary shadow-[0_3px_0_#004731] transition-all cursor-pointer" data-filter="all">
+            Tất cả
+          </button>
+<button class="filter-btn px-5 py-2 rounded-full font-action-secondary text-xs sm:text-sm font-extrabold bg-surface-card text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer shadow-sm" data-filter="unlocked">
+            Đã đạt được (18)
+          </button>
+<button class="filter-btn px-5 py-2 rounded-full font-action-secondary text-xs sm:text-sm font-extrabold bg-surface-card text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer shadow-sm" data-filter="locked">
+            Chưa mở khóa (25)
+          </button>
+</div>
+</div>
+<!-- CATEGORY 1: LƯỢT HỌC TÍCH LŨY (IMAGE_3) -->
+<div class="flex flex-col gap-3">
+<div class="flex items-baseline justify-between border-b-2 border-surface-container-high pb-2">
+<div>
+<h4 class="font-headline-card text-base text-brand-ink-dark font-black">Lượt học tích lũy</h4>
+<p class="text-xs text-text-muted mt-0.5">Mỗi lần đánh dấu flashcard, luyện viết hoặc nộp bài mini game được tính là một lượt.</p>
+</div>
+<span class="text-xs font-bold text-primary bg-surface-cream px-2.5 py-0.5 rounded-md">128 lượt học</span>
+</div>
+<!-- Grid of 6 Vertical Badge Cards (Inspiration 3 format) -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 pt-1">
+<!-- Badge 1: 1 Lượt (UNLOCKED) -->
+<div class="badge-item unlocked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="3"></path>
+<path d="M50 16 L76 28 L76 64 C76 82 50 102 50 102 C50 102 24 82 24 64 L24 28 Z" fill="#FFFFFF"></path>
+<!-- Graduation Cap / Scholar Icon -->
+<polygon fill="#F19B33" points="50,38 72,48 50,58 28,48"></polygon>
+<rect fill="#FF8A35" height="12" rx="4" width="28" x="36" y="52"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-level2-accent text-on-primary font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">1</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">1 lượt học</span>
+<span class="text-[11px] font-bold text-tertiary mt-0.5">+0,5% EXP</span>
+<span class="text-[10px] font-extrabold text-level3-accent bg-level3-light px-2 py-0.5 rounded-full mt-2">✓ Đã đạt</span>
+</div>
+<!-- Badge 2: 10 Lượt (UNLOCKED) -->
+<div class="badge-item unlocked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="3"></path>
+<path d="M50 16 L76 28 L76 64 C76 82 50 102 50 102 C50 102 24 82 24 64 L24 28 Z" fill="#FFFFFF"></path>
+<polygon fill="#F19B33" points="50,38 72,48 50,58 28,48"></polygon>
+<rect fill="#FF8A35" height="12" rx="4" width="28" x="36" y="52"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-level2-accent text-on-primary font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">10</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">10 lượt học</span>
+<span class="text-[11px] font-bold text-tertiary mt-0.5">+1% EXP</span>
+<span class="text-[10px] font-extrabold text-level3-accent bg-level3-light px-2 py-0.5 rounded-full mt-2">✓ Đã đạt</span>
+</div>
+<!-- Badge 3: 50 Lượt (UNLOCKED) -->
+<div class="badge-item unlocked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<!-- Golden Laurel Wings behind -->
+<path d="M12 40 C12 25 30 20 30 20 C30 35 22 55 12 40 Z" fill="#F19B33"></path>
+<path d="M88 40 C88 25 70 20 70 20 C70 35 78 55 88 40 Z" fill="#F19B33"></path>
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="3"></path>
+<polygon fill="#F19B33" points="50,38 72,48 50,58 28,48"></polygon>
+<rect fill="#FF8A35" height="12" rx="4" width="28" x="36" y="52"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-level2-accent text-on-primary font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">50</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">50 lượt học</span>
+<span class="text-[11px] font-bold text-tertiary mt-0.5">+1,5% EXP</span>
+<span class="text-[10px] font-extrabold text-level3-accent bg-level3-light px-2 py-0.5 rounded-full mt-2">✓ Đã đạt</span>
+</div>
+<!-- Badge 4: 100 Lượt (UNLOCKED) -->
+<div class="badge-item unlocked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M10 35 C10 18 28 12 28 12 C28 32 18 52 10 35 Z" fill="#9871C3"></path>
+<path d="M90 35 C90 18 72 12 72 12 C72 32 82 52 90 35 Z" fill="#9871C3"></path>
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#F4EAFF" stroke="#9871C3" stroke-width="3"></path>
+<polygon fill="#9871C3" points="50,38 72,48 50,58 28,48"></polygon>
+<rect fill="#244F97" height="12" rx="4" width="28" x="36" y="52"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-level4-accent text-on-secondary font-black text-xs px-2 py-0.5 rounded-full shadow-sm">100</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">100 lượt học</span>
+<span class="text-[11px] font-bold text-tertiary mt-0.5">+2% EXP</span>
+<span class="text-[10px] font-extrabold text-level3-accent bg-level3-light px-2 py-0.5 rounded-full mt-2">✓ Đã đạt</span>
+</div>
+<!-- Badge 5: 250 Lượt (LOCKED) -->
+<div class="badge-item locked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="w-20 h-24 relative flex items-center justify-center my-2 filter grayscale contrast-75">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#F0F3FF" stroke="#A8C8FF" stroke-width="3"></path>
+<polygon fill="#7C94A8" points="50,38 72,48 50,58 28,48"></polygon>
+<rect fill="#7C94A8" height="12" rx="4" width="28" x="36" y="52"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-text-muted text-white font-bold text-xs px-2 py-0.5 rounded-full">250</div>
+</div>
+<span class="font-headline-card text-xs text-on-surface font-black mt-1">250 lượt học</span>
+<span class="text-[11px] font-bold text-text-muted mt-0.5">+2,5% EXP</span>
+<span class="text-[10px] font-semibold text-text-muted bg-surface-container-low px-2 py-0.5 rounded-full mt-2">128/250 • Khóa</span>
+</div>
+<!-- Badge 6: 500 Lượt (LOCKED) -->
+<div class="badge-item locked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="w-20 h-24 relative flex items-center justify-center my-2 filter grayscale contrast-75">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#F0F3FF" stroke="#A8C8FF" stroke-width="3"></path>
+<polygon fill="#7C94A8" points="50,38 72,48 50,58 28,48"></polygon>
+<rect fill="#7C94A8" height="12" rx="4" width="28" x="36" y="52"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-text-muted text-white font-bold text-xs px-2 py-0.5 rounded-full">500</div>
+</div>
+<span class="font-headline-card text-xs text-on-surface font-black mt-1">500 lượt học</span>
+<span class="text-[11px] font-bold text-text-muted mt-0.5">+3% EXP</span>
+<span class="text-[10px] font-semibold text-text-muted bg-surface-container-low px-2 py-0.5 rounded-full mt-2">128/500 • Khóa</span>
+</div>
+</div>
+</div>
+<!-- CATEGORY 2: BÀI ĐẠT ĐIỂM 100% (IMAGE_2) -->
+<div class="flex flex-col gap-3">
+<div class="flex items-baseline justify-between border-b-2 border-surface-container-high pb-2">
+<div>
+<h4 class="font-headline-card text-base text-brand-ink-dark font-black">Bài học đạt điểm tuyệt đối 100% 🎯</h4>
+<p class="text-xs text-text-muted mt-0.5">Hoàn thành bài luyện từ vựng hoặc mini game không sai bất kỳ câu nào.</p>
+</div>
+<span class="text-xs font-bold text-level1-accent bg-level1-light px-2.5 py-0.5 rounded-md">8 bài đạt 100%</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 pt-1">
+<!-- Cup 1: 1 bài đạt 100% (UNLOCKED) -->
+<div class="badge-item unlocked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="3"></path>
+<!-- Trophy Graphic -->
+<path d="M38 38 L62 38 C62 50 54 58 50 58 C46 58 38 50 38 38 Z" fill="#F19B33"></path>
+<path d="M34 40 C30 40 28 46 34 50" fill="none" stroke="#F19B33" stroke-width="2.5"></path>
+<path d="M66 40 C70 40 72 46 66 50" fill="none" stroke="#F19B33" stroke-width="2.5"></path>
+<rect fill="#F19B33" height="8" width="6" x="47" y="58"></rect>
+<rect fill="#E56D27" height="4" rx="2" width="16" x="42" y="66"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-level2-accent text-on-primary font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">1</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">1 bài đạt 100%</span>
+<span class="text-[11px] font-bold text-tertiary mt-0.5">+0,5% EXP</span>
+<span class="text-[10px] font-extrabold text-level3-accent bg-level3-light px-2 py-0.5 rounded-full mt-2">✓ Đã đạt</span>
+</div>
+<!-- Cup 2: 3 bài đạt 100% (UNLOCKED) -->
+<div class="badge-item unlocked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="3"></path>
+<path d="M38 38 L62 38 C62 50 54 58 50 58 C46 58 38 50 38 38 Z" fill="#F19B33"></path>
+<path d="M34 40 C30 40 28 46 34 50" fill="none" stroke="#F19B33" stroke-width="2.5"></path>
+<path d="M66 40 C70 40 72 46 66 50" fill="none" stroke="#F19B33" stroke-width="2.5"></path>
+<rect fill="#F19B33" height="8" width="6" x="47" y="58"></rect>
+<rect fill="#E56D27" height="4" rx="2" width="16" x="42" y="66"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-level2-accent text-on-primary font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">3</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">3 bài đạt 100%</span>
+<span class="text-[11px] font-bold text-tertiary mt-0.5">+1% EXP</span>
+<span class="text-[10px] font-extrabold text-level3-accent bg-level3-light px-2 py-0.5 rounded-full mt-2">✓ Đã đạt</span>
+</div>
+<!-- Cup 3: 5 bài đạt 100% (UNLOCKED) -->
+<div class="badge-item unlocked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<!-- Wings -->
+<path d="M12 40 C12 25 30 20 30 20 C30 35 22 55 12 40 Z" fill="#22A9C2"></path>
+<path d="M88 40 C88 25 70 20 70 20 C70 35 78 55 88 40 Z" fill="#22A9C2"></path>
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#E4FAFF" stroke="#22A9C2" stroke-width="3"></path>
+<path d="M38 38 L62 38 C62 50 54 58 50 58 C46 58 38 50 38 38 Z" fill="#22A9C2"></path>
+<rect fill="#22A9C2" height="8" width="6" x="47" y="58"></rect>
+<rect fill="#145EAF" height="4" rx="2" width="16" x="42" y="66"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-level1-accent text-on-secondary font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">5</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">5 bài đạt 100%</span>
+<span class="text-[11px] font-bold text-tertiary mt-0.5">+1,5% EXP</span>
+<span class="text-[10px] font-extrabold text-level3-accent bg-level3-light px-2 py-0.5 rounded-full mt-2">✓ Đã đạt</span>
+</div>
+<!-- Cup 4: 10 bài đạt 100% (IN PROGRESS / LOCKED) -->
+<div class="badge-item locked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-sm relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2 filter grayscale-[60%]">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#F0F3FF" stroke="#6EA7FD" stroke-width="3"></path>
+<path d="M38 38 L62 38 C62 50 54 58 50 58 C46 58 38 50 38 38 Z" fill="#6EA7FD"></path>
+<rect fill="#6EA7FD" height="8" width="6" x="47" y="58"></rect>
+<rect fill="#244F97" height="4" rx="2" width="16" x="42" y="66"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-secondary-container text-white font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">10</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">10 bài đạt 100%</span>
+<span class="text-[11px] font-bold text-primary mt-0.5">+2% EXP</span>
+<span class="text-[10px] font-bold text-primary bg-surface-cream px-2 py-0.5 rounded-full mt-2">8/10 • Đang mở</span>
+</div>
+<!-- Cup 5: 25 bài đạt 100% (LOCKED) -->
+<div class="badge-item locked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="w-20 h-24 relative flex items-center justify-center my-2 filter grayscale contrast-75">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#F0F3FF" stroke="#A8C8FF" stroke-width="3"></path>
+<path d="M38 38 L62 38 C62 50 54 58 50 58 C46 58 38 50 38 38 Z" fill="#7C94A8"></path>
+<rect fill="#7C94A8" height="8" width="6" x="47" y="58"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-text-muted text-white font-bold text-xs px-2 py-0.5 rounded-full">25</div>
+</div>
+<span class="font-headline-card text-xs text-on-surface font-black mt-1">25 bài đạt 100%</span>
+<span class="text-[11px] font-bold text-text-muted mt-0.5">+2,5% EXP</span>
+<span class="text-[10px] font-semibold text-text-muted bg-surface-container-low px-2 py-0.5 rounded-full mt-2">8/25 • Khóa</span>
+</div>
+<!-- Cup 6: 50 bài đạt 100% (LOCKED) -->
+<div class="badge-item locked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="w-20 h-24 relative flex items-center justify-center my-2 filter grayscale contrast-75">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#F0F3FF" stroke="#A8C8FF" stroke-width="3"></path>
+<path d="M38 38 L62 38 C62 50 54 58 50 58 C46 58 38 50 38 38 Z" fill="#7C94A8"></path>
+<rect fill="#7C94A8" height="8" width="6" x="47" y="58"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-text-muted text-white font-bold text-xs px-2 py-0.5 rounded-full">50</div>
+</div>
+<span class="font-headline-card text-xs text-on-surface font-black mt-1">50 bài đạt 100%</span>
+<span class="text-[11px] font-bold text-text-muted mt-0.5">+3% EXP</span>
+<span class="text-[10px] font-semibold text-text-muted bg-surface-container-low px-2 py-0.5 rounded-full mt-2">8/50 • Khóa</span>
+</div>
+</div>
+</div>
+<!-- CATEGORY 3: TỔNG NGÀY HỌC (IMAGE_2) -->
+<div class="flex flex-col gap-3">
+<div class="flex items-baseline justify-between border-b-2 border-surface-container-high pb-2">
+<div>
+<h4 class="font-headline-card text-base text-brand-ink-dark font-black">Tổng ngày học 🗓️</h4>
+<p class="text-xs text-text-muted mt-0.5">Cộng dồn ngày có hoạt động học tập, không cần chuỗi liên tiếp.</p>
+</div>
+<span class="text-xs font-bold text-level4-accent bg-level4-light px-2.5 py-0.5 rounded-md">45 ngày đã học</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 pt-1">
+<!-- Shield 1: 7 ngày (UNLOCKED) -->
+<div class="badge-item unlocked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="3"></path>
+<!-- Calendar graphic -->
+<rect fill="#F19B33" height="24" rx="4" width="32" x="34" y="40"></rect>
+<circle cx="42" cy="46" fill="#FFFFFF" r="2"></circle>
+<circle cx="50" cy="46" fill="#FFFFFF" r="2"></circle>
+<circle cx="58" cy="46" fill="#FFFFFF" r="2"></circle>
+<circle cx="42" cy="54" fill="#FFFFFF" r="2"></circle>
+<circle cx="50" cy="54" fill="#FFFFFF" r="2"></circle>
+<circle cx="58" cy="54" fill="#FFFFFF" r="2"></circle>
+</svg>
+<div class="absolute -bottom-1 bg-level2-accent text-on-primary font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">7</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">7 ngày học</span>
+<span class="text-[11px] font-bold text-tertiary mt-0.5">+0,5% EXP</span>
+<span class="text-[10px] font-extrabold text-level3-accent bg-level3-light px-2 py-0.5 rounded-full mt-2">✓ Đã đạt</span>
+</div>
+<!-- Shield 2: 30 ngày (UNLOCKED) -->
+<div class="badge-item unlocked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="3"></path>
+<rect fill="#F19B33" height="24" rx="4" width="32" x="34" y="40"></rect>
+<circle cx="42" cy="46" fill="#FFFFFF" r="2"></circle>
+<circle cx="50" cy="46" fill="#FFFFFF" r="2"></circle>
+<circle cx="58" cy="46" fill="#FFFFFF" r="2"></circle>
+<circle cx="42" cy="54" fill="#FFFFFF" r="2"></circle>
+<circle cx="50" cy="54" fill="#FFFFFF" r="2"></circle>
+<circle cx="58" cy="54" fill="#FFFFFF" r="2"></circle>
+</svg>
+<div class="absolute -bottom-1 bg-level2-accent text-on-primary font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">30</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">30 ngày học</span>
+<span class="text-[11px] font-bold text-tertiary mt-0.5">+1% EXP</span>
+<span class="text-[10px] font-extrabold text-level3-accent bg-level3-light px-2 py-0.5 rounded-full mt-2">✓ Đã đạt</span>
+</div>
+<!-- Shield 3: 60 ngày (IN PROGRESS / LOCKED) -->
+<div class="badge-item locked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-sm relative group">
+<div class="w-20 h-24 relative flex items-center justify-center my-2 filter grayscale-[40%]">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#F4EAFF" stroke="#9871C3" stroke-width="3"></path>
+<rect fill="#9871C3" height="24" rx="4" width="32" x="34" y="40"></rect>
+<circle cx="42" cy="46" fill="#FFFFFF" r="2"></circle>
+<circle cx="50" cy="46" fill="#FFFFFF" r="2"></circle>
+<circle cx="58" cy="46" fill="#FFFFFF" r="2"></circle>
+</svg>
+<div class="absolute -bottom-1 bg-level4-accent text-on-secondary font-black text-xs px-2.5 py-0.5 rounded-full shadow-sm">60</div>
+</div>
+<span class="font-headline-card text-xs text-brand-ink-dark font-black mt-1">60 ngày học</span>
+<span class="text-[11px] font-bold text-level4-accent mt-0.5">+1,5% EXP</span>
+<span class="text-[10px] font-bold text-level4-accent bg-level4-light px-2 py-0.5 rounded-full mt-2">45/60 • Đang mở</span>
+</div>
+<!-- Shield 4: 100 ngày (LOCKED) -->
+<div class="badge-item locked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="w-20 h-24 relative flex items-center justify-center my-2 filter grayscale contrast-75">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#F0F3FF" stroke="#A8C8FF" stroke-width="3"></path>
+<rect fill="#7C94A8" height="24" rx="4" width="32" x="34" y="40"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-text-muted text-white font-bold text-xs px-2 py-0.5 rounded-full">100</div>
+</div>
+<span class="font-headline-card text-xs text-on-surface font-black mt-1">100 ngày học</span>
+<span class="text-[11px] font-bold text-text-muted mt-0.5">+2% EXP</span>
+<span class="text-[10px] font-semibold text-text-muted bg-surface-container-low px-2 py-0.5 rounded-full mt-2">45/100 • Khóa</span>
+</div>
+<!-- Shield 5: 180 ngày (LOCKED) -->
+<div class="badge-item locked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="w-20 h-24 relative flex items-center justify-center my-2 filter grayscale contrast-75">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#F0F3FF" stroke="#A8C8FF" stroke-width="3"></path>
+<rect fill="#7C94A8" height="24" rx="4" width="32" x="34" y="40"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-text-muted text-white font-bold text-xs px-2 py-0.5 rounded-full">180</div>
+</div>
+<span class="font-headline-card text-xs text-on-surface font-black mt-1">180 ngày học</span>
+<span class="text-[11px] font-bold text-text-muted mt-0.5">+2,5% EXP</span>
+<span class="text-[10px] font-semibold text-text-muted bg-surface-container-low px-2 py-0.5 rounded-full mt-2">45/180 • Khóa</span>
+</div>
+<!-- Shield 6: 365 ngày (LOCKED) -->
+<div class="badge-item locked bg-surface-card rounded-[20px] p-4 flex flex-col items-center text-center shadow-sm opacity-80 hover:opacity-100 transition-opacity">
+<div class="w-20 h-24 relative flex items-center justify-center my-2 filter grayscale contrast-75">
+<svg class="w-full h-full drop-shadow-sm" viewbox="0 0 100 120">
+<path d="M50 8 L82 22 L82 66 C82 88 50 112 50 112 C50 112 18 88 18 66 L18 22 Z" fill="#F0F3FF" stroke="#A8C8FF" stroke-width="3"></path>
+<rect fill="#7C94A8" height="24" rx="4" width="32" x="34" y="40"></rect>
+</svg>
+<div class="absolute -bottom-1 bg-text-muted text-white font-bold text-xs px-2 py-0.5 rounded-full">365</div>
+</div>
+<span class="font-headline-card text-xs text-on-surface font-black mt-1">365 ngày học</span>
+<span class="text-[11px] font-bold text-text-muted mt-0.5">+3% EXP</span>
+<span class="text-[10px] font-semibold text-text-muted bg-surface-container-low px-2 py-0.5 rounded-full mt-2">45/365 • Khóa</span>
+</div>
+</div>
+</div>
+<!-- Footnote from design (as shown in image 2) -->
+<div class="text-center py-4">
+<p class="font-caption-unit text-caption-unit text-text-muted flex items-center justify-center gap-1.5">
+<span>🛡️</span> Huy hiệu đã đạt được sẽ được giữ vĩnh viễn trong nhật ký học tập của bé. Ngày đạt được tính theo giờ Việt Nam.
+        </p>
+</div>
+</section>
+</div>
+</div>
+<!-- Modal: Level Up & New Badge Unlocked -->
+<div aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-500 opacity-0 pointer-events-none" id="levelup-modal" role="dialog">
+<!-- Backdrop Blur with dark gradient -->
+<div class="absolute inset-0 bg-[#011c3a]/75 backdrop-blur-md transition-opacity duration-300" id="modal-backdrop"></div>
+<!-- Confetti Canvas -->
+<canvas class="absolute inset-0 w-full h-full pointer-events-none z-10" id="confetti-canvas"></canvas>
+<!-- Modal Content Box -->
+<div class="relative z-20 w-full max-w-lg bg-surface-card rounded-[32px] p-6 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.35)] border-4 border-level2-accent flex flex-col items-center text-center overflow-hidden transform scale-90 transition-all duration-500" id="modal-card">
+<!-- Spinning Sunburst Halo Effect behind badge -->
+<div class="absolute -top-32 -left-32 -right-32 h-96 flex items-center justify-center pointer-events-none opacity-40">
+<div class="w-[500px] h-[500px] animate-spin-slow">
+<svg class="w-full h-full fill-level2-accent" viewbox="0 0 200 200">
+<path d="M100 0 L112 85 L180 30 L125 95 L200 100 L125 105 L180 170 L112 115 L100 200 L88 115 L20 170 L75 105 L0 100 L75 95 L20 30 L88 85 Z" opacity="0.6"></path>
+</svg>
+</div>
+</div>
+<!-- Floating Star Sparkles in corners -->
+<div class="absolute top-4 left-6 text-2xl animate-sparkle select-none">✨</div>
+<div class="absolute top-12 right-6 text-xl animate-sparkle select-none" style="animation-delay: 0.8s;">🌟</div>
+<div class="absolute bottom-16 left-6 text-lg animate-sparkle select-none" style="animation-delay: 1.4s;">💫</div>
+<div class="absolute top-24 left-3 text-sm animate-sparkle select-none" style="animation-delay: 0.5s;">⭐</div>
+<div class="absolute bottom-20 right-5 text-xl animate-sparkle select-none" style="animation-delay: 1.1s;">✨</div>
+<!-- Mascot Pill Header -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1 bg-surface-cream rounded-full border border-level2-accent/40 shadow-sm mb-2 z-10">
+<span class="text-sm">🐝</span>
+<span class="text-xs font-black uppercase text-brand-ink-dark font-caption-unit tracking-wide">Bạn Ong Vàng &amp; Kuromi Chúc Mừng!</span>
+<span class="text-sm">🖤</span>
+</div>
+<!-- Main Title -->
+<h2 class="font-display-hero text-3xl sm:text-4xl text-brand-ink-dark font-black tracking-tight leading-tight z-10 flex items-center gap-2">
+<span>CHÚC MỪNG BÉ!</span>
+<span class="inline-block animate-bounce">🎊</span>
+</h2>
+<p class="text-xs sm:text-sm font-bold text-level4-accent mt-0.5 z-10">
+      Bé đã chính thức bước sang chặng đường kỳ thú mới
+    </p>
+<!-- Centerpiece 3D Interactive Badge / Level Up Animation -->
+<div class="relative my-4 z-10 flex items-center justify-center">
+<!-- Glow Aura -->
+<div class="absolute w-44 h-44 rounded-full bg-gradient-to-r from-level2-light via-surface-cream to-level4-light filter blur-xl opacity-90 animate-pulse"></div>
+<!-- Crown & Angel Wings -->
+<div class="relative w-40 h-44 flex flex-col items-center justify-center animate-badge-pop">
+<!-- Floating Little Crown -->
+<div class="text-3xl -mb-3 z-30 filter drop-shadow-md select-none transform hover:-translate-y-1 transition-transform">👑</div>
+<!-- Wings SVG behind shield -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+<svg class="w-48 h-32 drop-shadow-md" viewbox="0 0 200 120">
+<!-- Left Wing -->
+<path d="M40 70 C10 60 0 35 15 15 C30 25 35 45 45 60 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="2.5"></path>
+<path d="M45 75 C20 75 10 50 25 35 C38 45 42 60 50 70 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="2.5"></path>
+<!-- Right Wing -->
+<path d="M160 70 C190 60 200 35 185 15 C170 25 165 45 155 60 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="2.5"></path>
+<path d="M155 75 C180 75 190 50 175 35 C162 45 158 60 150 70 Z" fill="#FFF4D8" stroke="#F19B33" stroke-width="2.5"></path>
+</svg>
+</div>
+<!-- Big Royal Shield Badge -->
+<div class="w-32 h-36 relative flex items-center justify-center">
+<svg class="w-full h-full drop-shadow-[0_10px_20px_rgba(241,155,51,0.4)]" viewbox="0 0 100 120">
+<defs>
+<lineargradient id="shieldGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FFF9E6"></stop>
+<stop offset="50%" stop-color="#FFE082"></stop>
+<stop offset="100%" stop-color="#FFA000"></stop>
+</lineargradient>
+<lineargradient id="innerShield" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FFFFFF"></stop>
+<stop offset="100%" stop-color="#FFF4D8"></stop>
+</lineargradient>
+</defs>
+<path d="M50 5 L90 20 L90 70 C90 95 50 118 50 118 C50 118 10 95 10 70 L10 20 Z" fill="url(#shieldGrad)" stroke="#E56D27" stroke-width="3.5"></path>
+<path d="M50 13 L82 25 L82 66 C82 86 50 106 50 106 C50 106 18 86 18 66 L18 25 Z" fill="url(#innerShield)"></path>
+<!-- Bee & Kuromi tiny emblem -->
+<circle cx="50" cy="50" fill="#244F97" r="23"></circle>
+<circle cx="50" cy="50" fill="#FFFFFF" r="20"></circle>
+<!-- Big Level 6 Number -->
+<text fill="#244F97" font-family="Nunito Sans" font-size="24" font-weight="900" text-anchor="middle" x="50" y="58">6</text>
+</svg>
+<!-- Kuromi ribbon ears cute accent -->
+<span class="absolute -top-1 -right-2 text-xl transform rotate-12 select-none">🎀</span>
+<span class="absolute -top-1 -left-2 text-xl transform -rotate-12 select-none">🐰</span>
+</div>
+<!-- Banner Ribbon: LEVEL UP! CẤP ĐỘ 6 -->
+<div class="absolute -bottom-3 px-5 py-1.5 bg-gradient-to-r from-level2-accent via-primary-container to-level4-accent text-white font-black text-xs sm:text-sm rounded-full shadow-[0_4px_0_#984700] whitespace-nowrap animate-ribbon uppercase tracking-wider flex items-center gap-1">
+<span>⚡ LEVEL UP! CẤP ĐỘ 6 ⚡</span>
+</div>
+</div>
+</div>
+<!-- Title & Honor Title -->
+<div class="mt-4 mb-3 z-10">
+<span class="text-xs uppercase font-extrabold text-text-muted tracking-wider">DANH HIỆU MỚI ĐƯỢC TRAO THƯỞNG:</span>
+<h3 class="font-headline-card text-xl sm:text-2xl text-brand-ink-dark font-black mt-0.5">
+        🌟 Bậc Thầy Tiếng Anh Nhí 🌟
+      </h3>
+<p class="text-xs font-semibold text-on-surface-variant max-w-sm mt-0.5">
+        Bé đã vượt qua Vườn Hoa Tri Thức và tiến vào Đảo Phép Thuật Từ Vựng rực rỡ sắc màu!
+      </p>
+</div>
+<!-- Unlocked Badge Card Highlight -->
+<div class="w-full bg-surface-container-low rounded-2xl p-3.5 mb-4 border border-level4-accent/30 flex items-center justify-between gap-3 text-left shadow-inner z-10">
+<div class="flex items-center gap-3">
+<div class="w-12 h-14 bg-surface-card rounded-xl shadow-sm flex items-center justify-center relative flex-shrink-0 border border-level4-accent/40">
+<span class="text-2xl">🏆</span>
+<div class="absolute -bottom-1 -right-1 bg-tertiary text-white text-[9px] font-black rounded-full px-1.5 py-0.2 shadow">MỚI</div>
+</div>
+<div class="flex flex-col">
+<span class="text-[11px] font-extrabold text-level4-accent uppercase font-caption-unit">HUY HIỆU VỪA MỞ KHÓA</span>
+<span class="font-headline-card text-xs sm:text-sm text-brand-ink-dark font-black">Chiến thần 100 bài học 100%</span>
+<span class="text-[11px] font-bold text-tertiary">+2% EXP vĩnh viễn trên mọi bài thi</span>
+</div>
+</div>
+<!-- Bonus Rewards Pill -->
+<div class="flex flex-col items-end gap-1 flex-shrink-0">
+<span class="text-xs font-black text-primary bg-surface-cream px-2 py-0.5 rounded-lg shadow-sm border border-level2-accent/30">+500 EXP 🔥</span>
+<span class="text-xs font-black text-level2-accent bg-level2-light px-2 py-0.5 rounded-lg shadow-sm border border-level2-accent/30">+50 ⭐</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col sm:flex-row items-center gap-2.5 z-10">
+<button class="w-full sm:w-auto px-4 py-3 bg-surface-container-low hover:bg-surface-container text-brand-ink-dark font-action-secondary text-xs sm:text-sm font-extrabold rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-surface-container-high" id="btn-replay-anim" title="Xem lại hoạt họa">
+<span class="material-symbols-outlined text-base">replay</span>
+<span>Xem lại hiệu ứng 🔁</span>
+</button>
+<button class="w-full flex-1 px-6 py-3.5 bg-gradient-to-r from-primary-container via-level2-accent to-primary text-white font-action-primary text-sm sm:text-base font-black rounded-xl shadow-[0_5px_0_#984700] hover:shadow-[0_2px_0_#984700] hover:translate-y-1 active:translate-y-1 transition-all flex items-center justify-center gap-2 cursor-pointer group" id="btn-claim-reward">
+<span>Tuyệt vời, bé nhận thưởng ngay! 🎁</span>
+<span class="material-symbols-outlined text-lg group-hover:scale-125 transition-transform">star</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Simple vanilla JS interactive behavior for badge filtering, sound synthesis, confetti and level up modal
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Badge Filter Buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const badgeItems = document.querySelectorAll('.badge-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-tertiary', 'text-on-tertiary', 'shadow-[0_3px_0_#004731]');
+          b.classList.add('bg-surface-card', 'text-on-surface-variant');
+        });
+
+        btn.classList.remove('bg-surface-card', 'text-on-surface-variant');
+        btn.classList.add('bg-tertiary', 'text-on-tertiary', 'shadow-[0_3px_0_#004731]');
+
+        const filter = btn.getAttribute('data-filter');
+
+        badgeItems.forEach(item => {
+          if (filter === 'all') {
+            item.style.display = 'flex';
+          } else if (filter === 'unlocked') {
+            item.style.display = item.classList.contains('unlocked') ? 'flex' : 'none';
+          } else if (filter === 'locked') {
+            item.style.display = item.classList.contains('locked') ? 'flex' : 'none';
+          }
+        });
+      });
+    });
+
+    // 2. Synthesized Audio Chime & Fanfare using Web Audio API
+    let audioCtx = null;
+    function playVictoryChimes() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        if (!audioCtx) {
+          audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+
+        const now = audioCtx.currentTime;
+        // Notes: C5, E5, G5, C6 triumphant fanfare sequence
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.12);
+
+          gain.gain.setValueAtTime(0, now + idx * 0.12);
+          gain.gain.linearRampToValueAtTime(0.25, now + idx * 0.12 + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.12 + 0.55);
+
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.start(now + idx * 0.12);
+          osc.stop(now + idx * 0.12 + 0.6);
+        });
+
+        // Add happy harmonic chimes
+        setTimeout(() => {
+          if (!audioCtx) return;
+          const chimeFreqs = [1046.50, 1318.51, 1567.98, 2093.00];
+          chimeFreqs.forEach((freq, i) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+            const startTime = audioCtx.currentTime + i * 0.08;
+            gain.gain.setValueAtTime(0.2, startTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, startTime + 0.7);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(startTime);
+            osc.stop(startTime + 0.75);
+          });
+        }, 650);
+
+      } catch (err) {
+        console.log('Audio autoplay prevented or unsupported', err);
+      }
+    }
+
+    // 3. Multi-colored Confetti Particle System on HTML5 Canvas
+    const canvas = document.getElementById('confetti-canvas');
+    let ctx = canvas ? canvas.getContext('2d') : null;
+    let confettiAnimationId = null;
+    let particles = [];
+
+    function resizeCanvas() {
+      if (!canvas) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function createConfetti() {
+      particles = [];
+      const colors = ['#FF8A35', '#F19B33', '#22A9C2', '#9871C3', '#6AAD63', '#FFD700', '#FF4081', '#00E676'];
+      const count = 110;
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: window.innerWidth * 0.5 + (Math.random() - 0.5) * 200,
+          y: window.innerHeight * 0.4 + (Math.random() - 0.5) * 100,
+          w: Math.random() * 10 + 6,
+          h: Math.random() * 6 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          vx: (Math.random() - 0.5) * 18,
+          vy: Math.random() * -14 - 6,
+          gravity: 0.35,
+          drag: 0.96,
+          rotation: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 12,
+          opacity: 1
+        });
+      }
+    }
+
+    function renderConfetti() {
+      if (!ctx || !canvas) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      let activeCount = 0;
+      for (let p of particles) {
+        p.vx *= p.drag;
+        p.vy = (p.vy + p.gravity) * p.drag;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.vRot;
+        if (p.y > canvas.height * 0.6) {
+          p.opacity -= 0.012;
+        }
+
+        if (p.opacity > 0) {
+          activeCount++;
+          ctx.save();
+          ctx.globalAlpha = Math.max(0, p.opacity);
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          ctx.restore();
+        }
+      }
+
+      if (activeCount > 0) {
+        confettiAnimationId = requestAnimationFrame(renderConfetti);
+      } else {
+        cancelAnimationFrame(confettiAnimationId);
+      }
+    }
+
+    function shootConfetti() {
+      cancelAnimationFrame(confettiAnimationId);
+      resizeCanvas();
+      createConfetti();
+      renderConfetti();
+    }
+
+    // 4. Level Up Modal Controller
+    const modal = document.getElementById('levelup-modal');
+    const modalCard = document.getElementById('modal-card');
+    const btnClaim = document.getElementById('btn-claim-reward');
+    const btnReplay = document.getElementById('btn-replay-anim');
+    const btnTrigger = document.getElementById('btn-trigger-levelup');
+    const quickBadgeBtn = document.getElementById('quick-levelup-badge-btn');
+    const targetProgressBar = document.getElementById('target-progress-bar');
+
+    function openLevelUpModal() {
+      if (!modal) return;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+      if (modalCard) {
+        modalCard.classList.remove('scale-90');
+        modalCard.classList.add('scale-100');
+      }
+      playVictoryChimes();
+      shootConfetti();
+    }
+
+    function closeLevelUpModal() {
+      if (!modal) return;
+      // Shrink and close modal with delight
+      if (modalCard) {
+        modalCard.classList.remove('scale-100');
+        modalCard.classList.add('scale-90');
+      }
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+
+      // Play highlight pulse on the main screen level progress bar to reinforce connection
+      if (targetProgressBar) {
+        targetProgressBar.classList.add('ring-4', 'ring-level2-accent', 'scale-[1.02]');
+        setTimeout(() => {
+          targetProgressBar.classList.remove('ring-4', 'ring-level2-accent', 'scale-[1.02]');
+        }, 1200);
+      }
+    }
+
+    if (btnClaim) btnClaim.addEventListener('click', closeLevelUpModal);
+    if (btnTrigger) btnTrigger.addEventListener('click', openLevelUpModal);
+    if (quickBadgeBtn) quickBadgeBtn.addEventListener('click', openLevelUpModal);
+    if (btnReplay) {
+      btnReplay.addEventListener('click', () => {
+        playVictoryChimes();
+        shootConfetti();
+        if (modalCard) {
+          modalCard.classList.remove('animate-badge-pop');
+          void modalCard.offsetWidth; // trigger reflow
+          modalCard.classList.add('animate-badge-pop');
+        }
+      });
+    }
+
+    // Backdrop click close
+    const backdrop = document.getElementById('modal-backdrop');
+    if (backdrop) backdrop.addEventListener('click', closeLevelUpModal);
+
+    // Auto-open modal after 1 second as requested for immediate demo experience
+    setTimeout(() => {
+      openLevelUpModal();
+    }, 1000);
+  });
+</script></main><footer class="w-full bg-surface-sky mt-space-2xl py-space-xl"><div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-space-lg text-center md:text-left"><div class="flex items-center gap-space-sm justify-center md:justify-start"><div class="w-10 h-10 rounded-full bg-surface-cream flex items-center justify-center text-xl shadow-[0_2px_0_#F19B33]">🐝</div><div><p class="font-headline-card text-headline-card text-brand-ink-dark">Learning With Bee</p><p class="font-caption-unit text-caption-unit text-text-muted">Cùng bé khám phá thế giới từ vựng mỗi ngày thật rộn rã niềm vui!</p></div></div><div class="flex flex-wrap items-center justify-center gap-space-md"><span class="font-caption-unit text-caption-unit text-on-surface-variant bg-surface-card px-space-md py-space-xs rounded-full shadow-[0_2px_0_rgba(0,0,0,0.03)]">🌟 Vừa học vừa chơi</span><span class="font-caption-unit text-caption-unit text-on-surface-variant bg-surface-card px-space-md py-space-xs rounded-full shadow-[0_2px_0_rgba(0,0,0,0.03)]">🎨 Phát triển sáng tạo</span><span class="font-caption-unit text-caption-unit text-on-surface-variant bg-surface-card px-space-md py-space-xs rounded-full shadow-[0_2px_0_rgba(0,0,0,0.03)]">🏆 Đổi quà rực rỡ</span></div><p class="font-caption-unit text-caption-unit text-text-muted">© 2024 Learning With Bee. Đồng hành cùng bé lớn khôn.</p></div></footer></body></html>

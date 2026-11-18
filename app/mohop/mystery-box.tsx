@@ -161,7 +161,7 @@ export function MysteryBox() {
                     aria-label={`Đáp án ${letter}: ${caption}`} disabled={solved} onClick={() => choosePicture(id)}>
                     <span className={styles.optionTitle}><strong>{letter}</strong><small lang="en">{label}</small></span>
                     <span className={styles.optionImage}>
-                      <Image src={`/games/${id}.jpg`} alt="" width={293} height={190} unoptimized />
+                      <Image src={`/games/${id}.webp`} alt="" width={293} height={190} unoptimized />
                     </span>
                     <span className={styles.caption}>{caption}</span>
                   </button>

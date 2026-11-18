@@ -1,0 +1,233 @@
+[
+  {
+    "letter": "A",
+    "words": [
+      { "word": "Apple", "meaning": "Quả táo", "phonetic": "/ˈæp.əl/", "image": "/images/alphabet/apple.webp", "emoji": "🍎" },
+      { "word": "Ant", "meaning": "Con kiến", "phonetic": "/ænt/", "image": "/images/alphabet/ant.webp", "emoji": "🐜" },
+      { "word": "Alligator", "meaning": "Cá sấu Mỹ", "phonetic": "/ˈæl.ə.ɡeɪ.t̬ɚ/", "image": "/images/alphabet/alligator.webp", "emoji": "🐊" },
+      { "word": "Ax", "meaning": "Cái rìu", "phonetic": "/æks/", "image": "/images/alphabet/ax.webp", "emoji": "🪓" }
+    ]
+  },
+  {
+    "letter": "B",
+    "words": [
+      { "word": "Banana", "meaning": "Quả chuối", "phonetic": "/bəˈnæn.ə/", "image": "/images/alphabet/banana.webp", "emoji": "🍌" },
+      { "word": "Bear", "meaning": "Con gấu", "phonetic": "/ber/", "image": "/images/alphabet/bear.webp", "emoji": "🐻" },
+      { "word": "Bed", "meaning": "Cái giường", "phonetic": "/bed/", "image": "/images/alphabet/bed.webp", "emoji": "🛏️" },
+      { "word": "Bird", "meaning": "Con chim", "phonetic": "/bɝːd/", "image": "/images/alphabet/bird.webp", "emoji": "🐦" }
+    ]
+  },
+  {
+    "letter": "C",
+    "words": [
+      { "word": "Cat", "meaning": "Con mèo", "phonetic": "/kæt/", "image": "/images/alphabet/cat.webp", "emoji": "🐱" },
+      { "word": "Car", "meaning": "Xe ô tô", "phonetic": "/kɑːr/", "image": "/images/alphabet/car.webp", "emoji": "🚗" },
+      { "word": "Computer", "meaning": "Máy tính", "phonetic": "/kəmˈpjuː.t̬ɚ/", "image": "/images/alphabet/computer.webp", "emoji": "💻" },
+      { "word": "Cup", "meaning": "Cái cốc", "phonetic": "/kʌp/", "image": "/images/alphabet/cup.webp", "emoji": "☕" }
+    ]
+  },
+  {
+    "letter": "D",
+    "words": [
+      { "word": "Dog", "meaning": "Con chó", "phonetic": "/dɑːɡ/", "image": "/images/alphabet/dog.webp", "emoji": "🐶" },
+      { "word": "Desk", "meaning": "Bàn học", "phonetic": "/desk/", "image": "/images/alphabet/desk.webp", "emoji": "🪑" },
+      { "word": "Doll", "meaning": "Búp bê", "phonetic": "/dɑːl/", "image": "/images/alphabet/doll.webp", "emoji": "🪆" },
+      { "word": "Duck", "meaning": "Con vịt", "phonetic": "/dʌk/", "image": "/images/alphabet/duck.webp", "emoji": "🦆" }
+    ]
+  },
+  {
+    "letter": "E",
+    "words": [
+      { "word": "Egg", "meaning": "Quả trứng", "phonetic": "/eɡ/", "image": "/images/alphabet/egg.webp", "emoji": "🥚" },
+      { "word": "Elbow", "meaning": "Khuỷu tay", "phonetic": "/ˈel.boʊ/", "image": "/images/alphabet/elbow.webp", "emoji": "💪" },
+      { "word": "Elephant", "meaning": "Con voi", "phonetic": "/ˈel.ə.fənt/", "image": "/images/alphabet/elephant.webp", "emoji": "🐘" },
+      { "word": "Envelope", "meaning": "Phong bì", "phonetic": "/ˈen.və.loʊp/", "image": "/images/alphabet/envelope.webp", "emoji": "✉️" }
+    ]
+  },
+  {
+    "letter": "F",
+    "words": [
+      { "word": "Fish", "meaning": "Con cá", "phonetic": "/fɪʃ/", "image": "/images/alphabet/fish.webp", "emoji": "🐟" },
+      { "word": "Fan", "meaning": "Cái quạt", "phonetic": "/fæn/", "image": "/images/alphabet/fan.webp", "emoji": "🪭" },
+      { "word": "Farm", "meaning": "Nông trại", "phonetic": "/fɑːrm/", "image": "/images/alphabet/farm.webp", "emoji": "🚜" },
+      { "word": "Fork", "meaning": "Cái nĩa", "phonetic": "/fɔːrk/", "image": "/images/alphabet/fork.webp", "emoji": "🍴" }
+    ]
+  },
+  {
+    "letter": "G",
+    "words": [
+      { "word": "Goat", "meaning": "Con dê", "phonetic": "/ɡoʊt/", "image": "/images/alphabet/goat.webp", "emoji": "🐐" },
+      { "word": "Gift", "meaning": "Món quà", "phonetic": "/ɡɪft/", "image": "/images/alphabet/gift.webp", "emoji": "🎁" },
+      { "word": "Girl", "meaning": "Bé gái", "phonetic": "/ɡɝːl/", "image": "/images/alphabet/girl.webp", "emoji": "👧" },
+      { "word": "Gorilla", "meaning": "Khỉ đột", "phonetic": "/ɡəˈrɪl.ə/", "image": "/images/alphabet/gorilla.webp", "emoji": "🦍" }
+    ]
+  },
+  {
+    "letter": "H",
+    "words": [
+      { "word": "Hat", "meaning": "Chiếc mũ", "phonetic": "/hæt/", "image": "/images/alphabet/hat.webp", "emoji": "🎩" },
+      { "word": "Horse", "meaning": "Con ngựa", "phonetic": "/hɔːrs/", "image": "/images/alphabet/horse.webp", "emoji": "🐴" },
+      { "word": "Hot dog", "meaning": "Bánh mì kẹp xúc xích", "phonetic": "/ˈhɑːt dɑːɡ/", "image": "/images/alphabet/hot_dog.webp", "emoji": "🌭" },
+      { "word": "House", "meaning": "Ngôi nhà", "phonetic": "/haʊs/", "image": "/images/alphabet/house.webp", "emoji": "🏠" }
+    ]
+  },
+  {
+    "letter": "I",
+    "words": [
+      { "word": "Igloo", "meaning": "Nhà tuyết", "phonetic": "/ˈɪɡ.luː/", "image": "/images/alphabet/igloo.webp", "emoji": "🧊" },
+      { "word": "Iguana", "meaning": "Kỳ nhông", "phonetic": "/ɪˈɡwɑː.nə/", "image": "/images/alphabet/iguana.webp", "emoji": "🦎" },
+      { "word": "Ink", "meaning": "Mực viết", "phonetic": "/ɪŋk/", "image": "/images/alphabet/ink.webp", "emoji": "🖋️" },
+      { "word": "Insect", "meaning": "Côn trùng", "phonetic": "/ˈɪn.sekt/", "image": "/images/alphabet/insect.webp", "emoji": "🐞" }
+    ]
+  },
+  {
+    "letter": "J",
+    "words": [
+      { "word": "Jam", "meaning": "Mứt", "phonetic": "/dʒæm/", "image": "/images/alphabet/jam.webp", "emoji": "🫙" },
+      { "word": "Jacket", "meaning": "Áo khoác", "phonetic": "/ˈdʒæk.ɪt/", "image": "/images/alphabet/jacket.webp", "emoji": "🧥" },
+      { "word": "Jet", "meaning": "Máy bay phản lực", "phonetic": "/dʒet/", "image": "/images/alphabet/jet.webp", "emoji": "✈️" },
+      { "word": "Juice", "meaning": "Nước ép", "phonetic": "/dʒuːs/", "image": "/images/alphabet/juice.webp", "emoji": "🧃" }
+    ]
+  },
+  {
+    "letter": "K",
+    "words": [
+      { "word": "Kite", "meaning": "Cánh diều", "phonetic": "/kaɪt/", "image": "/images/alphabet/kite.webp", "emoji": "🪁" },
+      { "word": "Kangaroo", "meaning": "Chuột túi", "phonetic": "/ˌkæŋ.ɡəˈruː/", "image": "/images/alphabet/kangaroo.webp", "emoji": "🦘" },
+      { "word": "Key", "meaning": "Chìa khóa", "phonetic": "/kiː/", "image": "/images/alphabet/key.webp", "emoji": "🔑" },
+      { "word": "King", "meaning": "Nhà vua", "phonetic": "/kɪŋ/", "image": "/images/alphabet/king.webp", "emoji": "🤴" }
+    ]
+  },
+  {
+    "letter": "L",
+    "words": [
+      { "word": "Lion", "meaning": "Sư tử", "phonetic": "/ˈlaɪ.ən/", "image": "/images/alphabet/lion.webp", "emoji": "🦁" },
+      { "word": "Lamp", "meaning": "Cái đèn", "phonetic": "/læmp/", "image": "/images/alphabet/lamp.webp", "emoji": "💡" },
+      { "word": "Leaf", "meaning": "Chiếc lá", "phonetic": "/liːf/", "image": "/images/alphabet/leaf.webp", "emoji": "🍃" },
+      { "word": "Lemon", "meaning": "Quả chanh vàng", "phonetic": "/ˈlem.ən/", "image": "/images/alphabet/lemon.webp", "emoji": "🍋" }
+    ]
+  },
+  {
+    "letter": "M",
+    "words": [
+      { "word": "Monkey", "meaning": "Con khỉ", "phonetic": "/ˈmʌŋ.ki/", "image": "/images/alphabet/monkey.webp", "emoji": "🐵" },
+      { "word": "Milk", "meaning": "Sữa", "phonetic": "/mɪlk/", "image": "/images/alphabet/milk.webp", "emoji": "🥛" },
+      { "word": "Money", "meaning": "Tiền", "phonetic": "/ˈmʌn.i/", "image": "/images/alphabet/money.webp", "emoji": "💵" },
+      { "word": "Mouse", "meaning": "Con chuột", "phonetic": "/maʊs/", "image": "/images/alphabet/mouse.webp", "emoji": "🐭" }
+    ]
+  },
+  {
+    "letter": "N",
+    "words": [
+      { "word": "Nut", "meaning": "Hạt", "phonetic": "/nʌt/", "image": "/images/alphabet/nut.webp", "emoji": "🥜" },
+      { "word": "Nest", "meaning": "Tổ chim", "phonetic": "/nest/", "image": "/images/alphabet/nest.webp", "emoji": "🪺" },
+      { "word": "Net", "meaning": "Cái lưới", "phonetic": "/net/", "image": "/images/alphabet/net.webp", "emoji": "🥅" },
+      { "word": "Nose", "meaning": "Cái mũi", "phonetic": "/noʊz/", "image": "/images/alphabet/nose.webp", "emoji": "👃" }
+    ]
+  },
+  {
+    "letter": "O",
+    "words": [
+      { "word": "Octopus", "meaning": "Bạch tuộc", "phonetic": "/ˈɑːk.tə.pəs/", "image": "/images/alphabet/octopus.webp", "emoji": "🐙" },
+      { "word": "Olive", "meaning": "Quả ô liu", "phonetic": "/ˈɑː.lɪv/", "image": "/images/alphabet/olive.webp", "emoji": "🫒" },
+      { "word": "Ostrich", "meaning": "Đà điểu", "phonetic": "/ˈɑː.strɪtʃ/", "image": "/images/alphabet/ostrich.webp", "emoji": "🐦" },
+      { "word": "Ox", "meaning": "Con bò đực", "phonetic": "/ɑːks/", "image": "/images/alphabet/ox.webp", "emoji": "🐂" }
+    ]
+  },
+  {
+    "letter": "P",
+    "words": [
+      { "word": "Panda", "meaning": "Gấu trúc", "phonetic": "/ˈpæn.də/", "image": "/images/alphabet/panda.webp", "emoji": "🐼" },
+      { "word": "Peach", "meaning": "Quả đào", "phonetic": "/piːtʃ/", "image": "/images/alphabet/peach.webp", "emoji": "🍑" },
+      { "word": "Pen", "meaning": "Bút mực", "phonetic": "/pen/", "image": "/images/alphabet/pen.webp", "emoji": "🖊️" },
+      { "word": "Pineapple", "meaning": "Quả dứa", "phonetic": "/ˈpaɪnˌæp.əl/", "image": "/images/alphabet/pineapple.webp", "emoji": "🍍" }
+    ]
+  },
+  {
+    "letter": "Q",
+    "words": [
+      { "word": "Queen", "meaning": "Nữ hoàng", "phonetic": "/kwiːn/", "image": "/images/alphabet/queen.webp", "emoji": "👸" },
+      { "word": "Question", "meaning": "Câu hỏi", "phonetic": "/ˈkwes.tʃən/", "image": "/images/alphabet/question.webp", "emoji": "❓" },
+      { "word": "Quilt", "meaning": "Chăn bông", "phonetic": "/kwɪlt/", "image": "/images/alphabet/quilt.webp", "emoji": "🛏️" },
+      { "word": "Quiz", "meaning": "Bài đố", "phonetic": "/kwɪz/", "image": "/images/alphabet/quiz.webp", "emoji": "📝" }
+    ]
+  },
+  {
+    "letter": "R",
+    "words": [
+      { "word": "Rabbit", "meaning": "Con thỏ", "phonetic": "/ˈræb.ɪt/", "image": "/images/alphabet/rabbit.webp", "emoji": "🐰" },
+      { "word": "Rice", "meaning": "Cơm; gạo", "phonetic": "/raɪs/", "image": "/images/alphabet/rice.webp", "emoji": "🍚" },
+      { "word": "Robot", "meaning": "Người máy", "phonetic": "/ˈroʊ.bɑːt/", "image": "/images/alphabet/robot.webp", "emoji": "🤖" },
+      { "word": "Rose", "meaning": "Hoa hồng", "phonetic": "/roʊz/", "image": "/images/alphabet/rose.webp", "emoji": "🌹" }
+    ]
+  },
+  {
+    "letter": "S",
+    "words": [
+      { "word": "Sun", "meaning": "Mặt trời", "phonetic": "/sʌn/", "image": "/images/alphabet/sun.webp", "emoji": "☀️" },
+      { "word": "Seal", "meaning": "Hải cẩu", "phonetic": "/siːl/", "image": "/images/alphabet/seal.webp", "emoji": "🦭" },
+      { "word": "Soap", "meaning": "Xà phòng", "phonetic": "/soʊp/", "image": "/images/alphabet/soap.webp", "emoji": "🧼" },
+      { "word": "Socks", "meaning": "Đôi tất", "phonetic": "/sɑːks/", "image": "/images/alphabet/socks.webp", "emoji": "🧦" }
+    ]
+  },
+  {
+    "letter": "T",
+    "words": [
+      { "word": "Tiger", "meaning": "Con hổ", "phonetic": "/ˈtaɪ.ɡɚ/", "image": "/images/alphabet/tiger.webp", "emoji": "🐯" },
+      { "word": "Teacher", "meaning": "Giáo viên", "phonetic": "/ˈtiː.tʃɚ/", "image": "/images/alphabet/teacher.webp", "emoji": "🧑‍🏫" },
+      { "word": "Tent", "meaning": "Cái lều", "phonetic": "/tent/", "image": "/images/alphabet/tent.webp", "emoji": "⛺" },
+      { "word": "Turtle", "meaning": "Con rùa", "phonetic": "/ˈtɝː.t̬əl/", "image": "/images/alphabet/turtle.webp", "emoji": "🐢" }
+    ]
+  },
+  {
+    "letter": "U",
+    "words": [
+      { "word": "Umbrella", "meaning": "Cái ô", "phonetic": "/ʌmˈbrel.ə/", "image": "/images/alphabet/umbrella.webp", "emoji": "☂️" },
+      { "word": "Umpire", "meaning": "Trọng tài", "phonetic": "/ˈʌm.paɪr/", "image": "/images/alphabet/umpire.webp", "emoji": "🧑‍⚖️" },
+      { "word": "Uncle", "meaning": "Chú; bác; cậu", "phonetic": "/ˈʌŋ.kəl/", "image": "/images/alphabet/uncle.webp", "emoji": "👨" },
+      { "word": "Up", "meaning": "Lên trên", "phonetic": "/ʌp/", "image": "/images/alphabet/up.webp", "emoji": "⬆️" }
+    ]
+  },
+  {
+    "letter": "V",
+    "words": [
+      { "word": "Van", "meaning": "Xe tải nhỏ", "phonetic": "/væn/", "image": "/images/alphabet/van.webp", "emoji": "🚐" },
+      { "word": "Vest", "meaning": "Áo ghi lê", "phonetic": "/vest/", "image": "/images/alphabet/vest.webp", "emoji": "🦺" },
+      { "word": "Vet", "meaning": "Bác sĩ thú y", "phonetic": "/vet/", "image": "/images/alphabet/vet.webp", "emoji": "🧑‍⚕️" },
+      { "word": "Violin", "meaning": "Đàn vi ô lông", "phonetic": "/ˌvaɪ.əˈlɪn/", "image": "/images/alphabet/violin.webp", "emoji": "🎻" }
+    ]
+  },
+  {
+    "letter": "W",
+    "words": [
+      { "word": "Water", "meaning": "Nước", "phonetic": "/ˈwɑː.t̬ɚ/", "image": "/images/alphabet/water.webp", "emoji": "💧" },
+      { "word": "Wax", "meaning": "Sáp", "phonetic": "/wæks/", "image": "/images/alphabet/wax.webp", "emoji": "🕯️" },
+      { "word": "Web", "meaning": "Mạng nhện", "phonetic": "/web/", "image": "/images/alphabet/web.webp", "emoji": "🕸️" },
+      { "word": "Wolf", "meaning": "Con sói", "phonetic": "/wʊlf/", "image": "/images/alphabet/wolf.webp", "emoji": "🐺" }
+    ]
+  },
+  {
+    "letter": "X",
+    "words": [
+      { "word": "Fox", "meaning": "Con cáo", "phonetic": "/fɑːks/", "image": null, "emoji": "🦊" }
+    ]
+  },
+  {
+    "letter": "Y",
+    "words": [
+      { "word": "Yo-yo", "meaning": "Đồ chơi yo-yo", "phonetic": "/ˈjoʊ.joʊ/", "image": "/images/alphabet/yo-yo.webp", "emoji": "🪀" },
+      { "word": "Yacht", "meaning": "Du thuyền", "phonetic": "/jɑːt/", "image": "/images/alphabet/yacht.webp", "emoji": "🛥️" },
+      { "word": "Yak", "meaning": "Bò Tây Tạng", "phonetic": "/jæk/", "image": "/images/alphabet/yak.webp", "emoji": "🐂" },
+      { "word": "Yogurt", "meaning": "Sữa chua", "phonetic": "/ˈjoʊ.ɡɚt/", "image": "/images/alphabet/yogurt.webp", "emoji": "🥣" }
+    ]
+  },
+  {
+    "letter": "Z",
+    "words": [
+      { "word": "Zebra", "meaning": "Ngựa vằn", "phonetic": "/ˈziː.brə/", "image": "/images/alphabet/zebra.webp", "emoji": "🦓" },
+      { "word": "Zero", "meaning": "Số không", "phonetic": "/ˈzɪr.oʊ/", "image": "/images/alphabet/zero.webp", "emoji": "0️⃣" },
+      { "word": "Zipper", "meaning": "Khóa kéo", "phonetic": "/ˈzɪp.ɚ/", "image": "/images/alphabet/zipper.webp", "emoji": "🤐" },
+      { "word": "Zoo", "meaning": "Sở thú", "phonetic": "/zuː/", "image": "/images/alphabet/zoo.webp", "emoji": "🦁" }
+    ]
+  }
+]

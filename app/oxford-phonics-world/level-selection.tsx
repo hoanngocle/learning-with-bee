@@ -35,10 +35,6 @@ function LevelCard({
         <h2 id={`title-level-${level.number}`} lang="en">{level.title}</h2>
         <p className={styles.subtitle}>{subtitle}</p>
         <p className={styles.description}>{description}</p>
-        <p className={styles.stats}>
-          <SelectionIcon name="menu_book" size={15} />
-          {copy.lessons} • {level.cards} {copy.flashcards}
-        </p>
       </div>
       {current ? (
         <Link className={styles.cardAction} href={alphabetPath}>
@@ -76,7 +72,6 @@ export function LevelSelection() {
       <div className={styles.intro}>
         <p className={styles.roadmap}><SelectionIcon name="auto_awesome" size={16} />{copy.badge}</p>
         <h1 id="selection-title">{copy.title}</h1>
-        <p>{copy.intro}</p>
       </div>
 
       <div className={styles.levelRows}>
@@ -88,18 +83,6 @@ export function LevelSelection() {
         </div>
       </div>
 
-      <aside className={styles.encouragement} aria-labelledby="encouragement-title">
-        <div className={styles.encouragementCopy}>
-          <span className={styles.bee} aria-hidden="true">🐝</span>
-          <div>
-            <h2 id="encouragement-title">{copy.ready}</h2>
-            <p>{copy.encouragement}</p>
-          </div>
-        </div>
-        <button className={styles.resume} type="button" aria-disabled="true" tabIndex={-1}>
-          <SelectionIcon name="flag" />{copy.resume}
-        </button>
-      </aside>
     </main>
   );
 }

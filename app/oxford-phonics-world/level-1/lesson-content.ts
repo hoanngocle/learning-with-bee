@@ -1,37 +1,16 @@
+import vocabulary from "./alphabet.json";
+
 type Vocabulary = {
   word: string;
   emoji: string;
   meaning: string;
 };
 
-export const alphabet = [
-  ["A", "Apple", "🍎", "Quả táo", "/ˈæp.əl/"],
-  ["B", "Ball", "⚽", "Quả bóng", "/bɔːl/"],
-  ["C", "Cat", "🐱", "Con mèo", "/kæt/"],
-  ["D", "Dog", "🐶", "Con chó", "/dɑːɡ/"],
-  ["E", "Egg", "🥚", "Quả trứng", "/eɡ/"],
-  ["F", "Fish", "🐟", "Con cá", "/fɪʃ/"],
-  ["G", "Goat", "🐐", "Con dê", "/ɡoʊt/"],
-  ["H", "Hat", "🎩", "Chiếc mũ", "/hæt/"],
-  ["I", "Igloo", "🧊", "Nhà tuyết", "/ˈɪɡ.luː/"],
-  ["J", "Jam", "🫙", "Mứt", "/dʒæm/"],
-  ["K", "Kite", "🪁", "Cánh diều", "/kaɪt/"],
-  ["L", "Lion", "🦁", "Sư tử", "/ˈlaɪ.ən/"],
-  ["M", "Monkey", "🐵", "Con khỉ", "/ˈmʌŋ.ki/"],
-  ["N", "Nut", "🥜", "Hạt", "/nʌt/"],
-  ["O", "Octopus", "🐙", "Bạch tuộc", "/ˈɑːk.tə.pəs/"],
-  ["P", "Panda", "🐼", "Gấu trúc", "/ˈpæn.də/"],
-  ["Q", "Queen", "👸", "Nữ hoàng", "/kwiːn/"],
-  ["R", "Rabbit", "🐰", "Con thỏ", "/ˈræb.ɪt/"],
-  ["S", "Sun", "☀️", "Mặt trời", "/sʌn/"],
-  ["T", "Tiger", "🐯", "Con hổ", "/ˈtaɪ.ɡɚ/"],
-  ["U", "Umbrella", "☂️", "Cái ô", "/ʌmˈbrel.ə/"],
-  ["V", "Van", "🚐", "Xe tải nhỏ", "/væn/"],
-  ["W", "Watch", "⌚", "Đồng hồ đeo tay", "/wɑːtʃ/"],
-  ["X", "Fox", "🦊", "Con cáo", "/fɑːks/"],
-  ["Y", "Yo-yo", "🪀", "Đồ chơi yo-yo", "/ˈjoʊ.joʊ/"],
-  ["Z", "Zebra", "🦓", "Ngựa vằn", "/ˈziː.brə/"],
-].map(([letter, word, emoji, meaning, phonetic]) => ({ letter, word, emoji, meaning, phonetic }));
+export const alphabet = vocabulary.map(({ letter, words }) => ({
+  letter,
+  ...words[0],
+  words,
+}));
 
 export const questionCount = 3;
 
@@ -57,6 +36,8 @@ export const lessonContent = {
     intro: "Chọn một chữ cái để nghe và xem từ vựng.",
     vocabulary: "Học từ vựng",
     letter: "Chữ cái",
+    wordsForLetter: (letter: string) => `Từ vựng chữ ${letter}`,
+    wordProgress: (current: number, total: number) => `Từ ${current} / ${total}`,
     tap: "Chạm vào hình để nghe tiếng Anh",
     meaning: "Ý nghĩa",
     listen: "Nghe phát âm",
@@ -84,6 +65,8 @@ export const lessonContent = {
     intro: "Pick a letter to hear it and explore its word.",
     vocabulary: "Time to learn",
     letter: "Letter",
+    wordsForLetter: (letter: string) => `Words for letter ${letter}`,
+    wordProgress: (current: number, total: number) => `Word ${current} / ${total}`,
     tap: "Tap the picture to hear the word",
     meaning: "Vietnamese",
     listen: "Listen",
