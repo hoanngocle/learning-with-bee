@@ -3,11 +3,12 @@ import "server-only";
 import { createHmac, randomBytes, scrypt, timingSafeEqual } from "node:crypto";
 import { promisify } from "node:util";
 import { cookies } from "next/headers";
+import { connection } from "next/server";
 import accounts from "./accounts.json";
 
 const COOKIE_NAME = "bee_session";
 const SESSION_DURATION = 60 * 60 * 24 * 7;
-const sessionSecret = process.env.BEE_SESSION_SECRET || randomBytes(32);
+const sessionRuntime = globalThis as typeof globalThis & { beeSessionSecret?: Buffer };
 const deriveKey = promisify(scrypt);
 const cookieOptions = {
   httpOnly: true,
@@ -21,6 +22,8 @@ function equalBytes(left: Buffer, right: Buffer) {
 }
 
 function sign(payload: string) {
+  // Share the local key across route bundles and development module reloads.
+  const sessionSecret = process.env.BEE_SESSION_SECRET || (sessionRuntime.beeSessionSecret ??= randomBytes(32));
   return createHmac("sha256", sessionSecret).update(payload).digest("base64url");
 }
 
@@ -42,6 +45,8 @@ export async function startSession(username: string) {
 }
 
 export async function getSessionAccount() {
+  // Development prerenders can resolve cookies; expiry still needs a real request.
+  await connection();
   const token = (await cookies()).get(COOKIE_NAME)?.value;
   if (!token) return null;
 
